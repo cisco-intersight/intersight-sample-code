@@ -1,4 +1,5 @@
-from authentication.python.intersight_authentication import client
+from authentication.python import intersight_authentication as client
+
 from intersight.model.server_profile import ServerProfile
 from intersight.api import server_api
 from intersight.model.policy_abstract_policy_relationship import PolicyAbstractPolicyRelationship

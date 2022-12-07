@@ -1,4 +1,4 @@
-from authentication.python.intersight_authentication import client
+from authentication.python import intersight_authentication as client
 
 from intersight.model.organization_organization_relationship import OrganizationOrganizationRelationship
 from intersight.model.snmp_policy import SnmpPolicy
