@@ -4,11 +4,11 @@
 			"name":"authentication",
 			"displayName": "Authentication",
 			"codesample":{
-				"ansible": "authentication.yaml",
-				"openapi": "authentication.json",
-				"powershell": "authentication.ps1",
-				"python":"authentication.py",
-				"terraform": "authentication.tf"
+				"ansible": "intersight_authentication.yaml",
+				"openapi": "intersight_authentication.json",
+				"powershell": "intersight_authentication.ps1",
+				"python":"intersight_authentication.py",
+				"terraform": "intersight_authentication.tf"
 			}
 		},
 		{
