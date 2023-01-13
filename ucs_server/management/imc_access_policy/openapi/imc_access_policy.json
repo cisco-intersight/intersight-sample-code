@@ -1,0 +1,24 @@
+{
+    "AddressType": {
+        "ClassId": "access.AddressType",
+        "ObjectType": "access.AddressType",
+        "EnableIpV4": true,
+        "EnableIpV6": false
+    },
+    "ConfigurationType": {
+        "ClassId": "access.ConfigurationType",
+        "ObjectType": "access.ConfigurationType",
+        "ConfigureInband": true,
+        "ConfigureOutOfBand": false
+    },
+    "InbandVlan": 144,
+    "InbandIpPool": {
+        "ObjectType": "ippool.Pool",
+        "Moid": "<<ippool.Pool moid>>"
+    },
+    "Organization": {
+        "ObjectType": "organization.Organization",
+        "Moid": "organization moid"
+    },
+    "Name": "access_policy_1"
+}

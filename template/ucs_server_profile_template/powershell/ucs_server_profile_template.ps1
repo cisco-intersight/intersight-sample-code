@@ -1,4 +1,6 @@
 
-# create a ServerProfile template.
+# Creating a cluster and siwtch profile without policies, policies can  be attached 
+$orgRef = Get-IntersightOrganizationOrganization -Name "<Org Name>" | Get-IntersightMoMoRef
 
-$result = New-IntersightServerProfileTemplate -Name "Test_serverProfile"
+# create a ServerProfile template.
+$result = New-IntersightServerProfileTemplate -Name "Test_serverProfile" -Organization $orgRef

@@ -1,0 +1,11 @@
+{
+    "BaudRate": 19200,
+    "ComPort": "com0",
+    "Enabled": true,
+    "SshPort": 2120,
+    "Organization": {
+        "ObjectType": "organization.Organization",
+        "Moid": "organization moid"
+    },
+    "Name": "sample_sol_policy"
+}

@@ -1,0 +1,14 @@
+{
+    "MinSeverity": "critical",
+    "Enabled": true,
+    "SmtpPort": 25,
+    "SmtpRecipients": [
+        "xyz@test.com"
+    ],
+    "SmtpServer": "22.22.22.22",
+    "Organization": {
+        "ObjectType": "organization.Organization",
+        "Moid": "organization moid"
+    },
+    "Name": "smtp_policy_1"
+}

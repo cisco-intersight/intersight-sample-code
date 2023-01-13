@@ -1,0 +1,7 @@
+{
+    "Organization": {
+        "ObjectType": "organization.Organization",
+        "Moid": "<<Organization Moid>>"
+    },
+    "Name": "Test_serverProfile"
+}

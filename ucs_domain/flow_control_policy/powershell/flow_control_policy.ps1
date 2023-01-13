@@ -3,5 +3,5 @@ $orgRef = Get-IntersightOrganizationOrganization -Name default | Get-IntersightM
 
 #Create fabric control policy
 
-$result = New-IntersightFabricFlowControlPolicy -Name "fabric_flow" -ReceiveDirection Enabled -SendDirection Enabled -PriorityFlowControlMode Auto`
+$result = New-IntersightFabricFlowControlPolicy -Name "fabric_flow" -ReceiveDirection Enabled -SendDirection Enabled -PriorityFlowControlMode Off `
             -Organization $orgRef -Description "fabric flow control"

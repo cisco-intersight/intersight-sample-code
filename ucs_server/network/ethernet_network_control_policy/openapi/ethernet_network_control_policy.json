@@ -1,0 +1,17 @@
+{
+    "ForgeMac": "allow",
+    "MacRegistrationMode": "nativeVlanOnly",
+    "UplinkFailAction": "linkDown",
+    "CdpEnabled": true,
+    "LldpSettings": {
+        "ClassId": "fabric.LldpSettings",
+        "ObjectType": "fabric.LldpSettings",
+        "ReceiveEnabled": true,
+        "TransmitEnabled": true
+    },
+    "Organization": {
+        "ObjectType": "organization.Organization",
+        "Moid": "<<organization moid>>"
+    },
+    "Name": "eth_network_control_policy_1"
+}

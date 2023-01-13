@@ -1,0 +1,10 @@
+{
+    "LacpRate": "fast",
+    "SuspendIndividual": true,
+    "Organization": {
+        "ObjectType": "organization.Organization",
+        "Moid": "<<Organization moid>>"
+    },
+    "Description": "Link Aggregation policy",
+    "Name": "LinkAgrregate"
+}

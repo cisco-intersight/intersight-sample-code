@@ -1,0 +1,10 @@
+{
+    "Port": 12000,
+    "Timeout": 1000,
+    "Organization": {
+        "ObjectType": "organization.Organization",
+        "Moid": "organization moid"
+    },
+    "Description": "ssh policy",
+    "Name": "ssh_policy_1"
+}

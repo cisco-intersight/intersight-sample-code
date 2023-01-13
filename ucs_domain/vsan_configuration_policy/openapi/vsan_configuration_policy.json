@@ -1,0 +1,11 @@
+{
+    "DefaultZoning": "Disabled",
+    "VsanScope": "Uplink",
+    "FcoeVlan": 3646,
+    "Name": "vsan_1",
+    "VsanId": 3646,
+    "FcNetworkPolicy": {
+        "ObjectType": "fabric.FcNetworkPolicy",
+        "Moid": "<<fabric.FcNetworkPolicy moid>>"
+    }
+}

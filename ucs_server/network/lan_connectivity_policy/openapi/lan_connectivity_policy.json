@@ -1,0 +1,17 @@
+{
+    "IqnAllocationType": "None",
+    "PlacementMode": "custom",
+    "TargetPlatform": "Standalone",
+    "AzureQosEnabled": false,
+    "EthIfs": [
+        {
+            "ObjectType": "vnic.EthIf",
+            "Moid": "<<vnic.EthIf moid>>"
+        }
+    ],
+    "Organization": {
+        "ObjectType": "organization.Organization",
+        "Moid": "<<organization Moid>>"
+    },
+    "Name": "lan_connectivity_policy_1"
+}

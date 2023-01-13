@@ -1,0 +1,11 @@
+{
+    "Enabled": true,
+    "NtpServers": [
+        "44.44.44.44"
+    ],
+    "Organization": {
+        "ObjectType": "organization.Organization",
+        "Moid": "<<organization moid>>"
+    },
+    "Name": "ntp_policy_1"
+}

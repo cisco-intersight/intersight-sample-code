@@ -1,0 +1,15 @@
+{
+    "AlternateIpv4dnsServer": "22.22.22.22",
+    "DynamicDnsDomain": "xyz.com",
+    "EnableDynamicDns": true,
+    "EnableIpv4dnsFromDhcp": false,
+    "EnableIpv6": false,
+    "EnableIpv6dnsFromDhcp": false,
+    "PreferredIpv4dnsServer": "171.70.98.1",
+    "Organization": {
+        "ObjectType": "organization.Organization",
+        "Moid": "<< organization moid >>"
+    },
+    "Description": "test network config policy",
+    "Name": "netwrokConfigPolicy"
+}

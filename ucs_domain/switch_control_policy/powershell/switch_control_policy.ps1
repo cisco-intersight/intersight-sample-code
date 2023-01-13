@@ -6,4 +6,4 @@ $macAge = Initialize-IntersightFabricMacAgingSettings -MacAgingOption Default -M
 $udldSetting = Initialize-IntersightFabricUdldGlobalSettings -MessageInterval 12 -RecoveryAction None
 
 $result = New-IntersightFabricSwitchControlPolicy -Name "switch_control_policy_1" -EthernetSwitchingMode Switch -FcSwitchingMode Switch `
-        -MacAgingSettings @($macAge) -UdldSettings @($udldSetting) -Organization $orgRef
+        -MacAgingSettings $macAge -UdldSettings $udldSetting -Organization $orgRef

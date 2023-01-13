@@ -1,0 +1,14 @@
+{
+    "DynamicRebalancing": "Disabled",
+    "ExtendedPowerCapacity": "Enabled",
+    "PowerPriority": "Low",
+    "PowerProfiling": "Enabled",
+    "PowerRestoreState": "AlwaysOff",
+    "PowerSaveMode": "Enabled",
+    "RedundancyMode": "Grid",
+    "Organization": {
+        "ObjectType": "organization.Organization",
+        "Moid": "<< organization moid>>"
+    },
+    "Name": "power_policy_1"
+}

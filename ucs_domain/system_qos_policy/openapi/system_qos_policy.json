@@ -1,0 +1,52 @@
+{
+    "Classes": [
+        {
+            "ClassId": "fabric.QosClass",
+            "ObjectType": "fabric.QosClass",
+            "AdminState": "Enabled",
+            "Name": "Platinum",
+            "BandwidthPercent": 22,
+            "Cos": 5,
+            "Mtu": 1500,
+            "PacketDrop": true,
+            "Weight": 10
+        },
+        {
+            "ClassId": "fabric.QosClass",
+            "ObjectType": "fabric.QosClass",
+            "AdminState": "Enabled",
+            "Name": "Gold",
+            "BandwidthPercent": 20,
+            "Cos": 4,
+            "Mtu": 1500,
+            "PacketDrop": true,
+            "Weight": 9
+        },
+        {
+            "ClassId": "fabric.QosClass",
+            "ObjectType": "fabric.QosClass",
+            "AdminState": "Enabled",
+            "Name": "Silver",
+            "BandwidthPercent": 15,
+            "Cos": 1,
+            "Mtu": 1500,
+            "PacketDrop": true,
+            "Weight": 7
+        },
+        {
+            "ClassId": "fabric.QosClass",
+            "ObjectType": "fabric.QosClass",
+            "AdminState": "Enabled",
+            "Name": "Bronze",
+            "BandwidthPercent": 18,
+            "Cos": 2,
+            "Mtu": 1500,
+            "Weight": 8
+        }
+    ],
+    "Organization": {
+        "ObjectType": "organization.Organization",
+        "Moid": "<<organization moid>>"
+    },
+    "Name": "qos_policy_1"
+}

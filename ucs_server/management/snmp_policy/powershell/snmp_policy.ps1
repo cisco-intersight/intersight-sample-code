@@ -4,7 +4,7 @@ $orgRef = Get-IntersightOrganizationOrganization -Name default | Get-IntersightM
 $snmpTrap = Initialize-IntersightSnmpTrap -Community "trapCommString" -Destination "11.11.11.11" -Enabled $true `
             -Port 162 -Type Trap -Version V2
 
-$snmpUser = Initialize-IntersightSnmpUser -AuthType MD5 -Name user1 -PrivacyPassword "test" -AuthPassword "test" -PrivacyType DES `
+$snmpUser = Initialize-IntersightSnmpUser -AuthType MD5 -Name user1 -PrivacyPassword "test@1234" -AuthPassword "test@1234" -PrivacyType AES `
         -SecurityLevel AuthPriv
 
 $result = New-IntersightSnmpPolicy -Name "snmp_policy" -AccessCommunityString accCommString -CommunityAccess Disabled -Enabled $true `

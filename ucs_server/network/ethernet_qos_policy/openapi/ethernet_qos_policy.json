@@ -1,0 +1,11 @@
+{
+    "Priority": "Best Effort",
+    "Burst": 1024,
+    "Mtu": 1500,
+    "TrustHostCos": true,
+    "Organization": {
+        "ObjectType": "organization.Organization",
+        "Moid": "<<organization Moid>>"
+    },
+    "Name": "vnic_eth_qos_policy_1"
+}

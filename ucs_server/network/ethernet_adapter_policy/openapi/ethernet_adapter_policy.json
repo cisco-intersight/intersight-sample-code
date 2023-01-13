@@ -1,0 +1,74 @@
+{
+    "AdvancedFilter": true,
+    "ArfsSettings": {
+        "ClassId": "vnic.ArfsSettings",
+        "ObjectType": "vnic.ArfsSettings",
+        "Enabled": true
+    },
+    "CompletionQueueSettings": {
+        "ClassId": "vnic.CompletionQueueSettings",
+        "ObjectType": "vnic.CompletionQueueSettings",
+        "Count": 5,
+        "RingSize": 1
+    },
+    "InterruptSettings": {
+        "ClassId": "vnic.EthInterruptSettings",
+        "ObjectType": "vnic.EthInterruptSettings",
+        "CoalescingType": "MIN",
+        "Mode": "MSIx",
+        "CoalescingTime": 125,
+        "Count": 8
+    },
+    "NvgreSettings": {
+        "ClassId": "vnic.NvgreSettings",
+        "ObjectType": "vnic.NvgreSettings",
+        "Enabled": true
+    },
+    "PtpSettings": {
+        "ClassId": "vnic.PtpSettings",
+        "ObjectType": "vnic.PtpSettings",
+        "Enabled": true
+    },
+    "RoceSettings": {
+        "ClassId": "vnic.RoceSettings",
+        "ObjectType": "vnic.RoceSettings",
+        "ClassOfService": 5,
+        "Version": 1,
+        "Enabled": true,
+        "MemoryRegions": 131072,
+        "QueuePairs": 256,
+        "ResourceGroups": 4
+    },
+    "RssHashSettings": {
+        "ClassId": "vnic.RssHashSettings",
+        "ObjectType": "vnic.RssHashSettings",
+        "Ipv4Hash": true,
+        "TcpIpv4Hash": true
+    },
+    "RssSettings": true,
+    "RxQueueSettings": {
+        "ClassId": "vnic.EthRxQueueSettings",
+        "ObjectType": "vnic.EthRxQueueSettings",
+        "Count": 4,
+        "RingSize": 512
+    },
+    "TcpOffloadSettings": {
+        "ClassId": "vnic.TcpOffloadSettings",
+        "ObjectType": "vnic.TcpOffloadSettings",
+        "LargeReceive": true,
+        "LargeSend": true,
+        "RxChecksum": true,
+        "TxChecksum": true
+    },
+    "TxQueueSettings": {
+        "ClassId": "vnic.EthTxQueueSettings",
+        "ObjectType": "vnic.EthTxQueueSettings",
+        "Count": 1,
+        "RingSize": 256
+    },
+    "Name": "vnic_eth_adp_policy_1",
+    "Organization" : {
+        "ObjectType" : "organization.Organization",
+        "Moid" : "<<Organization Moid>>"
+    }
+}

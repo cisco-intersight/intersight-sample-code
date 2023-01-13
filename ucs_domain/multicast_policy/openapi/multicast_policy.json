@@ -1,0 +1,10 @@
+{
+    "QuerierState": "Enabled",
+    "SnoopingState": "Enabled",
+    "QuerierIpAddress": "11.11.11.11",
+    "Organization": {
+        "ObjectType": "organization.Organization",
+        "Moid": "<<organization moid>>"
+    },
+    "Name": "fabricMultiCastPolicy"
+}

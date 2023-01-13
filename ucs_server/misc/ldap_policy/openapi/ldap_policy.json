@@ -1,0 +1,27 @@
+{
+    "BaseProperties": {
+        "ClassId": "iam.LdapBaseProperties",
+        "ObjectType": "iam.LdapBaseProperties",
+        "BindMethod": "Anonymous",
+        "Attribute": "CiscoAvPair",
+        "BaseDn": "DC=new,DC=com",
+        "Domain": "new.com",
+        "EnableEncryption": true,
+        "EnableGroupAuthorization": true,
+        "Filter": "sAMAcoountsName",
+        "NestedGroupSearchDepth": 120,
+        "Timeout": 180
+    },
+    "DnsParameters": {
+        "ClassId": "iam.LdapDnsParameters",
+        "ObjectType": "iam.LdapDnsParameters",
+        "Source": "Extracted"
+    },
+    "EnableDns": false,
+    "Enabled": true,
+    "Organization": {
+        "ObjectType": "organization.Organization",
+        "Moid": "organization moid"
+    },
+    "Name": "ldap_policy_1"
+}
