@@ -1,0 +1,54 @@
+{
+    "ErrorDetectionTimeout": 2000,
+    "ErrorRecoverySettings": {
+        "ClassId": "vnic.FcErrorRecoverySettings",
+        "ObjectType": "vnic.FcErrorRecoverySettings",
+        "Enabled": true,
+        "IoRetryCount": 8,
+        "IoRetryTimeout": 5,
+        "LinkDownTimeout": 3000,
+        "PortDownTimeout": 5000
+    },
+    "FlogiSettings": {
+        "ClassId": "vnic.FlogiSettings",
+        "ObjectType": "vnic.FlogiSettings",
+        "Retries": 0,
+        "Timeout": 4000
+    },
+    "InterruptSettings": {
+        "ClassId": "vnic.FcInterruptSettings",
+        "ObjectType": "vnic.FcInterruptSettings",
+        "Mode": "INTx"
+    },
+    "IoThrottleCount": 512,
+    "LunCount": 1024,
+    "LunQueueDepth": 20,
+    "PlogiSettings": {
+        "ClassId": "vnic.PlogiSettings",
+        "ObjectType": "vnic.PlogiSettings",
+        "Retries": 8,
+        "Timeout": 3000
+    },
+    "ResourceAllocationTimeout": 10000,
+    "RxQueueSettings": {
+        "ClassId": "vnic.FcQueueSettings",
+        "ObjectType": "vnic.FcQueueSettings",
+        "RingSize": 64
+    },
+    "ScsiQueueSettings": {
+        "ClassId": "vnic.ScsiQueueSettings",
+        "ObjectType": "vnic.ScsiQueueSettings",
+        "Count": 1,
+        "RingSize": 512
+    },
+    "TxQueueSettings": {
+        "ClassId": "vnic.FcQueueSettings",
+        "ObjectType": "vnic.FcQueueSettings",
+        "RingSize": 64
+    },
+    "Organization": {
+        "ObjectType": "organization.Organization",
+        "Moid": "<<Organization Moid>>"
+    },
+    "Name": "fiber-channel-adapter-policy-1"
+}

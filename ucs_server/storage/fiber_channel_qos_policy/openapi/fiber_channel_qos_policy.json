@@ -1,0 +1,10 @@
+{
+    "Burst": 1024,
+    "Cos": 3,
+    "MaxDataFieldSize": 2112,
+    "Organization": {
+        "ObjectType": "organization.Organization",
+        "Moid": "<<Organization Moid>>"
+    },
+    "Name": "fc_qos_policy_1"
+}

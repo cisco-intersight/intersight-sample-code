@@ -1,0 +1,13 @@
+{
+    "VsanSettings": {
+        "ClassId": "vnic.VsanSettings",
+        "ObjectType": "vnic.VsanSettings",
+        "DefaultVlanId": 0,
+        "Id": 1
+    },
+    "Organization": {
+        "ObjectType": "organization.Organization",
+        "Moid": "<<Organization Moid>>"
+    },
+    "Name": "fc_network_policy_1"
+}

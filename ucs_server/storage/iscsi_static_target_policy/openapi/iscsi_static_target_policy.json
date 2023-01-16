@@ -1,0 +1,16 @@
+{
+    "IpAddress": "172.16.18.11",
+    "Lun": {
+        "ClassId": "vnic.Lun",
+        "ObjectType": "vnic.Lun",
+        "Bootable": true,
+        "LunId": 100
+    },
+    "Port": 3260,
+    "TargetName": "iqn.1992-08.com.netapp:sn.bbe560cbd84911ebad8ad039ea153259:vs.5",
+    "Organization": {
+        "ObjectType": "organization.Organization",
+        "Moid": "<<Organization Moid>>"
+    },
+    "Name": "iscsi_target_policy_1"
+}
