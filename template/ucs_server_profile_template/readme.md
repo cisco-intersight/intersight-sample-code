@@ -1,0 +1,2 @@
+## Server Profile Template
+In Cisco Intersight, Server Profile Templates enable the user to define a template from which multiple server profiles can be derived and deployed. Any property modification made in the template syncs with all the derived profiles. You can deploy these modified profiles individually. This feature helps in the quick and easy configuration as multiple profiles can be created and edited simultaneously. 

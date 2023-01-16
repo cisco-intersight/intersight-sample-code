@@ -4,4 +4,4 @@ $orgRef = Get-IntersightOrganizationOrganization -Name default | Get-IntersightM
 # initialize vlan settings
 $valnSetting = Initialize-IntersightFabricVlanSettings -AllowedVlans 14 -NativeVlan 14
 
-$result = New-IntersightFabricEthNetworkGroupPolicy -Name "fabricEthNetorkPolicy" -VlanSettings $valnSetting -Organization $orgRef
+$result = New-IntersightFabricEthNetworkGroupPolicy -Name "fabricEthNetorkGroupPolicy" -VlanSettings $valnSetting -Organization $orgRef

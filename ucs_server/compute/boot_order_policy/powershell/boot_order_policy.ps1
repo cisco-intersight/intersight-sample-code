@@ -3,5 +3,5 @@ $org = Get-IntersightOrganizationOrganization -Name default
 $orgRef = $org | Get-IntersightMoMoRef
 $vmediaBoot = Initialize-IntersightBootVirtualMedia -Enabled $true -Subtype CimcMappedHdd -Name "vMedia"
 $usbBoot = Initialize-IntersightBootUsb -Name usb -Subtype UsbFdd -Enabled $true
-$uefiBoot = Initialize-IntersightBootUefiShell -Name uefi -Enabled $true
+$uefiBoot = Initialize-IntersightBootUefiShell -Name uefi -Enabled $true -ClassId BootUefiShell -ObjectType BootUefiShell
 $BootPrecisionPolicy = New-IntersightBootPrecisionPolicy -Name testBootPrecision -BootDevices @($vmediaBoot, $usbBoot, $uefiBoot) -Organization $orgRef 
