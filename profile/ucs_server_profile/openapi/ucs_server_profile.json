@@ -1,0 +1,19 @@
+{
+    "Organization": {
+        "ObjectType": "organization.Organization",
+        "Moid": "<<Org Moid>>"
+    },
+    "TargetPlatform": "Standalone",
+    "PolicyBucket": [
+        {
+            "ObjectType": "ntp.Policy",
+            "Moid": "<<Ntp Policy Moid>>"
+        },
+        {
+            "ObjectType": "smtp.Policy",
+            "Moid": "<<smtp policy moid>>"
+        }
+    ],
+    "Description": "A sample server profile",
+    "Name": "ss_server_profile1"
+}

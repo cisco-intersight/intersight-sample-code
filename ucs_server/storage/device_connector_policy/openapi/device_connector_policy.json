@@ -1,0 +1,8 @@
+{
+    "LockoutEnabled": true,
+    "Organization": {
+        "ObjectType": "organization.Organization",
+        "Moid": "<<Organization Moid>>"
+    },
+    "Name": "device_connector_policy_1"
+}

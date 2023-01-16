@@ -1,0 +1,25 @@
+{
+    "LocalClients": [
+        {
+            "ClassId": "syslog.LocalFileLoggingClient",
+            "ObjectType": "syslog.LocalFileLoggingClient",
+            "MinSeverity": "warning"
+        }
+    ],
+    "RemoteClients": [
+        {
+            "ClassId": "syslog.RemoteLoggingClient",
+            "ObjectType": "syslog.RemoteLoggingClient",
+            "MinSeverity": "warning",
+            "Protocol": "udp",
+            "Enabled": true,
+            "Hostname": "11.11.11.11",
+            "Port": 514
+        }
+    ],
+    "Organization": {
+        "ObjectType": "organization.Organization",
+        "Moid": "<<organization moid>>"
+    },
+    "Name": "sys_log_policy1"
+}

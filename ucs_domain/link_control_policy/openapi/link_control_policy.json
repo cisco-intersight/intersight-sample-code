@@ -1,0 +1,14 @@
+{
+    "UdldSettings": {
+        "ClassId": "fabric.UdldSettings",
+        "ObjectType": "fabric.UdldSettings",
+        "AdminState": "Enabled",
+        "Mode": "normal"
+    },
+    "Organization": {
+        "ObjectType": "organization.Organization",
+        "Moid": "<<Organization moid>>"
+    },
+    "Description": "fabric link control",
+    "Name": "fabric_link_control_policy"
+}

@@ -1,0 +1,21 @@
+{
+    "EthernetSwitchingMode": "switch",
+    "FcSwitchingMode": "switch",
+    "MacAgingSettings": {
+        "ClassId": "fabric.MacAgingSettings",
+        "ObjectType": "fabric.MacAgingSettings",
+        "MacAgingOption": "Default",
+        "MacAgingTime": 14500
+    },
+    "UdldSettings": {
+        "ClassId": "fabric.UdldGlobalSettings",
+        "ObjectType": "fabric.UdldGlobalSettings",
+        "RecoveryAction": "none",
+        "MessageInterval": 12
+    },
+    "Organization": {
+        "ObjectType": "organization.Organization",
+        "Moid": "<<organization moid>>"
+    },
+    "Name": "switch_control_policy_1"
+}

@@ -1,0 +1,24 @@
+{
+    "Enabled": true,
+    "Encryption": true,
+    "LowPowerUsb": true,
+    "Mappings": [
+        {
+            "ClassId": "vmedia.Mapping",
+            "ObjectType": "vmedia.Mapping",
+            "AuthenticationProtocol": "none",
+            "DeviceType": "cdd",
+            "MountProtocol": "nfs",
+            "FileLocation": "nfs://10.193.167.6/exports/vms/ucs-c240m5-huu-3.1.3h.iso",
+            "HostName": "12.11.11.13",
+            "RemoteFile": " ucs-c240m5-huu-3.1.3h.iso",
+            "RemotePath": "/exports/vms",
+            "VolumeName": "v0"
+        }
+    ],
+    "Organization": {
+        "ObjectType": "organization.Organization",
+        "Moid": "<< organization moid >>"
+    },
+    "Name": "vmedia_policy_1"
+}

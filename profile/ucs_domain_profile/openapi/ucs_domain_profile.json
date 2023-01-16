@@ -1,0 +1,7 @@
+{
+    "SwitchClusterProfile": {
+        "ObjectType": "fabric.SwitchClusterProfile",
+        "Moid": "<<cluster profile moid>>"
+    },
+    "Name": "Fabric_A_profile"
+}

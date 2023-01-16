@@ -1,0 +1,14 @@
+{
+    "TargetPlatform": "Standalone",
+    "VlanSettings": {
+        "ClassId": "vnic.VlanSettings",
+        "ObjectType": "vnic.VlanSettings",
+        "Mode": "TRUNK",
+        "DefaultVlan": 122
+    },
+    "Organization": {
+        "ObjectType": "organization.Organization",
+        "Moid": "<<organization moid>>"
+    },
+    "Name": "vnic_eth_network_poicy_1"
+}

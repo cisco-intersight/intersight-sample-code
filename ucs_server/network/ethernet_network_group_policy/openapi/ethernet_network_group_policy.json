@@ -1,0 +1,13 @@
+{
+    "VlanSettings": {
+        "ClassId": "fabric.VlanSettings",
+        "ObjectType": "fabric.VlanSettings",
+        "AllowedVlans": "14",
+        "NativeVlan": 14
+    },
+    "Organization": {
+        "ObjectType": "organization.Organization",
+        "Moid": "<<organization moid>>"
+    },
+    "Name": "fabricEthNetorkPolicy"
+}

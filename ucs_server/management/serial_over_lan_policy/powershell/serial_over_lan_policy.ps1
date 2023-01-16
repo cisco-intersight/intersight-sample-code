@@ -2,4 +2,4 @@
 $org = Get-IntersightOrganizationOrganization -Name default 
 $orgRef = $org | Get-IntersightMoMoRef
 
-$solPolicy = New-IntersightSolPolicy -Name "sample_sol_policy" -BaudRate NUMBER_19200 -ComPort Com0 -Enabled $true -SshPort 21 -Organization $orgRef
+$solPolicy = New-IntersightSolPolicy -Name "sample_sol_policy" -BaudRate NUMBER_19200 -ComPort Com0 -Enabled $true -SshPort 2120 -Organization $orgRef

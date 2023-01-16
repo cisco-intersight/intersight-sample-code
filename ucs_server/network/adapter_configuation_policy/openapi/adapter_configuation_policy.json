@@ -1,0 +1,37 @@
+{
+    "Settings": [
+        {
+            "ClassId": "adapter.AdapterConfig",
+            "ObjectType": "adapter.AdapterConfig",
+            "DceInterfaceSettings": [
+                {
+                    "ClassId": "adapter.DceInterfaceSettings",
+                    "ObjectType": "adapter.DceInterfaceSettings",
+                    "FecMode": "cl91",
+                    "InterfaceId": 1
+                }
+            ],
+            "EthSettings": {
+                "ClassId": "adapter.EthSettings",
+                "ObjectType": "adapter.EthSettings",
+                "LldpEnabled": true
+            },
+            "FcSettings": {
+                "ClassId": "adapter.FcSettings",
+                "ObjectType": "adapter.FcSettings",
+                "FipEnabled": true
+            },
+            "PortChannelSettings": {
+                "ClassId": "adapter.PortChannelSettings",
+                "ObjectType": "adapter.PortChannelSettings",
+                "Enabled": true
+            },
+            "SlotId": "MLOM"
+        }
+    ],
+    "Organization": {
+        "ObjectType": "organization.Organization",
+        "Moid": "organization moid"
+    },
+    "Name": "adapter_config_policy"
+}

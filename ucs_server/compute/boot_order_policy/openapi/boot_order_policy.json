@@ -1,0 +1,29 @@
+{
+    "BootDevices": [
+        {
+            "ClassId": "boot.VirtualMedia",
+            "ObjectType": "boot.VirtualMedia",
+            "Subtype": "cimc-mapped-hdd",
+            "Enabled": true,
+            "Name": "vMedia"
+        },
+        {
+            "ClassId": "boot.Usb",
+            "ObjectType": "boot.Usb",
+            "Subtype": "usb-fdd",
+            "Enabled": true,
+            "Name": "usb"
+        },
+        {
+            "ClassId": "boot.UefiShell",
+            "ObjectType": "boot.UefiShell",
+            "Enabled": true,
+            "Name": "uefi"
+        }
+    ],
+    "Organization": {
+        "ObjectType": "organization.Organization",
+        "Moid": "<< organization moid >>"
+    },
+    "Name": "testBootPrecision"
+}

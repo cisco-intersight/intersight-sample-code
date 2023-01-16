@@ -1,0 +1,8 @@
+{
+    "DeviceModel": "UCS-FI-64108",
+    "Organization": {
+        "ObjectType": "organization.Organization",
+        "Moid": "<<organization moid>>"
+    },
+    "Name": "port_policy_1"
+}

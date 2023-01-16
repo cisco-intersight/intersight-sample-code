@@ -1,0 +1,36 @@
+{
+    "InitiatorIpSource": "Static",
+    "TargetSourceType": "Static",
+    "Chap": {
+        "ClassId": "vnic.IscsiAuthProfile",
+        "ObjectType": "vnic.IscsiAuthProfile",
+        "Password": "test@112345s",
+        "UserId": "test"
+    },
+    "InitiatorStaticIpV4Address": "172.16.2.19",
+    "InitiatorStaticIpV4Config": {
+        "ClassId": "ippool.IpV4Config",
+        "ObjectType": "ippool.IpV4Config",
+        "Gateway": "172.16.2.1",
+        "Netmask": "255.255.255.0"
+    },
+    "MutualChap": {
+        "ClassId": "vnic.IscsiAuthProfile",
+        "ObjectType": "vnic.IscsiAuthProfile",
+        "Password": "ddtest@12345",
+        "UserId": "admin"
+    },
+    "IscsiAdapterPolicy": {
+        "ObjectType": "vnic.IscsiAdapterPolicy",
+        "Moid": "<<vnic.IscsiAdapterPolicy Moid>>"
+    },
+    "Organization": {
+        "ObjectType": "organization.Organization",
+        "Moid": "<<Organization Moid>>"
+    },
+    "PrimaryTargetPolicy": {
+        "ObjectType": "vnic.IscsiStaticTargetPolicy",
+        "Moid": "<<vnic.IscsiStaticTargetPolicy Moid>>"
+    },
+    "Name": "iscsi_boot_policy_1"
+}

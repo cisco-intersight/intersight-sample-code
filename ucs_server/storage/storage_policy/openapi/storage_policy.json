@@ -1,0 +1,34 @@
+{
+    "DefaultDriveMode": "RAID0",
+    "M2VirtualDrive": {
+        "ClassId": "storage.M2VirtualDriveConfig",
+        "ObjectType": "storage.M2VirtualDriveConfig",
+        "ControllerSlot": "MSTOR-RAID-1",
+        "Enable": true
+    },
+    "Raid0Drive": {
+        "ClassId": "storage.R0Drive",
+        "ObjectType": "storage.R0Drive",
+        "Enable": true,
+        "VirtualDrivePolicy": {
+            "ClassId": "storage.VirtualDrivePolicy",
+            "ObjectType": "storage.VirtualDrivePolicy",
+            "AccessPolicy": "Default",
+            "DriveCache": "Default",
+            "ReadPolicy": "Default",
+            "StripSize": 512
+        }
+    },
+    "UseJbodForVdCreation": false,
+    "DriveGroup": [
+        {
+            "ObjectType": "storage.DriveGroup",
+            "Moid": "<<storage.DriveGroup Moid>>"
+        }
+    ],
+    "Organization": {
+        "ObjectType": "organization.Organization",
+        "Moid": "<<Organization Moid>>"
+    },
+    "Name": "storage_policy_1"
+}

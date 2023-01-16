@@ -1,0 +1,16 @@
+{
+    "PlacementMode": "custom",
+    "TargetPlatform": "Standalone",
+    "WwnnAddressType": "POOL",
+    "FcIfs": [
+        {
+            "ObjectType": "vnic.FcIf",
+            "Moid": "<<vnic.FcIfmoid>>"
+        }
+    ],
+    "Organization": {
+        "ObjectType": "organization.Organization",
+        "Moid": "<<organization Moid>>"
+    },
+    "Name": "san_connectivity_policy_1"
+}

@@ -1,0 +1,14 @@
+{
+    "AutoAllowOnUplinks": false,
+    "IsNative": false,
+    "Name": "valn_policy",
+    "VlanId": 2323,
+    "EthNetworkPolicy": {
+        "ObjectType": "fabric.EthNetworkPolicy",
+        "Moid": "<<fabric.EthNetworkPolicy Moid>>"
+    },
+    "MulticastPolicy": {
+        "ObjectType": "fabric.MulticastPolicy",
+        "Moid": "<<fabric.MulticastPolicy moid>>"
+    }
+}

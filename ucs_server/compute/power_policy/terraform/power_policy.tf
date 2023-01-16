@@ -13,7 +13,6 @@ resource "intersight_power_policy" "power_policy_1" {
     power_restore_state = "AlwaysOff"
     power_save_mode = "Enabled"
     redundancy_mode = "Grid"
-
   
 }
 

@@ -1,0 +1,10 @@
+{
+    "ConnectionTimeOut": 255,
+    "DhcpTimeout": 300,
+    "LunBusyRetryCount": 60,
+    "Organization": {
+        "ObjectType": "organization.Organization",
+        "Moid": "<<Organization Moid>>"
+    },
+    "Name": "iscsi_adapter_policy_1"
+}

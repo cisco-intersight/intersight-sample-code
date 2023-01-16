@@ -1,7 +1,7 @@
 # get the Organization Ref.
 $orgRef = Get-IntersightOrganizationOrganization -Name default | Get-IntersightMORef
 
-$virtualDrives = Initialize-INtersightSdcardVirtualDrive -Enable $true
+$virtualDrives = Initialize-INtersightSdcardVirtualDrive -Enable $true -ClassId SdcardDrivers -ObjectType SdcardDrivers
 
 $partitions = Initialize-IntersightSdcardPartition -Type Utility -VirtualDrives $virtualDrives
 

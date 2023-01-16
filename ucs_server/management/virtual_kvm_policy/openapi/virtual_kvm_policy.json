@@ -1,0 +1,12 @@
+{
+    "EnableLocalServerVideo": true,
+    "EnableVideoEncryption": true,
+    "Enabled": true,
+    "MaximumSessions": 2,
+    "Organization": {
+        "ObjectType": "organization.Organization",
+        "Moid": "organization moid"
+    },
+    "Description": "Kvm policy for PSOrg",
+    "Name": "PSKvm"
+}

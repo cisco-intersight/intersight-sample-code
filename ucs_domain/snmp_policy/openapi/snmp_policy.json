@@ -1,0 +1,36 @@
+{
+    "CommunityAccess": "Disabled",
+    "AccessCommunityString": "accCommString",
+    "Enabled": true,
+    "EngineId": "EngineID",
+    "SnmpPort": 161,
+    "SnmpTraps": [
+        {
+            "ClassId": "snmp.Trap",
+            "ObjectType": "snmp.Trap",
+            "Type": "Trap",
+            "Version": "V2",
+            "Community": "trapCommString",
+            "Destination": "11.11.11.11",
+            "Enabled": true,
+            "Port": 162
+        }
+    ],
+    "SnmpUsers": [
+        {
+            "ClassId": "snmp.User",
+            "ObjectType": "snmp.User",
+            "AuthType": "MD5",
+            "PrivacyType": "AES",
+            "SecurityLevel": "AuthPriv",
+            "AuthPassword": "test@1234",
+            "Name": "user1",
+            "PrivacyPassword": "test@123"
+        }
+    ],
+    "Organization": {
+        "ObjectType": "organization.Organization",
+        "Moid": "<<organization moid>>"
+    },
+    "Name": "snmp_policy"
+}

@@ -1,0 +1,16 @@
+{
+    "PasswordProperties": {
+        "ClassId": "iam.EndPointPasswordProperties",
+        "ObjectType": "iam.EndPointPasswordProperties",
+        "EnforceStrongPassword": true,
+        "ForceSendPassword": true,
+        "GracePeriod": 2,
+        "NotificationPeriod": 1,
+        "PasswordHistory": 5
+    },
+    "Organization": {
+        "ObjectType": "organization.Organization",
+        "Moid": "organization moid"
+    },
+    "Name": "user_policy_1"
+}

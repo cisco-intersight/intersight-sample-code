@@ -1,0 +1,21 @@
+{
+    "Partitions": [
+        {
+            "ClassId": "sdcard.Partition",
+            "ObjectType": "sdcard.Partition",
+            "Type": "Utility",
+            "VirtualDrives": [
+                {
+                    "ClassId": "sdcard.Drivers",
+                    "ObjectType": "sdcard.Drivers",
+                    "Enable": true
+                }
+            ]
+        }
+    ],
+    "Organization": {
+        "ObjectType": "organization.Organization",
+        "Moid": "<<Organization Moid>>"
+    },
+    "Name": "sd-card-policy-1"
+}

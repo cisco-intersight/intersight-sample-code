@@ -1,0 +1,8 @@
+{
+    "Organization": {
+        "ObjectType": "organization.Organization",
+        "Moid": "63bd33836972652d33c03ca1"
+    },
+    "Description": "sample chassis profile",
+    "Name": "chassis_profile_1"
+}

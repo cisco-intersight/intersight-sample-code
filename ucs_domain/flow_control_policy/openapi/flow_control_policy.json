@@ -1,0 +1,10 @@
+{
+    "PriorityFlowControlMode": "off",
+    "ReceiveDirection": "Enabled",
+    "Organization": {
+        "ObjectType": "organization.Organization",
+        "Moid": "<<Organization Moid>>"
+    },
+    "Description": "sample fabric flow control policy",
+    "Name": "fabric_flow"
+}
