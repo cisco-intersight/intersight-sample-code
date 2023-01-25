@@ -3,8 +3,8 @@ A UCS Chassis profile enables to create and associate chassis policy to an Inter
 
 ## Chassis Profile Properties Reference
 
-| SKDs | Property Description
+| SKDs | Properties Description
 | ---- | ------------------- |
 | [python](https://github.com/CiscoDevNet/intersight-python/) | [ChassisProfile](https://github.com/CiscoDevNet/intersight-python/tree/main/intersight/model/chassis_profile.py) properties reference |                 |
-| [terraform](https://github.com/CiscoDevNet/terraform-provider-intersight/) | [ChassisProfile](https://registry.terraform.io/providers/CiscoDevNet/intersight/latest/docs/resources/chassis_profile) property reference |
-| [powershell](https://github.com/CiscoDevNet/intersight-powershell/) | [ChassisProfile](https://github.com/CiscoDevNet/intersight-powershell/blob/main/docs/New-IntersightChassisProfile.md) property reference |
+| [terraform](https://github.com/CiscoDevNet/terraform-provider-intersight/) | [ChassisProfile](https://registry.terraform.io/providers/CiscoDevNet/intersight/latest/docs/resources/chassis_profile) properties reference |
+| [powershell](https://github.com/CiscoDevNet/intersight-powershell/) | [ChassisProfile](https://github.com/CiscoDevNet/intersight-powershell/blob/main/docs/New-IntersightChassisProfile.md) properties reference |
