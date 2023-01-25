@@ -1,8 +1,8 @@
 # intersight-sample-code
-Repository contains sample code for intersight SDKs like Python, PowerShell, Terraform and openAPI json request.
+Repository contains sample code for intersight SDKs like Python, PowerShell, Terraform and openAPI request.
 
 Sample code are listed based on the device and its component example UCS server directory has the sub directories named `Compute`, `Network`, `Mix` and `Storage`.
-the directory layout is below for UCS Server.
+the directory layout as per below for UCS Server.
 
 ## UCS Sever
 
