@@ -1,6 +1,5 @@
 ## Network Config Policy
-Network policies enable you to configure the Ethernet and Fibre Channel settings, assign connection and network communication resources between the server and the LAN, and assign storage resources and connections between the server and the SAN on the network.
-
+Specifies the DNS Domain settings that are used to add or update the resource records on the DNS server from the endpoints, and the DNS server settings for IPv4 and IPv6 on an endpoint. 
 
 ## Netwrok Config Policy Properties reference
 | SKDs | Properties Description
