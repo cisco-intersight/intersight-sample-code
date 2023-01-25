@@ -4,6 +4,6 @@ Partitions the Fibre Channel fabric into one or more zones. Each zone defines th
 ## VSAN Configuration Policy Properties reference
 | SKDs | Properties Description
 | ---- | ------------------- |
-| [python](https://github.com/CiscoDevNet/intersight-python/) | [VLAN Configuration Policy](https://github.com/CiscoDevNet/intersight-python/tree/main/intersight/model/fabric_vsan.py) properties reference |                 |
-| [terraform](https://github.com/CiscoDevNet/terraform-provider-intersight/) | [VLAN Configuration Policy](https://registry.terraform.io/providers/CiscoDevNet/intersight/latest/docs/resources/fabric_vsan) properties reference |
-| [powershell](https://github.com/CiscoDevNet/intersight-powershell/) | [VLAN Configuration Policy](https://github.com/CiscoDevNet/intersight-powershell/blob/main/docs/New-IntersightFabricVsan.md) properties reference
+| [python](https://github.com/CiscoDevNet/intersight-python/) | [VSAN Configuration Policy](https://github.com/CiscoDevNet/intersight-python/tree/main/intersight/model/fabric_vsan.py) properties reference |                 |
+| [terraform](https://github.com/CiscoDevNet/terraform-provider-intersight/) | [VSAN Configuration Policy](https://registry.terraform.io/providers/CiscoDevNet/intersight/latest/docs/resources/fabric_vsan) properties reference |
+| [powershell](https://github.com/CiscoDevNet/intersight-powershell/) | [VSAN Configuration Policy](https://github.com/CiscoDevNet/intersight-powershell/blob/main/docs/New-IntersightFabricVsan.md) properties reference
