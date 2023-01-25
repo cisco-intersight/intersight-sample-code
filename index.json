@@ -57,7 +57,7 @@
 						"readme.md"
 					]
 				}
-			],
+			]
 		},
 		{
 			"name": "template",
@@ -77,7 +77,7 @@
 						"readme.md"
 					]
 				}
-			],
+			]
 		},
 		{
 			"name": "ucs_domain",
@@ -380,14 +380,14 @@
 							]
 						},
 						{
-							"name": "impi_over_lan_policy",
-							"displayName": "IMPI Over LAN Policy",
+							"name": "ipmi_over_lan_policy",
+							"displayName": "IPMI Over LAN Policy",
 							"codeSample": {
-								"ansible": "impi_over_lan_policy.yaml",
-								"python": "impi_over_lan_policy.py",
-								"powershell": "impi_over_lan_policy.ps1",
-								"terraform": "impi_over_lan_policy.tf",
-								"openapi": "impi_over_lan_policy.json"
+								"ansible": "ipmi_over_lan_policy.yaml",
+								"python": "ipmi_over_lan_policy.py",
+								"powershell": "ipmi_over_lan_policy.ps1",
+								"terraform": "ipmi_over_lan_policy.tf",
+								"openapi": "ipmi_over_lan_policy.json"
 							},
 							"files": [
 								"readme.md"
@@ -672,20 +672,6 @@
 								"powershell": "device_connector_policy.ps1",
 								"terraform": "device_connector_policy.tf",
 								"openapi": "device_connector_policy.json"
-							},
-							"files": [
-								"readme.md"
-							]
-						},
-						{
-							"name": "disk_group_policy",
-							"displayName": "Disk Group Policy",
-							"codeSample": {
-								"ansible": "disk_group_policy.yaml",
-								"python": "disk_group_policy.py",
-								"powershell": "disk_group_policy.ps1",
-								"terraform": "disk_group_policy.tf",
-								"openapi": "disk_group_policy.json"
 							},
 							"files": [
 								"readme.md"
