@@ -9,6 +9,3 @@ The inventory view enables you to view the actual boot order configured on a ser
 | [python](https://github.com/CiscoDevNet/intersight-python/) | [Boot Order Policy](https://github.com/CiscoDevNet/intersight-python/tree/main/intersight/model/boot_precision_policy.py) properties reference |                 |
 | [terraform](https://github.com/CiscoDevNet/terraform-provider-intersight/) | [Boot Order Policy](https://registry.terraform.io/providers/CiscoDevNet/intersight/latest/docs/resources/boot_precision_policy) properties reference |
 | [powershell](https://github.com/CiscoDevNet/intersight-powershell/) | [Boot Order Policy](https://github.com/CiscoDevNet/intersight-powershell/blob/main/docs/New-IntersightBootPrecisionPolicy.md) properties reference
-
-
-boot_precision
