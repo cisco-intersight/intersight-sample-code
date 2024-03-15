@@ -3,13 +3,22 @@
 		{
 			"name":"authentication",
 			"displayName": "Authentication",
-			"codesample":{
-				"ansible": "intersight_authentication.yaml",
-				"openapi": "intersight_authentication.json",
-				"powershell": "intersight_authentication.ps1",
-				"python":"intersight_authentication.py",
-				"terraform": "intersight_authentication.tf"
-			}
+			"subDirectories": [
+				{
+					"name": "authentication_overview",
+					"displayName": "Overview",
+					"codesample":{
+						"ansible": "intersight_authentication.yaml",
+						"openapi": "intersight_authentication.json",
+						"powershell": "intersight_authentication.ps1",
+						"python":"intersight_authentication.py",
+						"terraform": "intersight_authentication.tf"
+					},
+					"files": [
+						"readme.md"
+					]
+				}
+			]
 		},
 		{
 			"name": "profile",
