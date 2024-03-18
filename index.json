@@ -93,270 +93,10 @@
 			"displayName": "Policies",
 			"subDirectories": [
 				{
-					"name": "ucs_domain_policies",
-					"displayName": "UCS Domain",
-					"sections": [
-						{
-							"name": "compute",
-							"displayName": "Compute",
-							"subDirectories": [
-								{
-									"name": "flow_control_policy",
-									"displayName": "Flow control Policy",
-									"descriptions": "Policy description",
-									"sampleCode": {
-										"ansible": "flow_control_policy.yaml",
-										"python": "flow_control_policy.py",
-										"powershell": "flow_control_policy.ps1",
-										"terraform": "flow_control_policy.tf",
-										"openapi": "flow_control_policy.json"
-									},
-									"files": [
-										"readme.md"
-									]
-								},
-								{
-									"name": "link_aggregation_policy",
-									"displayName": "Link Aggregation Policy",
-									"descriptions": "Policy description",
-									"sampleCode": {
-										"ansible": "link_aggregation_policy.yaml",
-										"python": "link_aggregation_policy.py",
-										"powershell": "link_aggregation_policy.ps1",
-										"terraform": "link_aggregation_policy.tf",
-										"openapi": "link_aggregation_policy.json"
-									},
-									"files": [
-										"readme.md"
-									]
-								},
-								{
-									"name": "link_control_policy",
-									"displayName": "Link Control Policy",
-									"descriptions": "Policy description",
-									"sampleCode": {
-										"ansible": "link_control_policy.yaml",
-										"python": "link_control_policy.py",
-										"powershell": "link_control_policy.ps1",
-										"terraform": "link_control_policy.tf",
-										"openapi": "link_control_policy.json"
-									},
-									"files": [
-										"readme.md"
-									]
-								}
-							]
-						},
-						{
-							"name": "management",
-							"displayName": "Management",
-							"subDirectories": [
-								{
-									"name": "multicast_policy",
-									"displayName": "Multicast Policy",
-									"descriptions": "Policy description",
-									"sampleCode": {
-										"ansible": "multicast_policy.yaml",
-										"python": "multicast_policy.py",
-										"powershell": "multicast_policy.ps1",
-										"terraform": "multicast_policy.tf",
-										"openapi": "multicast_policy.json"
-									},
-									"files": [
-										"readme.md"
-									]
-								},
-								{
-									"name": "network_connectivity_policy",
-									"displayName": "Network Connectivity Policy",
-									"descriptions": "Policy description",
-									"codeSample": {
-										"ansible": "network_connectivity_policy.yaml",
-										"python": "network_connectivity_policy.py",
-										"powershell": "network_connectivity_policy.ps1",
-										"terraform": "network_connectivity_policy.tf",
-										"openapi": "network_connectivity_policy.json"
-									},
-									"files": [
-										"readme.md"
-									]
-								},
-								{
-									"name": "network_control_policy",
-									"displayName": "Network Control Policy",
-									"descriptions": "Policy description",
-									"codeSample": {
-										"ansible": "network_control_policy.yaml",
-										"python": "network_control_policy.py",
-										"powershell": "network_control_policy.ps1",
-										"terraform": "network_control_policy.tf",
-										"openapi": "network_control_policy.json"
-									},
-									"files": [
-										"readme.md"
-									]
-								}
-							]
-						},
-						{
-							"name": "misc",
-							"displayName": "misc",
-							"subDirectories": [
-								{
-									"name": "network_group_policy",
-									"displayName": "Network Group Policy",
-									"descriptions": "Policy description",
-									"codeSample": {
-										"ansible": "network_group_policy.yaml",
-										"python": "network_group_policy.py",
-										"powershell": "network_group_policy.ps1",
-										"terraform": "network_group_policy.tf",
-										"openapi": "network_group_policy.json"
-									},
-									"files": [
-										"readme.md"
-									]
-								},
-								{
-									"name": "ntp_policy",
-									"displayName": "NTP Policy",
-									"descriptions": "Policy description",
-									"codeSample": {
-										"ansible": "ntp_policy.yaml",
-										"python": "ntp_policy.py",
-										"powershell": "ntp_policy.ps1",
-										"terraform": "ntp_policy.tf",
-										"openapi": "ntp_policy.json"
-									},
-									"files": [
-										"readme.md"
-									]
-								},
-								{
-									"name": "port_policy",
-									"displayName": "Port Policy",
-									"descriptions": "Policy description",
-									"codeSample": {
-										"ansible": "port_policy.yaml",
-										"python": "port_policy.py",
-										"powershell": "port_policy.ps1",
-										"terraform": "port_policy.tf",
-										"openapi": "port_policy.json"
-									},
-									"files": [
-										"readme.md"
-									]
-								}
-							]
-						},
-						{
-							"name": "network",
-							"displayName": "Network",
-							"subDirectories": [
-								{
-									"name": "snmp_policy",
-									"displayName": "SNMP Policy",
-									"descriptions": "Policy description",
-									"codeSample": {
-										"ansible": "snmp_policy.yaml",
-										"python": "snmp_policy.py",
-										"powershell": "snmp_policy.ps1",
-										"terraform": "snmp_policy.tf",
-										"openapi": "snmp_policy.json"
-									},
-									"files": [
-										"readme.md"
-									]
-								},
-								{
-									"name": "switch_control_policy",
-									"displayName": "Switch Control Policy",
-									"descriptions": "Policy description",
-									"codeSample": {
-										"ansible": "switch_control_policy.yaml",
-										"python": "switch_control_policy.py",
-										"powershell": "switch_control_policy.ps1",
-										"terraform": "switch_control_policy.tf",
-										"openapi": "switch_control_policy.json"
-									},
-									"files": [
-										"readme.md"
-									]
-								},
-								{
-									"name": "syslog_policy",
-									"displayName": "Syslog Policy",
-									"descriptions": "Policy description",
-									"codeSample": {
-										"ansible": "syslog_policy.yaml",
-										"python": "syslog_policy.py",
-										"powershell": "syslog_policy.ps1",
-										"terraform": "syslog_policy.tf",
-										"openapi": "syslog_policy.json"
-									},
-									"files": [
-										"readme.md"
-									]
-								}
-							]
-						},
-						{
-							"name": "storage",
-							"displayName": "Storage",
-							"subDirectories": [
-								{
-									"name": "system_qos_policy",
-									"displayName": "System Qos Policy",
-									"descriptions": "Policy description",
-									"codeSample": {
-										"ansible": "system_qos_policy.yaml",
-										"python": "system_qos_policy.py",
-										"powershell": "system_qos_policy.ps1",
-										"terraform": "system_qos_policy.tf",
-										"openapi": "system_qos_policy.json"
-									},
-									"files": [
-										"readme.md"
-									]
-								},
-								{
-									"name": "vlan_configuration_policy",
-									"displayName": "Vlan Configuration Policy",
-									"descriptions": "Policy description",
-									"codeSample": {
-										"ansible": "vlan_configuration_policy.yaml",
-										"python": "vlan_configuration_policy.py",
-										"powershell": "vlan_configuration_policy.ps1",
-										"terraform": "vlan_configuration_policy.tf",
-										"openapi": "vlan_configuration_policy.json"
-									},
-									"files": [
-										"readme.md"
-									]
-								},
-								{
-									"name": "vsan_configuration_policy",
-									"displayName": "VSAN Configuration Policy",
-									"descriptions": "Policy description",
-									"codeSample": {
-										"ansible": "vsan_configuration_policy.yaml",
-										"python": "vsan_configuration_policy.py",
-										"powershell": "vsan_configuration_policy.ps1",
-										"terraform": "vsan_configuration_policy.tf",
-										"openapi": "vsan_configuration_policy.json"
-									},
-									"files": [
-										"readme.md"
-									]
-								}
-							]
-						}
-					]
-				},
-				{
 					"name": "ucs_server_policies",
 					"displayName": "UCS Server",
-					"sections": [
+					"showAnchors": true,
+					"subDirectories": [
 						{
 							"name": "compute",
 							"displayName": "Compute",
@@ -880,6 +620,237 @@
 										"readme.md"
 									]
 								}
+							]
+						}
+					]
+				},
+				{
+					"name": "ucs_domain_policies",
+					"displayName": "UCS Domain",
+					"subDirectories": [
+						{
+							"name": "flow_control_policy",
+							"displayName": "Flow control Policy",
+							"descriptions": "Policy description",
+							"sampleCode": {
+								"ansible": "flow_control_policy.yaml",
+								"python": "flow_control_policy.py",
+								"powershell": "flow_control_policy.ps1",
+								"terraform": "flow_control_policy.tf",
+								"openapi": "flow_control_policy.json"
+							},
+							"files": [
+								"readme.md"
+							]
+						},
+						{
+							"name": "link_aggregation_policy",
+							"displayName": "Link Aggregation Policy",
+							"descriptions": "Policy description",
+							"sampleCode": {
+								"ansible": "link_aggregation_policy.yaml",
+								"python": "link_aggregation_policy.py",
+								"powershell": "link_aggregation_policy.ps1",
+								"terraform": "link_aggregation_policy.tf",
+								"openapi": "link_aggregation_policy.json"
+							},
+							"files": [
+								"readme.md"
+							]
+						},
+						{
+							"name": "link_control_policy",
+							"displayName": "Link Control Policy",
+							"descriptions": "Policy description",
+							"sampleCode": {
+								"ansible": "link_control_policy.yaml",
+								"python": "link_control_policy.py",
+								"powershell": "link_control_policy.ps1",
+								"terraform": "link_control_policy.tf",
+								"openapi": "link_control_policy.json"
+							},
+							"files": [
+								"readme.md"
+							]
+						},
+						{
+							"name": "multicast_policy",
+							"displayName": "Multicast Policy",
+							"descriptions": "Policy description",
+							"sampleCode": {
+								"ansible": "multicast_policy.yaml",
+								"python": "multicast_policy.py",
+								"powershell": "multicast_policy.ps1",
+								"terraform": "multicast_policy.tf",
+								"openapi": "multicast_policy.json"
+							},
+							"files": [
+								"readme.md"
+							]
+						},
+						{
+							"name": "network_connectivity_policy",
+							"displayName": "Network Connectivity Policy",
+							"descriptions": "Policy description",
+							"codeSample": {
+								"ansible": "network_connectivity_policy.yaml",
+								"python": "network_connectivity_policy.py",
+								"powershell": "network_connectivity_policy.ps1",
+								"terraform": "network_connectivity_policy.tf",
+								"openapi": "network_connectivity_policy.json"
+							},
+							"files": [
+								"readme.md"
+							]
+						},
+						{
+							"name": "network_control_policy",
+							"displayName": "Network Control Policy",
+							"descriptions": "Policy description",
+							"codeSample": {
+								"ansible": "network_control_policy.yaml",
+								"python": "network_control_policy.py",
+								"powershell": "network_control_policy.ps1",
+								"terraform": "network_control_policy.tf",
+								"openapi": "network_control_policy.json"
+							},
+							"files": [
+								"readme.md"
+							]
+						},
+						{
+							"name": "network_group_policy",
+							"displayName": "Network Group Policy",
+							"descriptions": "Policy description",
+							"codeSample": {
+								"ansible": "network_group_policy.yaml",
+								"python": "network_group_policy.py",
+								"powershell": "network_group_policy.ps1",
+								"terraform": "network_group_policy.tf",
+								"openapi": "network_group_policy.json"
+							},
+							"files": [
+								"readme.md"
+							]
+						},
+						{
+							"name": "ntp_policy",
+							"displayName": "NTP Policy",
+							"descriptions": "Policy description",
+							"codeSample": {
+								"ansible": "ntp_policy.yaml",
+								"python": "ntp_policy.py",
+								"powershell": "ntp_policy.ps1",
+								"terraform": "ntp_policy.tf",
+								"openapi": "ntp_policy.json"
+							},
+							"files": [
+								"readme.md"
+							]
+						},
+						{
+							"name": "port_policy",
+							"displayName": "Port Policy",
+							"descriptions": "Policy description",
+							"codeSample": {
+								"ansible": "port_policy.yaml",
+								"python": "port_policy.py",
+								"powershell": "port_policy.ps1",
+								"terraform": "port_policy.tf",
+								"openapi": "port_policy.json"
+							},
+							"files": [
+								"readme.md"
+							]
+						},
+						{
+							"name": "snmp_policy",
+							"displayName": "SNMP Policy",
+							"descriptions": "Policy description",
+							"codeSample": {
+								"ansible": "snmp_policy.yaml",
+								"python": "snmp_policy.py",
+								"powershell": "snmp_policy.ps1",
+								"terraform": "snmp_policy.tf",
+								"openapi": "snmp_policy.json"
+							},
+							"files": [
+								"readme.md"
+							]
+						},
+						{
+							"name": "switch_control_policy",
+							"displayName": "Switch Control Policy",
+							"descriptions": "Policy description",
+							"codeSample": {
+								"ansible": "switch_control_policy.yaml",
+								"python": "switch_control_policy.py",
+								"powershell": "switch_control_policy.ps1",
+								"terraform": "switch_control_policy.tf",
+								"openapi": "switch_control_policy.json"
+							},
+							"files": [
+								"readme.md"
+							]
+						},
+						{
+							"name": "syslog_policy",
+							"displayName": "Syslog Policy",
+							"descriptions": "Policy description",
+							"codeSample": {
+								"ansible": "syslog_policy.yaml",
+								"python": "syslog_policy.py",
+								"powershell": "syslog_policy.ps1",
+								"terraform": "syslog_policy.tf",
+								"openapi": "syslog_policy.json"
+							},
+							"files": [
+								"readme.md"
+							]
+						},
+						{
+							"name": "system_qos_policy",
+							"displayName": "System Qos Policy",
+							"descriptions": "Policy description",
+							"codeSample": {
+								"ansible": "system_qos_policy.yaml",
+								"python": "system_qos_policy.py",
+								"powershell": "system_qos_policy.ps1",
+								"terraform": "system_qos_policy.tf",
+								"openapi": "system_qos_policy.json"
+							},
+							"files": [
+								"readme.md"
+							]
+						},
+						{
+							"name": "vlan_configuration_policy",
+							"displayName": "Vlan Configuration Policy",
+							"descriptions": "Policy description",
+							"codeSample": {
+								"ansible": "vlan_configuration_policy.yaml",
+								"python": "vlan_configuration_policy.py",
+								"powershell": "vlan_configuration_policy.ps1",
+								"terraform": "vlan_configuration_policy.tf",
+								"openapi": "vlan_configuration_policy.json"
+							},
+							"files": [
+								"readme.md"
+							]
+						},
+						{
+							"name": "vsan_configuration_policy",
+							"displayName": "VSAN Configuration Policy",
+							"descriptions": "Policy description",
+							"codeSample": {
+								"ansible": "vsan_configuration_policy.yaml",
+								"python": "vsan_configuration_policy.py",
+								"powershell": "vsan_configuration_policy.ps1",
+								"terraform": "vsan_configuration_policy.tf",
+								"openapi": "vsan_configuration_policy.json"
+							},
+							"files": [
+								"readme.md"
 							]
 						}
 					]
