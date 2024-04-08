@@ -632,7 +632,7 @@
 							"name": "flow_control_policy",
 							"displayName": "Flow control Policy",
 							"descriptions": "Policy description",
-							"sampleCode": {
+							"codesample": {
 								"ansible": "flow_control_policy.yaml",
 								"python": "flow_control_policy.py",
 								"powershell": "flow_control_policy.ps1",
@@ -647,7 +647,7 @@
 							"name": "link_aggregation_policy",
 							"displayName": "Link Aggregation Policy",
 							"descriptions": "Policy description",
-							"sampleCode": {
+							"codesample": {
 								"ansible": "link_aggregation_policy.yaml",
 								"python": "link_aggregation_policy.py",
 								"powershell": "link_aggregation_policy.ps1",
@@ -662,7 +662,7 @@
 							"name": "link_control_policy",
 							"displayName": "Link Control Policy",
 							"descriptions": "Policy description",
-							"sampleCode": {
+							"codesample": {
 								"ansible": "link_control_policy.yaml",
 								"python": "link_control_policy.py",
 								"powershell": "link_control_policy.ps1",
@@ -677,7 +677,7 @@
 							"name": "multicast_policy",
 							"displayName": "Multicast Policy",
 							"descriptions": "Policy description",
-							"sampleCode": {
+							"codesample": {
 								"ansible": "multicast_policy.yaml",
 								"python": "multicast_policy.py",
 								"powershell": "multicast_policy.ps1",
