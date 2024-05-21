@@ -1,0 +1,10 @@
+{
+    "Privilege": "admin",
+    "Enabled": true,
+    "EncryptionKey": "FFFFAAAA99990000",
+    "Organization": {
+        "ObjectType": "organization.Organization",
+        "Moid": "organization moid"
+    },
+    "Name": "ipmi_over_lan_1"
+}

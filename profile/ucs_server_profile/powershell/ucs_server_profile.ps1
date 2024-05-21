@@ -1,33 +1,46 @@
-# Get organization 
+# Set up intersight environment this action is required once per powershell session
+$config = @{
+    BasePath = "https://intersight.com"
+    ApiKeyId = "xxxxx27564612d30dxxxxx/5f21c9d97564612d30dd575a/5f9a8b877564612xxxxxxxx"
+    ApiKeyFilePath = "C:\\secretKey.txt"
+    HttpSigningHeader =  @("(request-target)", "Host", "Date", "Digest")
+}
+# set intersight configuration    
+Set-IntersightConfiguration @config
 
+# Get organization MoRef
 $organization1 = Get-IntersightOrganizationOrganization -Name 'default' | Get-IntersightMoMoRef
 
-# create a couple of server policies
-# Creating NTP policy
+# create ntp, smtp and smnp policies for server profile
 
-$ntp1 = New-IntersightNtpPolicy -Organization $organization1 -Name 'ntp1' -Description 'test policy' -Enabled 1 -NtpServers @('ntp.esl.cisco.com', 'time-a-g.nist.gov', 'time-b-g.nist.gov')
+# Creating NTP policy and get MoRef
+$ntpRef = New-IntersightNtpPolicy -Organization $organization1 -Name 'ntp1' -Description 'test policy' -Enabled 1 `
+        -NtpServers @('ntp.esl.cisco.com', 'time-a-g.nist.gov', 'time-b-g.nist.gov') | Get-IntersightMoMoRef
 
-# Creating SMTP policy
+# Creating SMTP policy and get MoRef
+$smtpRef = New-IntersightSmtpPolicy -Organization $organization1 -Enabled 0 -Name 'smtp1' -Description 'testing smtp policy' `
+         -SmtpPort 32 -MinSeverity 'critical' -SmtpServer '10.10.10.1' -SenderEmail 'IMCSQAAutomation@cisco.com' `
+         -SmtpRecipients @('aw@cisco.com', 'cy@cisco.com', 'dz@cisco.com') | Get-IntersightMoMoRef
 
-$smtp1 = New-IntersightSmtpPolicy -Organization $organization1 -Enabled 0 -Name 'smtp1' -Description 'testing smtp policy' -SmtpPort 32 -MinSeverity 'critical' -SmtpServer '10.10.10.1' -SenderEmail 'IMCSQAAutomation@cisco.com' -SmtpRecipients @('aw@cisco.com', 'cy@cisco.com', 'dz@cisco.com')
-
-# Creating SNMP policy
-
+# Creating SNMP policy and get MoRef
 $snmp_users1 = Initialize-IntersightSnmpUser -Name 'demouser' -PrivacyType 'AES' -SecurityLevel 'AuthPriv' -AuthType 'SHA' -AuthPassword 'dummyPassword' -PrivacyPassword 'dummyPrivatePassword'
-
 $snmp_traps1 = Initialize-IntersightSnmpTrap -Destination '10.10.10.1' -Enabled 0 -Type 'Trap' -User 'demouser' -Port 660 -ObjectType 'SnmpTrap' -Version 'V3'
+$snmpRef = New-IntersightSnmpPolicy -Name 'snmp1' -Description 'testing smtp policy' -Enabled 1 -SnmpPort 1983 `
+         -SnmpUsers $snmp_users1 -SnmpTraps $snmp_traps1 -Organization $organization1 -AccessCommunityString 'dummy123' `
+         -CommunityAccess 'Disabled' -TrapCommunity 'TrapCommunity' -SysContact 'xyz' -SysLocation 'SJC' -EngineId 'abc' `
+         | Get-IntersightMoMoRef
 
-$snmp1 = New-IntersightSnmpPolicy -SnmpUsers $snmp_users1 -SnmpTraps $snmp_traps1 -Organization $organization1 -Name 'snmp1' -Description 'testing smtp policy' -Enabled 1 -SnmpPort 1983 -AccessCommunityString 'dummy123' -CommunityAccess 'Disabled' -TrapCommunity 'TrapCommunity' -SysContact 'aanimish' -SysLocation 'Karnataka' -EngineId 'vvb'
 
-# Get the server
-$server1 = Get-IntersightComputeRackunit -Moid '<Replace with Moid>'
-$server1Ref = $server1 | Get-IntersightMoMoRef
-
-# Create a server profile & attach the policies and server
+# Create a server profile Tag
 $tags1 = Initialize-IntersightMoTag -Key 'server' -Value 'demo'
 
-$ntp1Ref = $ntp1 | Get-IntersightMoMoRef
-$smtp1Ref = $smtp1 | Get-IntersightMoMoRef
-$snmp1Ref = $snmp1 | Get-IntersightMoMoRef
+# create a server profile
+$serverProfile = New-IntersightServerProfile -Name "ss_server_profile1" -Description "A sample server profile"  -Organization $Organization1 `
+                            -Tags $tags1 -TargetPlatform "Standalone" -PolicyBucket @($ntpRef, $smtpRef, $snmpRef) `
+                            
+# assigned server profile to a server. Get the RackUnit or BladeUnit MoRef
+$serverRef = Get-IntersightComputeRackunit -Moid '<Replace with Moid>' | Get-IntersightMoMoRef
+$serverProfile | Set-IntersightServerProfile -AssignedServer $serverRef
 
-New-IntersightServerProfile -Description "A sample server profile" -Name "ss_server_profile1" -Organization $Organization1 -Tags $tags1 -TargetPlatform "Standalone" -PolicyBucket @($ntp1Ref, $smtp1Ref, $snmp1Ref) -AssignedServer $server1Ref -Action 'Deploy'
+# deploy server profile to assigned server.
+$serverProfile | Set-IntersightServerProfile -Action 'Deploy'

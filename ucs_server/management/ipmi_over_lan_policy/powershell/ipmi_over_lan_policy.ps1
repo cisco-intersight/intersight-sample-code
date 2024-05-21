@@ -9,11 +9,10 @@ $config = @{
 Set-IntersightConfiguration @config
 
 # get the existing default org. One can create new Organization using New-IntersightOrganizationOrganization cmdlets.
-$org = Get-IntersightOrganizationOrganization -Name default 
+$org = Get-IntersightOrganizationOrganization -Name default | Get-IntersightMoMoRef
 
-# get oragnizationRef
+# get organizationRef
 $orgRef = $org | Get-IntersightMoMoRef
 
-# create a bios policy
-$result = New-IntersightBiosPolicy -Name "bios_policy_1" -IntelHyperThreadingTech Enabled -IntelTurboBoostTech Enabled `
-         -EnhancedIntelSpeedStepTech Enabled -HardwarePrefetch Enabled -EnergyEfficientTurbo Disabled  -Organization $orgRef
+# create a IPMI over LAN policy
+$result = New-IntersightIpmioverlanPolicy -Name "ipmi_over_lan_1" -Enabled $true -Privilege Admin -Organization $orgRef -EncryptionKey "FFFFAAAA99990006752896ABCDED"
