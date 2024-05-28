@@ -1,3 +1,9 @@
+provider "intersight" {
+  endpoint        = "https://intersight.com"
+  apikey          = "xxxxx27564612d30dxxxxx/5f21c9d97564612d30dd575a/5f9a8b877564612xxxxxxxx"
+  secretkey       = "C:\\secretKey.txt"
+}
+
 resource "intersight_fabric_eth_network_control_policy" "fabric_eth_network_control_policy1" {
   name        = "fabric_eth_network_control_policy1"
   description = "demo eth network control policy"
@@ -19,6 +25,5 @@ resource "intersight_fabric_eth_network_control_policy" "fabric_eth_network_cont
 
 variable "organization" {
     type = string
-    description = "<organization of moid>"
-  
+    description = "<organization moid>"
 }

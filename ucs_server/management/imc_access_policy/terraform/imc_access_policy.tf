@@ -1,3 +1,9 @@
+provider "intersight" {
+  endpoint        = "https://intersight.com"
+  apikey          = "xxxxx27564612d30dxxxxx/5f21c9d97564612d30dd575a/5f9a8b877564612xxxxxxxx"
+  secretkey       = "C:\\secretKey.txt"
+}
+
 resource "intersight_access_policy" "access1" {
   name        = "access1"
   description = "demo imc access policy"
@@ -24,4 +30,9 @@ resource "intersight_access_policy" "access1" {
 variable "inband_ip_pool" {
   type        = string
   description = "Moid of ippool.Pool Mo"
+}
+
+variable "organization" {
+ type        = string
+  description = "Moid of organization"
 }

@@ -1,3 +1,9 @@
+provider "intersight" {
+  endpoint        = "https://intersight.com"
+  apikey          = "xxxxx27564612d30dxxxxx/5f21c9d97564612d30dd575a/5f9a8b877564612xxxxxxxx"
+  secretkey       = "C:\\secretKey.txt"
+}
+
 resource "intersight_fabric_vlan" "fabric_vlan1" {
   auto_allow_on_uplinks = true
   is_native             = true
