@@ -25,9 +25,10 @@ api_client = client.get_api_client(api_key, api_key_file)
 
 
 def create_organization():
-    # Creating and returning an instance of organization
+    # Creating an instance of organization using its moid, under which policy should be created
     return OrganizationOrganizationRelationship(class_id="mo.MoRef",
-                                                object_type="organization.Organization")
+                                                object_type="organization.Organization",
+                                                moid="moid_of_organization")
 
 
 def create_policy_reference(policy_moid, obj_type):
@@ -49,6 +50,7 @@ def create_server_profile():
     server_profile.name = "sample_server_profile1"
     server_profile.description = "sample server profile."
     server_profile.organization = organization
+    server_profile.target_platform = "Standalone"
 
     # example passing only required values which don't have defaults set
     try:

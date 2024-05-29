@@ -16,9 +16,10 @@ api_client = client.get_api_client(api_key, api_key_file)
 
 
 def create_organization():
-    # Creating an instance of organization
+    # Creating an instance of organization using its moid, under which policy should be created
     return OrganizationOrganizationRelationship(class_id="mo.MoRef",
-                                                object_type="organization.Organization")
+                                                object_type="organization.Organization",
+                                                moid="moid_of_organization")
 
 
 def create_network_conn_policy():
@@ -36,6 +37,8 @@ def create_network_conn_policy():
     nw_conn_policy.organization = organization
     nw_conn_policy.dynamic_dns_domain = "cisco.com"
     nw_conn_policy.preferred_ipv4dns_server = "8.8.8.8"
+    nw_conn_policy.alternate_ipv4dns_server = "22.22.22.22"
+    nw_conn_policy.enable_dynamic_dns =True
     nw_conn_policy.enable_ipv6 = True
 
     try:

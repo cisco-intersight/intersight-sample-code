@@ -3,6 +3,7 @@ import sys
 
 from authentication.python import intersight_authentication as client
 from intersight.api import vnic_api
+from intersight.model.organization_organization_relationship import OrganizationOrganizationRelationship
 from intersight.model.vnic_eth_qos_policy import VnicEthQosPolicy
 
 
@@ -12,11 +13,24 @@ api_key_file = "~/api_key_file_path"
 api_client = client.get_api_client(api_key, api_key_file)
 
 
+def create_organization():
+    # Creating an instance of organization using its moid, under which policy should be created
+    return OrganizationOrganizationRelationship(class_id="mo.MoRef",
+                                                object_type="organization.Organization",
+                                                moid="moid_of_organization")
+
 def create_ethernet_qos_policy():
     # Create an instance of the API class.
     api_instance = vnic_api.VnicApi(api_client)
+    # Create an instance of organization.
+    organization = create_organization()
     # VnicEthQosPolicy | The 'VnicEthQos.Policy' resource to create.
-    vnic_eth_qos = VnicEthQosPolicy(name="sample_ethernet_qos_policy")
+    vnic_eth_qos = VnicEthQosPolicy(name="sample_ethernet_qos_policy",
+                                    organization=organization,
+                                    priority="Best Effort",
+                                    burst=1024,
+                                    mtu=1500,
+                                    trust_host_cos=True)
     try:
         # Create a 'VnicEthQos.Policy' resource.
         api_response = api_instance.create_vnic_eth_qos_policy(vnic_eth_qos)

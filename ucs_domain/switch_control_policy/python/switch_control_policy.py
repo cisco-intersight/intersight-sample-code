@@ -2,6 +2,8 @@ from authentication.python import intersight_authentication as client
 
 from intersight.model.organization_organization_relationship import OrganizationOrganizationRelationship
 from intersight.model.fabric_switch_control_policy import FabricSwitchControlPolicy
+from intersight.model.fabric_udld_global_settings import FabricUdldGlobalSettings
+from intersight.model.fabric_mac_aging_settings import FabricMacAgingSettings
 from intersight.api import fabric_api
 import intersight
 
@@ -16,9 +18,10 @@ api_client = client.get_api_client(api_key, api_key_file)
 
 
 def create_organization():
-    # Creating an instance of organization
+    # Creating an instance of organization using its moid, under which policy should be created
     return OrganizationOrganizationRelationship(class_id="mo.MoRef",
-                                                object_type="organization.Organization")
+                                                object_type="organization.Organization",
+                                                moid="moid_of_organization")
 
 
 def create_switch_control_policy():
@@ -26,6 +29,12 @@ def create_switch_control_policy():
 
     # Create an instance of organization.
     organization = create_organization()
+    # Create an instance of FabricMacAgingSettings
+    mac_aging_settings = FabricMacAgingSettings(mac_aging_option="Default",
+                                                mac_aging_time=14500)
+    # Create an instance of FabricUdldGlobalSettings
+    udld_settings = FabricUdldGlobalSettings(recovery_action="none",
+                                             message_interval=12)
 
     # FabricSwitchControlPolicy | The 'fabric.SwitchControlPolicy' resource to create.
     switch_control_policy = FabricSwitchControlPolicy()
@@ -36,6 +45,8 @@ def create_switch_control_policy():
     switch_control_policy.organization = organization
     switch_control_policy.ethernet_switching_mode = "end-host"
     switch_control_policy.fc_switching_mode = "end-host"
+    switch_control_policy.udld_settings=udld_settings
+    switch_control_policy.mac_aging_settings=mac_aging_settings
 
     # Example passing only required values which don't have defaults set
     try:

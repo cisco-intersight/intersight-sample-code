@@ -16,9 +16,10 @@ api_client = client.get_api_client(api_key, api_key_file)
 
 
 def create_organization():
-    # Creating an instance of organization
+    # Creating an instance of organization using its moid, under which policy should be created
     return OrganizationOrganizationRelationship(class_id="mo.MoRef",
-                                                object_type="organization.Organization")
+                                                object_type="organization.Organization",
+                                                moid="moid_of_organization")
 
 
 def create_ntp_policy():
@@ -36,6 +37,7 @@ def create_ntp_policy():
     # Setting all the attributes for ntp_policy instance.
     ntp_policy.name = "sample_ntp_policy1"
     ntp_policy.description = "sample ntp policy."
+    ntp_policy.enabled = True
     ntp_policy.organization = organization
     ntp_policy.ntp_servers = ntp_servers
 
