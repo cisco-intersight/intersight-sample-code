@@ -20,9 +20,10 @@ api_client = client.get_api_client(api_key, api_key_file)
 
 
 def create_organization():
-    # Creating an instance of organization
+    # Creating an instance of organization using its moid, under which policy should be created
     return OrganizationOrganizationRelationship(class_id="mo.MoRef",
-                                                object_type="organization.Organization")
+                                                object_type="organization.Organization",
+                                                moid="moid_of_organization")
 
 
 def create_network_policy_reference(network_policy_moid):
@@ -105,6 +106,9 @@ def create_vlan(network_policy_moid, multicast_policy_moid):
     vlan.vlan_id = 2222
     vlan.eth_network_policy = create_network_policy_reference(network_policy_moid)
     vlan.multicast_policy = create_multicast_policy_reference(multicast_policy_moid)
+    vlan.auto_allow_on_uplinks = False
+    vlan.is_native = False
+    vlan.vlan_id = 23
 
     try:
         # Create a 'fabric.Vlan' resource.

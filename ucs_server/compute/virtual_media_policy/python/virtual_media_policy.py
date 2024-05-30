@@ -17,9 +17,10 @@ api_client = client.get_api_client(api_key, api_key_file)
 
 
 def create_organization():
-    # Creating an instance of organization
+    # Creating an instance of organization using its moid, under which policy should be created
     return OrganizationOrganizationRelationship(class_id="mo.MoRef",
-                                                object_type="organization.Organization")
+                                                object_type="organization.Organization",
+                                                moid="moid_of_organization")
 
 
 def create_vmedia_policy():
@@ -28,7 +29,9 @@ def create_vmedia_policy():
     # Create an instance of organization and virtual media.
     organization = create_organization()
     vmedia = VmediaMapping(authentication_protocol="none",
-                           device_type="hdd",
+                           device_type="cdd",
+                           file_location="nfs://10.193.167.6/exports/vms/ucs-c240m5-huu-3.1.3h.iso",
+                           host_name="12.11.11.13",
                            mount_protocol="nfs",
                            volume_name="sample_vol",
                            remote_file="sample_file.img")
@@ -40,7 +43,9 @@ def create_vmedia_policy():
     vmedia_policy.name = "sample_vmedia_policy1"
     vmedia_policy.description = "sample virtual media policy."
     vmedia_policy.organization = organization
-    vmedia_policy.low_power_usb = False
+    vmedia_policy.low_power_usb = True
+    vmedia_policy.enabled = True
+    vmedia_policy.encryption = True
     vmedia_policy.mappings = [vmedia]
 
     try:

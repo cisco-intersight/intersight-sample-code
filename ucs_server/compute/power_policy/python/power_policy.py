@@ -16,9 +16,10 @@ api_client = client.get_api_client(api_key, api_key_file)
 
 
 def create_organization():
-    # Creating an instance of organization
+    # Creating an instance of organization using its moid, under which policy should be created
     return OrganizationOrganizationRelationship(class_id="mo.MoRef",
-                                                object_type="organization.Organization")
+                                                object_type="organization.Organization",
+                                                moid="moid_of_organization")
 
 
 def create_power_policy():
@@ -35,7 +36,11 @@ def create_power_policy():
     power_policy.description = "sample power policy."
     power_policy.organization = organization
     power_policy.dynamic_rebalancing = "Enabled"
+    power_policy.extended_power_capacity = "Enabled"
     power_policy.power_priority = "High"
+    power_policy.power_profiling = "Enabled"
+    power_policy.power_restore_state = "AlwaysOff"
+    power_policy.power_save_mode = "Enabled"
     power_policy.redundancy_mode = "Grid"
 
     try:
