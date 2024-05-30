@@ -231,3 +231,8 @@ resource "intersight_fabric_switch_profile" "fabric_B_profile" {
     },
   ]
 }
+
+variable "organization" {
+  type        = string
+  description = "Moid of the organization"
+}
