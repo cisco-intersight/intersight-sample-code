@@ -1,0 +1,18 @@
+$config = @{
+    BasePath = "https://intersight.com"
+    ApiKeyId = "xxxxx27564612d30dxxxxx/5f21c9d97564612d30dd575a/5f9a8b877564612xxxxxxxx"
+    ApiKeyFilePath = "C:\\secretKey.txt"
+    HttpSigningHeader =  @("(request-target)", "Host", "Date", "Digest")
+}
+# set intersight configuration    
+Set-IntersightConfiguration @config
+
+# get organization MoRef
+$orgRef = Get-IntersightOrganizationOrganization -Name default | Get-IntersightMoMoRef
+
+# initialize Model bundle version
+$modelBundleVersion = Initialize-IntersightFirmwareModelBundleVersion -ModelFamily UCSCC220M7 -BundleVersion "4.3(3.240043)"
+
+# create firmware policy
+$result = New-IntersightFirmwarePolicy -Name "firmware_policy_1" -TargetPlatform Standalone -ModelBundleCombo $modelBundleVersion `
+          -Organization $orgRef
