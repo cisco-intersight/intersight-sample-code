@@ -1,4 +1,5 @@
 {
+	"tabs":["powershell","python","terraform"],
 	"directories": [
 		{
 			"name":"authentication",
