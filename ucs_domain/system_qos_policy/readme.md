@@ -12,12 +12,3 @@ The following list describes the system classes that you can configure.
 - Best Effort—A system class that sets the quality of service for the lane reserved for basic Ethernet traffic. Some properties of this system class are preset and cannot be modified. For example, this class has a drop policy that allows it to drop data packets if required. You cannot disable this system class.
 
 - Fibre Channel—A system class that sets the quality of service for the lane reserved for Fibre Channel over Ethernet traffic. Some properties of this system class are preset and cannot be modified. For example, this class has a no-drop policy that ensures it never drops data packets. You cannot disable this system class.
-
-
-## System Qos Policy Properties reference
-| SKDs | Properties Description
-| ---- | ------------------- |
-| [python](https://github.com/CiscoDevNet/intersight-python/) | [System Qos Policy](https://github.com/CiscoDevNet/intersight-python/tree/main/intersight/model/fabric_system_qos_policy.py) properties reference |                 |
-| [terraform](https://github.com/CiscoDevNet/terraform-provider-intersight/) | [System Qos Policy](https://registry.terraform.io/providers/CiscoDevNet/intersight/latest/docs/resources/fabric_system_qos_policy) properties reference |
-| [powershell](https://github.com/CiscoDevNet/intersight-powershell/) | [System Qos Policy](https://github.com/CiscoDevNet/intersight-powershell/blob/main/docs/New-IntersightFabricSystemQosPolicy.md) properties reference
-
