@@ -1,7 +1,32 @@
-resource "intersight_fabric_vsan" "fabric_vsan1" {
-  default_zoning       = "Enabled"
-  fc_zone_sharing_mode = "Active"
-  fcoe_vlan            = 100
-  name                 = "fabric_vsan1"
-  vsan_id              = 10
+provider "intersight" {
+  endpoint        = "https://intersight.com"
+  apikey          = "xxxxx27564612d30dxxxxx/5f21c9d97564612d30dd575a/5f9a8b877564612xxxxxxxx"
+  secretkey       = "C:\\secretKey.txt"
+}
+
+resource "intersight_fabric_fc_network_policy" "fabric_fc_network_policy1" {
+  name            = "fabric_fc_network_policy1"
+  description     = "fabric ethernet network policy"
+  enable_trunking = true
+  organization {
+    object_type = "organization.Organization"
+    moid        = var.organization
+  }
+}
+
+resource "intersight_fabric_vsan" "vsan_110" {
+  name             = "vsan_110"
+  default_zoning   = "Disabled"
+  vsan_scope       = "Uplink"
+  fcoe_vlan        = 1120
+  vsan_id          = 110
+  fc_network_policy {
+    object_type = "fabric.FcNetworkPolicy"
+    moid        = intersight_fabric_fc_network_policy.fabric_fc_network_policy1.moid
+  }
+}
+
+variable "organization" {
+  type = string
+  description = "<organization moid>"
 }
