@@ -20,6 +20,6 @@ $snmpUser = Initialize-IntersightSnmpUser -AuthType MD5 -Name user1 -PrivacyPass
         -SecurityLevel AuthPriv
 
 # create a SNMP policy
-$result = New-IntersightSnmpPolicy -Name "snmp_policy" -AccessCommunityString accCommString -CommunityAccess Disabled `
+$result = New-IntersightSnmpPolicy -Name "snmp_policy_1" -AccessCommunityString accCommString -CommunityAccess Disabled `
          -Enabled $true -EngineId "EngineID" -SnmpPort 161 -SysContact "xyz@test.com" -SysLocation "NYK" -Organization $orgRef `
          -SnmpTraps @($snmpTrap) -SnmpUsers @($snmpUser)
