@@ -1,3 +1,8 @@
+provider "intersight" {
+  endpoint        = "https://intersight.com"
+  apikey          = "xxxxx27564612d30dxxxxx/5f21c9d97564612d30dd575a/5f9a8b877564612xxxxxxxx"
+  secretkey       = "C:\\secretKey.txt"
+}
 
 resource "intersight_power_policy" "power_policy_1" {
     name = "power_policy_1"
@@ -6,9 +11,9 @@ resource "intersight_power_policy" "power_policy_1" {
         object_type = "organization.Organization"
         moid = var.organization
     }
-    dynamic_rebalancing = "Enabled"
+    dynamic_rebalancing = "Disabled"
     extended_power_capacity = "Enabled"
-    power_priority = "High"
+    power_priority = "Low"
     power_profiling = "Enabled"
     power_restore_state = "AlwaysOff"
     power_save_mode = "Enabled"

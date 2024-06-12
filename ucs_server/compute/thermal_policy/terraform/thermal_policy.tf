@@ -4,13 +4,9 @@ provider "intersight" {
   secretkey       = "C:\\secretKey.txt"
 }
 
-resource "intersight_firmware_policy" "firmware_policy" {
-  name             = "firmware_policy_1"
-  target_platform  = "Standalone"
-  model_bundle_combo {
-    model_family   = "UCSC-C220-M7"
-    bundle_version = "4.3(3.240043)"
-  }
+resource "intersight_thermal_policy" "thermal_policy_1" {
+  name              = "thermal_policy_1"
+  fan_control_mode  = "Balanced"
   organization {
         object_type = "organization.Organization"
         moid = var.organization
@@ -22,5 +18,3 @@ variable "organization" {
     description = "<organization moid>"
   
 }
-
-

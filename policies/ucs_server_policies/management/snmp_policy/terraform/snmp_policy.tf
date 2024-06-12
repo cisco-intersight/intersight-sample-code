@@ -1,3 +1,9 @@
+provider "intersight" {
+  endpoint        = "https://intersight.com"
+  apikey          = "xxxxx27564612d30dxxxxx/5f21c9d97564612d30dd575a/5f9a8b877564612xxxxxxxx"
+  secretkey       = "C:\\secretKey.txt"
+}
+
 resource "intersight_snmp_policy" "snmp1" {
   name                    = "snmp1"
   description             = "testing smtp policy"
@@ -12,8 +18,8 @@ resource "intersight_snmp_policy" "snmp1" {
   snmp_users {
     name         = "demouser"
     privacy_type = "AES"
-    #auth_password    = var.auth_password
-    #privacy_password = var.privacy_password
+    auth_password    = var.auth_password
+    privacy_password = var.privacy_password
     security_level = "AuthPriv"
     auth_type      = "SHA"
     object_type    = "snmp.User"
@@ -33,7 +39,7 @@ resource "intersight_snmp_policy" "snmp1" {
   }
   organization {
     object_type = "organization.Organization"
-    moid        = var.organization
+    moid        = var.Organization
   }
 }
 
@@ -49,7 +55,7 @@ variable "privacy_password" {
 
 variable "organization" {
   type        = string
-  description = "value for organization"
+  description = "Moid of the organization"
 }
 
 variable "profile" {
