@@ -5,9 +5,9 @@ provider "intersight" {
 }
 
 resource "intersight_ntp_policy" "ntp1" {
-  name        = "ntp1"
+  name = "ntp1"
   description = "test policy"
-  enabled     = true
+  enabled = true
   ntp_servers = [
     "ntp.esl.cisco.com",
     "time-a-g.nist.gov",
@@ -15,11 +15,11 @@ resource "intersight_ntp_policy" "ntp1" {
   ]
   organization {
     object_type = "organization.Organization"
-    moid        = var.organization
+    moid = var.organization
   }
 }
 
 variable "organization" {
-  type        = string
+  type = string
   description = "value for organization"
 }

@@ -70,40 +70,6 @@ resource "intersight_snmp_policy" "snmp_policy" {
   }
 }
 
-# Create a server profile template
-resource "intersight_server_profile_template" "server_profile_template" {
-  name        = "ss_server_profile1"
-  description = "A sample server profile"
-  tags {
-    key   = "server"
-    value = "demo"
-  }
-
-  organization {
-    object_type = "organization.Organization"
-    moid        = var.organization
-  }
-
-  policy_bucket {
-    moid        = intersight_ntp_policy.ntp_policy.moid
-    object_type = "ntp.Policy"
-    class_id    = "policy.AbstractPolicy"
-    selector    = ""
-  }
-  policy_bucket {
-    moid        = intersight_smtp_policy.smtp_policy.moid
-    object_type = "smtp.Policy"
-    class_id    = "policy.AbstractPolicy"
-    selector    = ""
-  }
-  policy_bucket {
-    moid        = intersight_snmp_policy.snmp_policy.moid
-    object_type = "snmp.Policy"
-    class_id    = "policy.AbstractPolicy"
-    selector    = ""
-  }
-}
-
 # Assign the server profile to a server
 resource "intersight_server_profile" "server_profile" {
   name               = "ss_server_profile1"
@@ -124,21 +90,18 @@ resource "intersight_server_profile" "server_profile" {
     moid        = intersight_ntp_policy.ntp_policy.moid
     object_type = intersight_ntp_policy.ntp_policy.object_type
     class_id    = "policy.AbstractPolicy"
-    selector    = ""
   }
 
   policy_bucket {
     moid        = intersight_smtp_policy.smtp_policy.moid
     object_type = intersight_smtp_policy.smtp_policy.object_type
     class_id    = "policy.AbstractPolicy"
-    selector    = ""
   }
 
   policy_bucket {
     moid        = intersight_snmp_policy.snmp_policy.moid
     object_type = intersight_snmp_policy.snmp_policy.object_type
     class_id    = "policy.AbstractPolicy"
-    selector    = ""
   }
 }
 

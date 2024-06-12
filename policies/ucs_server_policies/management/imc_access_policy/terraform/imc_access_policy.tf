@@ -5,8 +5,8 @@ provider "intersight" {
 }
 
 resource "intersight_ippool_pool" "ipv4_pool" {
-  name             = "ipv4_ippool_1"
-  description      = "IP pool with IPv4 block and config"
+  name = "ipv4_ippool_1"
+  description = "IP pool with IPv4 block and config"
   assignment_order = "default"
 
   ip_v4_blocks {
@@ -15,14 +15,14 @@ resource "intersight_ippool_pool" "ipv4_pool" {
   }
 
   ip_v4_config {
-    gateway     = "10.128.130.254"
-    netmask     = "255.255.255.0"
+    gateway = "10.128.130.254"
+    netmask = "255.255.255.0"
     primary_dns = "8.8.8.8"
   }
 
   organization {
     object_type = "organization.Organization"
-    moid        = var.organization
+    moid = var.organization
   }
 }
 
@@ -34,18 +34,18 @@ resource "intersight_access_policy" "access_policy" {
 
   inband_ip_pool {
     object_type = "ippool.Pool"
-    moid        = intersight_ippool_pool.ipv4_pool.moid
+    moid = intersight_ippool_pool.ipv4_pool.moid
   }
 
   organization {
     object_type = "organization.Organization"
-    moid        = var.organization
+    moid = var.organization
   }
 
   configuration_type {
-    configure_inband      = true
+    configure_inband = true
     configure_out_of_band = false
-    object_type           = "access.ConfigurationType"
+    object_type = "access.ConfigurationType"
   }
 
   address_type {
@@ -56,6 +56,6 @@ resource "intersight_access_policy" "access_policy" {
 }
 
 variable "organization" {
- type        = string
+ type = string
   description = "Moid of organization"
 }

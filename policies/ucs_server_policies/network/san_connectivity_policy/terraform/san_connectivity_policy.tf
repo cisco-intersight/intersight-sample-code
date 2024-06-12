@@ -4,19 +4,6 @@ provider "intersight" {
   secretkey       = "C:\\secretKey.txt"
 }
 
-resource "intersight_server_profile" "server1" {
-  name   = "server1"
-  action = "No-op"
-  tags {
-    key   = "server"
-    value = "demo"
-  }
-  organization {
-    object_type = "organization.Organization"
-    moid        = var.organization
-  }
-}
-
 resource "intersight_vnic_san_connectivity_policy" "vnic_san1" {
   name = "san_connectivity_policy_1"
   placement_mode  = "custom"
@@ -26,7 +13,7 @@ resource "intersight_vnic_san_connectivity_policy" "vnic_san1" {
     moid        = var.organization
   }
   profiles {
-    moid        = intersight_server_profile.server1.moid
+    moid = var.profile
     object_type = "server.Profile"
   }
 }
@@ -35,3 +22,8 @@ variable "organization" {
    type = string
    description = "<value for organization>"
  }
+
+ variable "profile" {
+  type = string
+  description = "Moid of the server profile"
+}
