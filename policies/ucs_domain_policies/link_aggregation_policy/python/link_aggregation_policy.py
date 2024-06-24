@@ -16,10 +16,10 @@ api_client = client.get_api_client(api_key, api_key_file)
 
 
 def create_organization():
-    # Creating an instance of organization
+    # Creating an instance of organization using its moid, under which policy should be created
     return OrganizationOrganizationRelationship(class_id="mo.MoRef",
-                                                object_type="organization.Organization")
-
+                                                object_type="organization.Organization",
+                                                moid="moid_of_organization")
 
 def create_link_aggregation_policy():
     api_instance = fabric_api.FabricApi(api_client)
@@ -35,7 +35,7 @@ def create_link_aggregation_policy():
     link_aggr_policy.description = "sample link aggregation policy."
     link_aggr_policy.organization = organization
     link_aggr_policy.lacp_rate = "normal"
-
+    link_aggr_policy.suspend_individual = True
 
     # Example passing only required values which don't have defaults set
     try:

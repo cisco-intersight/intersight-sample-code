@@ -16,10 +16,10 @@ api_client = client.get_api_client(api_key, api_key_file)
 
 
 def create_organization():
-    # Creating an instance of organization
+    # Creating an instance of organization using its moid, under which policy should be created
     return OrganizationOrganizationRelationship(class_id="mo.MoRef",
-                                                object_type="organization.Organization")
-
+                                                object_type="organization.Organization",
+                                                moid="moid_of_organization")
 
 def create_kvm_policy():
     api_instance = kvm_api.KvmApi(api_client)
@@ -37,6 +37,8 @@ def create_kvm_policy():
     kvm_policy.maximum_sessions = 3
     kvm_policy.remote_port = 33333
     kvm_policy.enabled = True
+    kvm_policy.enable_video_encryption = True
+    kvm_policy.enable_local_server_video = True
 
     # Example passing only required values which don't have defaults set
     try:
