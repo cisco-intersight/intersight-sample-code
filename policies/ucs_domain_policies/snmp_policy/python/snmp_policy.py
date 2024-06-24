@@ -23,7 +23,6 @@ def create_organization():
                                                 object_type="organization.Organization",
                                                 moid="moid_of_organization")
 
-
 def create_snmp_policy():
     # Create an instance of the API class
     api_instance = snmp_api.SnmpApi(api_client)

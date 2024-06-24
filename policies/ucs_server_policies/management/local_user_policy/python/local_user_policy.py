@@ -89,5 +89,5 @@ def create_end_point_user_role():
 
 
 if __name__ == "__main__":
-    # # Trigger creation of end point user policy
+    # Trigger creation of end point user policy
     create_end_point_user_role()
