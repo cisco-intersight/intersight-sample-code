@@ -16,9 +16,10 @@ api_client = client.get_api_client(api_key, api_key_file)
 
 
 def create_organization():
-    # Creating an instance of organization
+    # Creating an instance of organization using its moid, under which policy should be created
     return OrganizationOrganizationRelationship(class_id="mo.MoRef",
-                                                object_type="organization.Organization")
+                                                object_type="organization.Organization",
+                                                moid="moid_of_organization")
 
 
 def create_bios_policy():
@@ -40,6 +41,11 @@ def create_bios_policy():
     bios_policy.boot_option_retry = "enabled"
     bios_policy.core_multi_processing = "4"
     bios_policy.cpu_power_management = "energy-efficient"
+    bios_policy.intel_hyper_threading_tech = "enabled"
+    bios_policy.intel_turbo_boost_tech = "enabled"
+    bios_policy.enhanced_intel_speed_step_tech = "enabled"
+    bios_policy.hardware_prefetch = "enabled"
+    bios_policy.energy_efficient_turbo = "disabled"
 
     try:
         # Create a 'bios.Policy' resource.

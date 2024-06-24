@@ -6,6 +6,8 @@ from intersight.model.ippool_pool import IppoolPool
 from intersight.model.ippool_ip_v4_block import IppoolIpV4Block
 from intersight.model.ippool_ip_v4_config import IppoolIpV4Config
 from intersight.model.ippool_pool_relationship import IppoolPoolRelationship
+from intersight.model.access_address_type import AccessAddressType
+from intersight.model.access_configuration_type import AccessConfigurationType
 from intersight.api import access_api, ippool_api
 import intersight
 
@@ -20,9 +22,10 @@ api_client = client.get_api_client(api_key, api_key_file)
 
 
 def create_organization():
-    # Creating an instance of organization
+    # Creating an instance of organization using its moid, under which policy should be created
     return OrganizationOrganizationRelationship(class_id="mo.MoRef",
-                                                object_type="organization.Organization")
+                                                object_type="organization.Organization",
+                                                moid="moid_of_organization")
 
 
 def create_ippool_pool_reference(ippool_pool_moid):
@@ -63,12 +66,30 @@ def create_ippool_pool():
         print("Exception when calling IppoolPool->create_ippool_pool: %s\n" % e)
         sys.exit(1)
 
+def create_address_type():
+    # Create 'access.AddressType' instance
+    address_type = AccessAddressType(enable_ip_v4=True,
+                                     enable_ip_v6=False)
+    return address_type
+
+def create_access_configuration_type():
+    #Create 'access.ConfigurationType' instance
+    access_configuration_type = AccessConfigurationType(configure_inband=True,
+                                                        configure_out_of_band=False)
+    return access_configuration_type
+
 
 def create_access_policy(ippool_pool_moid):
     api_instance = access_api.AccessApi(api_client)
 
     # Create an instance of organization.
     organization = create_organization()
+
+    # Create an instance of AccessAddressType
+    address_type = create_address_type()
+
+    # Create an instance of AccessConfigurationType
+    configuration_type = create_access_configuration_type()
 
     # AccessPolicy | The 'access.Policy' resource to create.
     access_policy = AccessPolicy()
@@ -79,6 +100,8 @@ def create_access_policy(ippool_pool_moid):
     access_policy.organization = organization
     access_policy.inband_vlan = 333
     access_policy.inband_ip_pool = create_ippool_pool_reference(ippool_pool_moid)
+    access_policy.address_type =  address_type
+    access_policy.configuration_type = configuration_type
 
     try:
         # Create a 'access.Policy' resource.

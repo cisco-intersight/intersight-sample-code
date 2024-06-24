@@ -2,6 +2,7 @@ import intersight
 import sys
 
 from authentication.python import intersight_authentication as client
+from intersight.model.organization_organization_relationship import OrganizationOrganizationRelationship
 from intersight.api import ssh_api
 from intersight.model.ssh_policy import SshPolicy
 
@@ -11,11 +12,23 @@ api_key_file = "~/api_key_file_path"
 api_client = client.get_api_client(api_key, api_key_file)
 
 
+def create_organization():
+    # Creating an instance of organization using its moid, under which policy should be created
+    return OrganizationOrganizationRelationship(class_id="mo.MoRef",
+                                                object_type="organization.Organization",
+                                                moid="moid_of_organization")
+
 def create_ssh_policy():
     # Create an instance of the API class.
     api_instance = ssh_api.SshApi(api_client)
+    # Create an instance of organization.
+    organization = create_organization()
     # SshPolicy | The 'Ssh.Policy' resource to create.
-    ssh_pol = SshPolicy(name="sample_ssh_policy")
+    ssh_pol = SshPolicy(name="sample_ssh_policy",
+                        description="ssh policy",
+                        port=12000,
+                        timeout=1800,
+                        organization=organization)
     try:
         # Create a 'Ssh.Policy' resource.
         api_response = api_instance.create_ssh_policy(ssh_pol)

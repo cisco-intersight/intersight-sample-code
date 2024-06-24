@@ -3,6 +3,7 @@ from authentication.python import intersight_authentication as client
 from intersight.model.organization_organization_relationship import OrganizationOrganizationRelationship
 from intersight.model.snmp_policy import SnmpPolicy
 from intersight.model.snmp_user import SnmpUser
+from intersight.model.snmp_trap import SnmpTrap
 from intersight.api import snmp_api
 import intersight
 
@@ -17,16 +18,16 @@ api_client = client.get_api_client(api_key, api_key_file)
 
 
 def create_organization():
-    # Creating an instance of organization
+    # Creating an instance of organization using its moid, under which policy should be created
     return OrganizationOrganizationRelationship(class_id="mo.MoRef",
-                                                object_type="organization.Organization")
-
+                                                object_type="organization.Organization",
+                                                moid="moid_of_organization")
 
 def create_snmp_policy():
     # Create an instance of the API class
     api_instance = snmp_api.SnmpApi(api_client)
 
-    # Create an instance of organization and snmp user.
+    # Create an instance of organization, snmp user and snmp trap.
     organization = create_organization()
     snmp_user = SnmpUser(class_id="snmp.User",
                          object_type="snmp.User",
@@ -36,6 +37,12 @@ def create_snmp_policy():
                          name="user1",
                          auth_password="Auth_Snmp_user1",
                          privacy_password="Priv_Snmp_user1")
+    snmp_trap = SnmpTrap(community="trapCommString",
+                         destination="11.11.11.11",
+                         enabled=True,
+                         port=162,
+                         type="Trap",
+                         version="V2")
 
     # SnmpPolicy | The 'snmp.Policy' resource to create.
     snmp_policy = SnmpPolicy()
@@ -44,12 +51,15 @@ def create_snmp_policy():
     snmp_policy.name = "sample_snmp_policy1"
     snmp_policy.description = "sample snmp policy."
     snmp_policy.enabled = True
+    snmp_policy.access_community_string = "acc_comm_string"
+    snmp_policy.community_access = "Disabled"
     snmp_policy.sys_location = "BLR"
     snmp_policy.trap_community = "snmpv3"
     snmp_policy.engine_id = "12121"
     snmp_policy.snmp_port = 161
     snmp_policy.sys_contact = "DA"
     snmp_policy.snmp_users = [snmp_user]
+    snmp_policy.snmp_traps = [snmp_trap]
     snmp_policy.organization = organization
 
     # Example passing only required values which don't have defaults set
