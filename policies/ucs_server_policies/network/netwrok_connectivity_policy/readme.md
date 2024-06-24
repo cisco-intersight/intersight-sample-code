@@ -1,0 +1,2 @@
+## Network Connectivity Policy
+Specifies the DNS Domain settings that are used to add or update the resource records on the DNS server from the endpoints, and the DNS server settings for IPv4 and IPv6 on an endpoint.

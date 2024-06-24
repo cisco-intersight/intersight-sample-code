@@ -1,0 +1,2 @@
+## SMTP Policy
+Sets the state of the SMTP client in the managed device. You can specify the preferred settings for outgoing communication and select the fault severity level to report and the mail recipients.
