@@ -9,7 +9,7 @@ from intersight.model.boot_uefi_shell import BootUefiShell
 from intersight.model.boot_pxe import BootPxe
 from intersight.model.boot_san import BootSan
 from intersight.model.boot_bootloader import BootBootloader
-from intersight.api import boot_api
+from intersight.api import boot_api, organization_api
 import intersight
 
 from pprint import pprint
@@ -24,9 +24,18 @@ api_client = client.get_api_client(api_key, api_key_file)
 
 def create_organization():
     # Creating an instance of organization using its moid, under which policy should be created
+    api_instance = organization_api.OrganizationApi(api_client)
+    organization_name = 'default'
+    odata = {"filter":f"Name eq {organization_name}"}
+    organizations = api_instance.get_organization_organization_list(**odata)
+    if organizations.results and len(organizations.results) > 0:
+        moid = organizations.results[0].moid
+    else:
+        print("No organization was found with given name")
+        sys.exit(1)
     return OrganizationOrganizationRelationship(class_id="mo.MoRef",
                                                 object_type="organization.Organization",
-                                                moid="moid_of_organization")
+                                                moid=moid)
 
 
 def create_boot_local_cdd():

@@ -2,7 +2,7 @@ import intersight
 import sys
 
 from authentication.python import intersight_authentication as client
-from intersight.api import fabric_api, power_api, snmp_api, thermal_api
+from intersight.api import fabric_api, power_api, snmp_api, thermal_api, organization_api
 from intersight.model.power_policy import PowerPolicy
 from intersight.model.snmp_policy import SnmpPolicy
 from intersight.model.thermal_policy import ThermalPolicy
@@ -21,9 +21,18 @@ api_instance = fabric_api.FabricApi(api_client)
 												
 def create_organization():
     # Creating an instance of organization using its moid, under which policy should be created
+    api_instance = organization_api.OrganizationApi(api_client)
+    organization_name = 'default'
+    odata = {"filter":f"Name eq {organization_name}"}
+    organizations = api_instance.get_organization_organization_list(**odata)
+    if organizations.results and len(organizations.results) > 0:
+        moid = organizations.results[0].moid
+    else:
+        print("No organization was found with given name")
+        sys.exit(1)
     return OrganizationOrganizationRelationship(class_id="mo.MoRef",
                                                 object_type="organization.Organization",
-                                                moid="moid_of_organization")
+                                                moid=moid)
 
 def create_power_policy():
     # Create an instance of the API class.

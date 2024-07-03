@@ -8,7 +8,7 @@ from intersight.model.iam_end_point_user_role import IamEndPointUserRole
 from intersight.model.iam_end_point_role_relationship import IamEndPointRoleRelationship
 from intersight.model.iam_end_point_user import IamEndPointUser
 from intersight.model.iam_end_point_user_relationship import IamEndPointUserRelationship
-from intersight.api import iam_api
+from intersight.api import iam_api, organization_api
 import intersight
 
 from pprint import pprint
@@ -25,9 +25,18 @@ api_instance = iam_api.IamApi(api_client)
 
 def create_organization():
     # Creating an instance of organization using its moid, under which policy should be created
+    api_instance = organization_api.OrganizationApi(api_client)
+    organization_name = 'default'
+    odata = {"filter":f"Name eq {organization_name}"}
+    organizations = api_instance.get_organization_organization_list(**odata)
+    if organizations.results and len(organizations.results) > 0:
+        moid = organizations.results[0].moid
+    else:
+        print("No organization was found with given name")
+        sys.exit(1)
     return OrganizationOrganizationRelationship(class_id="mo.MoRef",
                                                 object_type="organization.Organization",
-                                                moid="moid_of_organization")
+                                                moid=moid)
 
 
 def create_end_point_user_policy():
