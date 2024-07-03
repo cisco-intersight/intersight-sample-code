@@ -31,16 +31,6 @@ def create_organization():
     return OrganizationOrganizationRelationship(class_id="mo.MoRef",
                                                 object_type="organization.Organization",
                                                 moid=moid)
-    odata = {"filter":f"Name eq {organization_name}"}
-    organizations = api_instance.get_organization_organization_list(**odata)
-    if organizations.results and len(organizations.results) > 0:
-        moid = organizations.results[0].moid
-    else:
-        print("No organization was found with given name")
-        sys.exit(1)
-    return OrganizationOrganizationRelationship(class_id="mo.MoRef",
-                                                object_type="organization.Organization",
-                                                moid=moid)
 
 
 def create_mac_pool():
