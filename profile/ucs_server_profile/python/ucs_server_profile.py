@@ -25,10 +25,9 @@ api_key_file = "~/api_key_file_path"
 api_client = client.get_api_client(api_key, api_key_file)
 
 
-def create_organization():
-    # Creating an instance of organization using its moid, under which policy should be created
+def get_organization(organization_name = 'default'):
+    # Get the organization and return OrganizationRelationship
     api_instance = organization_api.OrganizationApi(api_client)
-    organization_name = 'default'
     odata = {"filter":f"Name eq {organization_name}"}
     organizations = api_instance.get_organization_organization_list(**odata)
     if organizations.results and len(organizations.results) > 0:
@@ -51,7 +50,7 @@ def create_server_profile():
     api_instance = server_api.ServerApi(api_client)
 
     # Create an instance of organization.
-    organization = create_organization()
+    organization = get_organization()
 
     # ServerProfile | The 'server.Profile' resource to create.
     server_profile = ServerProfile()
@@ -77,7 +76,7 @@ def create_ntp_policy():
     api_instance = ntp_api.NtpApi(api_client)
 
     # Create an instance of organization.
-    organization = create_organization()
+    organization = get_organization()
 
     # NtpPolicy | The 'ntp.Policy' resource to create.
     ntp_policy = NtpPolicy()
@@ -107,7 +106,7 @@ def create_smtp_policy():
     api_instance = smtp_api.SmtpApi(api_client)
 
     # Create an instance of organization.
-    organization = create_organization()
+    organization = get_organization()
 
     # SmtpPolicy | The 'smtp.Policy' resource to create.
     smtp_policy = SmtpPolicy()
@@ -137,7 +136,7 @@ def create_snmp_policy():
     api_instance = snmp_api.SnmpApi(api_client)
 
     # Create an instance of organization.
-    organization = create_organization()
+    organization = get_organization()
 
     # SmtpPolicy | The 'smtp.Policy' resource to create.
     snmp_policy = SnmpPolicy()

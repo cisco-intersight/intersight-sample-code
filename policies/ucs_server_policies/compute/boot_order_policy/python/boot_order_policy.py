@@ -22,10 +22,9 @@ api_key_file = "~/api_key_file_path"
 api_client = client.get_api_client(api_key, api_key_file)
 
 
-def create_organization():
-    # Creating an instance of organization using its moid, under which policy should be created
+def get_organization(organization_name = 'default'):
+    # Get the organization and return OrganizationRelationship
     api_instance = organization_api.OrganizationApi(api_client)
-    organization_name = 'default'
     odata = {"filter":f"Name eq {organization_name}"}
     organizations = api_instance.get_organization_organization_list(**odata)
     if organizations.results and len(organizations.results) > 0:
@@ -123,7 +122,7 @@ def create_boot_precision_policy():
     boot_uefi = create_boot_uefi()
     boot_pxe = create_boot_pxe()
     boot_san = create_boot_san()
-    organization = create_organization()
+    organization = get_organization()
     boot_devices = [
         boot_local_disk,
         boot_local_cdd,

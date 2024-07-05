@@ -21,10 +21,9 @@ api_key_file = "~/api_key_file_path"
 api_client = client.get_api_client(api_key, api_key_file)
 
 
-def create_organization():
-    # Creating an instance of organization using its moid, under which policy should be created
+def get_organization(organization_name = 'default'):
+    # Get the organization and return OrganizationRelationship
     api_instance = organization_api.OrganizationApi(api_client)
-    organization_name = 'default'
     odata = {"filter":f"Name eq {organization_name}"}
     organizations = api_instance.get_organization_organization_list(**odata)
     if organizations.results and len(organizations.results) > 0:
@@ -46,7 +45,7 @@ def create_ippool_pool():
     api_instance = ippool_api.IppoolApi(api_client)
 
     # Create an instance of organization, ipv4 block and ipv4 configuration.
-    organization = create_organization()
+    organization = get_organization()
     ipv4_block = IppoolIpV4Block(class_id="ippool.IpV4Block",
                                  _from="192.168.0.2",
                                  size=32)
@@ -92,7 +91,7 @@ def create_access_policy(ippool_pool_moid):
     api_instance = access_api.AccessApi(api_client)
 
     # Create an instance of organization.
-    organization = create_organization()
+    organization = get_organization()
 
     # Create an instance of AccessAddressType
     address_type = create_address_type()

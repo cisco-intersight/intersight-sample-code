@@ -12,10 +12,9 @@ api_key_file = "~/api_key_file_path"
 api_client = client.get_api_client(api_key, api_key_file)
 
 
-def create_organization():
-    # Creating an instance of organization using its moid, under which policy should be created
+def get_organization(organization_name = 'default'):
+    # Get the organization and return OrganizationRelationship
     api_instance = organization_api.OrganizationApi(api_client)
-    organization_name = 'default'
     odata = {"filter":f"Name eq {organization_name}"}
     organizations = api_instance.get_organization_organization_list(**odata)
     if organizations.results and len(organizations.results) > 0:
@@ -31,7 +30,7 @@ def create_ntp_policy():
     # Create an instance of the API class.
     api_instance = ntp_api.NtpApi(api_client)
     # Create an instance of organization.
-    organization = create_organization()
+    organization = get_organization()
     # NtpPolicy | The 'Ntp.Policy' resource to create.
     ntp_pol = NtpPolicy(name="sample_ntp_policy",
                         ntp_servers=["1.1.1.1"],

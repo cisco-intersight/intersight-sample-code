@@ -23,10 +23,9 @@ api_client = client.get_api_client(api_key, api_key_file)
 # Create an instance of the API class.
 api_instance = iam_api.IamApi(api_client)
 
-def create_organization():
-    # Creating an instance of organization using its moid, under which policy should be created
+def get_organization(organization_name = 'default'):
+    # Get the organization and return OrganizationRelationship
     api_instance = organization_api.OrganizationApi(api_client)
-    organization_name = 'default'
     odata = {"filter":f"Name eq {organization_name}"}
     organizations = api_instance.get_organization_organization_list(**odata)
     if organizations.results and len(organizations.results) > 0:
@@ -43,7 +42,7 @@ def create_end_point_user_policy():
     
 
     # Create an instance of organization and password policy.
-    organization = create_organization()
+    organization = get_organization()
     password_property = IamEndPointPasswordProperties(class_id="iam.EndPointPasswordProperties",
                                                     password_history=5,
                                                     enable_password_expiry=False,
@@ -73,7 +72,7 @@ def create_iam_endpoint_role_ref():
 
 def create_endpoint_user():
    # Create an instance of organization.
-    organization = create_organization() 
+    organization = get_organization() 
     endpoint_user = IamEndPointUser(name="guest",
                                     organization=organization)
     api_response = api_instance.create_iam_end_point_user(endpoint_user)

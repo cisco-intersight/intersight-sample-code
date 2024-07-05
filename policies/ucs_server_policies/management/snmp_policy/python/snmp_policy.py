@@ -17,10 +17,9 @@ api_key_file = "~/api_key_file_path"
 api_client = client.get_api_client(api_key, api_key_file)
 
 
-def create_organization():
-    # Creating an instance of organization using its moid, under which policy should be created
+def get_organization(organization_name = 'default'):
+    # Get the organization and return OrganizationRelationship
     api_instance = organization_api.OrganizationApi(api_client)
-    organization_name = 'default'
     odata = {"filter":f"Name eq {organization_name}"}
     organizations = api_instance.get_organization_organization_list(**odata)
     if organizations.results and len(organizations.results) > 0:
@@ -37,7 +36,7 @@ def create_snmp_policy():
     api_instance = snmp_api.SnmpApi(api_client)
 
     # Create an instance of organization and snmp user.
-    organization = create_organization()
+    organization = get_organization()
     snmp_user = SnmpUser(class_id="snmp.User",
                          object_type="snmp.User",
                          auth_type="SHA",

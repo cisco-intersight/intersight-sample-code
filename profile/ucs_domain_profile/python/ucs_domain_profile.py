@@ -19,10 +19,9 @@ api_client = client.get_api_client(api_key, api_key_file)
 # Create an instance of the API class.
 api_instance = fabric_api.FabricApi(api_client)
 												
-def create_organization():
-    # Creating an instance of organization using its moid, under which policy should be created
+def get_organization(organization_name = 'default'):
+    # Get the organization and return OrganizationRelationship
     api_instance = organization_api.OrganizationApi(api_client)
-    organization_name = 'default'
     odata = {"filter":f"Name eq {organization_name}"}
     organizations = api_instance.get_organization_organization_list(**odata)
     if organizations.results and len(organizations.results) > 0:
@@ -38,7 +37,7 @@ def create_power_policy():
     # Create an instance of the API class.
     api_instance = power_api.PowerApi(api_client)
     # Create an instance of organization.
-    organization = create_organization()
+    organization = get_organization()
     power_policy = PowerPolicy(name="sample_power_policy",organization=organization)
     api_response = api_instance.create_power_policy(power_policy)
     return  PolicyAbstractPolicyRelationship(class_id="mo.MoRef",
@@ -48,7 +47,7 @@ def create_snmp_policy():
     # Create an instance of the API class.
     api_instance = snmp_api.SnmpApi(api_client)
     # Create an instance of organization.
-    organization = create_organization()
+    organization = get_organization()
     snmp_policy = SnmpPolicy(name="sample_snmp_policy",organization=organization)
     api_response = api_instance.create_snmp_policy(snmp_policy)
     return  PolicyAbstractPolicyRelationship(class_id="mo.MoRef",
@@ -58,7 +57,7 @@ def create_thermal_policy():
     # Create an instance of the API class.
     api_instance = thermal_api.ThermalApi(api_client)
     # Create an instance of organization.
-    organization = create_organization()
+    organization = get_organization()
     thermal_policy = ThermalPolicy(name="sample_thermal_policy", organization=organization)
     api_response = api_instance.create_thermal_policy(thermal_policy)
     return  PolicyAbstractPolicyRelationship(class_id="mo.MoRef",
@@ -75,7 +74,7 @@ def get_policy_bucket():
 
 def create_fabric_switch_cluster_profile():
     # Create an instance of organization.
-    organization = create_organization()
+    organization = get_organization()
     fabric_switch_cluster_profile = FabricSwitchClusterProfile(name="sample_switch_cluster_profile",
                                                                organization=organization)
     cluster_profile = api_instance.create_fabric_switch_cluster_profile(fabric_switch_cluster_profile)
@@ -83,7 +82,7 @@ def create_fabric_switch_cluster_profile():
 
 def create_policy_reference(cluster_profile):
     # Create an instance of organization.
-    organization = create_organization()
+    organization = get_organization()
     profile_ref = FabricSwitchClusterProfileRelationship(moid=cluster_profile.moid,
                                                          object_type="fabric.SwitchClusterProfile",
                                                          class_id="mo.MoRef",
