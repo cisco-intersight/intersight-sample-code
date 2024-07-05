@@ -2,7 +2,7 @@ from authentication.python import intersight_authentication as client
 
 from intersight.model.organization_organization_relationship import OrganizationOrganizationRelationship
 from intersight.model.kvm_policy import KvmPolicy
-from intersight.api import kvm_api
+from intersight.api import kvm_api, organization_api
 import intersight
 
 from pprint import pprint
@@ -15,17 +15,25 @@ api_key_file = "~/api_key_file_path"
 api_client = client.get_api_client(api_key, api_key_file)
 
 
-def create_organization():
-    # Creating an instance of organization
+def get_organization(organization_name = 'default'):
+    # Get the organization and return OrganizationRelationship
+    api_instance = organization_api.OrganizationApi(api_client)
+    odata = {"filter":f"Name eq {organization_name}"}
+    organizations = api_instance.get_organization_organization_list(**odata)
+    if organizations.results and len(organizations.results) > 0:
+        moid = organizations.results[0].moid
+    else:
+        print("No organization was found with given name")
+        sys.exit(1)
     return OrganizationOrganizationRelationship(class_id="mo.MoRef",
-                                                object_type="organization.Organization")
-
+                                                object_type="organization.Organization",
+                                                moid=moid)
 
 def create_kvm_policy():
     api_instance = kvm_api.KvmApi(api_client)
 
     # Create an instance of organization.
-    organization = create_organization()
+    organization = get_organization()
 
     # KvmPolicy | The 'kvm.Policy' resource to create.
     kvm_policy = KvmPolicy()
@@ -37,6 +45,8 @@ def create_kvm_policy():
     kvm_policy.maximum_sessions = 3
     kvm_policy.remote_port = 33333
     kvm_policy.enabled = True
+    kvm_policy.enable_video_encryption = True
+    kvm_policy.enable_local_server_video = True
 
     # Example passing only required values which don't have defaults set
     try:

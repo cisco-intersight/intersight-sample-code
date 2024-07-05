@@ -6,7 +6,7 @@ from intersight.model.fabric_multicast_policy import FabricMulticastPolicy
 from intersight.model.fabric_eth_network_policy_relationship import FabricEthNetworkPolicyRelationship
 from intersight.model.fabric_multicast_policy_relationship import FabricMulticastPolicyRelationship
 from intersight.model.fabric_vlan import FabricVlan
-from intersight.api import fabric_api
+from intersight.api import fabric_api, organization_api
 import intersight
 
 from pprint import pprint
@@ -19,10 +19,19 @@ api_key_file = "~/api_key_file_path"
 api_client = client.get_api_client(api_key, api_key_file)
 
 
-def create_organization():
-    # Creating an instance of organization
+def get_organization(organization_name = 'default'):
+    # Get the organization and return OrganizationRelationship
+    api_instance = organization_api.OrganizationApi(api_client)
+    odata = {"filter":f"Name eq {organization_name}"}
+    organizations = api_instance.get_organization_organization_list(**odata)
+    if organizations.results and len(organizations.results) > 0:
+        moid = organizations.results[0].moid
+    else:
+        print("No organization was found with given name")
+        sys.exit(1)
     return OrganizationOrganizationRelationship(class_id="mo.MoRef",
-                                                object_type="organization.Organization")
+                                                object_type="organization.Organization",
+                                                moid=moid)
 
 
 def create_network_policy_reference(network_policy_moid):
@@ -41,7 +50,7 @@ def create_network_policy():
     api_instance = fabric_api.FabricApi(api_client)
 
     # Create an instance of organization.
-    organization = create_organization()
+    organization = get_organization()
 
     # FabricEthNetworkPolicy | The 'fabric.EthNetworkPolicy' resource to create.
     network_policy = FabricEthNetworkPolicy()
@@ -66,7 +75,7 @@ def create_multicast_policy():
     api_instance = fabric_api.FabricApi(api_client)
 
     # Create an instance of organization.
-    organization = create_organization()
+    organization = get_organization()
 
     # FabricMulticastPolicy | The 'fabric.MulticastPolicy' resource to create.
     multicast_policy = FabricMulticastPolicy()
@@ -95,7 +104,7 @@ def create_vlan(network_policy_moid, multicast_policy_moid):
     api_instance = fabric_api.FabricApi(api_client)
 
     # Create an instance of organization.
-    organization = create_organization()
+    organization = get_organization()
 
     # FabricVlan | The 'fabric.Vlan' resource to create.
     vlan = FabricVlan()
@@ -105,6 +114,9 @@ def create_vlan(network_policy_moid, multicast_policy_moid):
     vlan.vlan_id = 2222
     vlan.eth_network_policy = create_network_policy_reference(network_policy_moid)
     vlan.multicast_policy = create_multicast_policy_reference(multicast_policy_moid)
+    vlan.auto_allow_on_uplinks = False
+    vlan.is_native = False
+    vlan.vlan_id = 23
 
     try:
         # Create a 'fabric.Vlan' resource.

@@ -4,7 +4,7 @@ from intersight.model.organization_organization_relationship import Organization
 from intersight.model.fabric_fc_network_policy import FabricFcNetworkPolicy
 from intersight.model.fabric_fc_network_policy_relationship import FabricFcNetworkPolicyRelationship
 from intersight.model.fabric_vsan import FabricVsan
-from intersight.api import fabric_api
+from intersight.api import fabric_api, organization_api
 import intersight
 
 from pprint import pprint
@@ -17,10 +17,19 @@ api_key_file = "~/api_key_file_path"
 api_client = client.get_api_client(api_key, api_key_file)
 
 
-def create_organization():
-    # Creating an instance of organization
+def get_organization(organization_name = 'default'):
+    # Get the organization and return OrganizationRelationship
+    api_instance = organization_api.OrganizationApi(api_client)
+    odata = {"filter":f"Name eq {organization_name}"}
+    organizations = api_instance.get_organization_organization_list(**odata)
+    if organizations.results and len(organizations.results) > 0:
+        moid = organizations.results[0].moid
+    else:
+        print("No organization was found with given name")
+        sys.exit(1)
     return OrganizationOrganizationRelationship(class_id="mo.MoRef",
-                                                object_type="organization.Organization")
+                                                object_type="organization.Organization",
+                                                moid=moid)
 
 def create_vsan_policy_reference(vsan_policy_moid):
     return FabricFcNetworkPolicyRelationship(class_id="mo.MoRef",
@@ -31,7 +40,7 @@ def create_vsan_policy():
     api_instance = fabric_api.FabricApi(api_client)
 
     # Create an instance of organization.
-    organization = create_organization()
+    organization = get_organization()
 
     # FabricFcNetworkPolicy | The 'fabric.FcNetworkPolicy' resource to create.
     vsan_policy = FabricFcNetworkPolicy()

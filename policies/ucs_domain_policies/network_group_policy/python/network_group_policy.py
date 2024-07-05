@@ -3,7 +3,7 @@ from authentication.python import intersight_authentication as client
 from intersight.model.organization_organization_relationship import OrganizationOrganizationRelationship
 from intersight.model.fabric_eth_network_group_policy import FabricEthNetworkGroupPolicy
 from intersight.model.fabric_vlan_settings import FabricVlanSettings
-from intersight.api import fabric_api
+from intersight.api import fabric_api, organization_api
 import intersight
 
 from pprint import pprint
@@ -16,17 +16,26 @@ api_key_file = "~/api_key_file_path"
 api_client = client.get_api_client(api_key, api_key_file)
 
 
-def create_organization():
-    # Creating an instance of organization
+def get_organization(organization_name = 'default'):
+    # Get the organization and return OrganizationRelationship
+    api_instance = organization_api.OrganizationApi(api_client)
+    odata = {"filter":f"Name eq {organization_name}"}
+    organizations = api_instance.get_organization_organization_list(**odata)
+    if organizations.results and len(organizations.results) > 0:
+        moid = organizations.results[0].moid
+    else:
+        print("No organization was found with given name")
+        sys.exit(1)
     return OrganizationOrganizationRelationship(class_id="mo.MoRef",
-                                                object_type="organization.Organization")
+                                                object_type="organization.Organization",
+                                                moid=moid)
 
 
 def create_eth_network_group_policy():
     api_instance = fabric_api.FabricApi(api_client)
 
     # Create an instance of organization and vlan settings.
-    organization = create_organization()
+    organization = get_organization()
     vlan_settings = FabricVlanSettings(allowed_vlans="313,314,1000",
                                        native_vlan=1)
 
