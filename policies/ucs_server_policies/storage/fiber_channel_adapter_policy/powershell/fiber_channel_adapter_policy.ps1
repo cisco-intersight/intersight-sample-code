@@ -8,8 +8,8 @@ $config = @{
 # Set intersight configuration    
 Set-IntersightConfiguration @config
 
-# get the Organization Ref.
-$orgRef = Get-IntersightOrganizationOrganization -Name default | Get-IntersightMoMoRef
+# get the Organization.
+$org = Get-IntersightOrganizationOrganization -Name default 
 
 $errorRecoverySetting = Initialize-IntersightVnicFcErrorRecoverySettings -Enabled $true -IoRetryCount 8 `
                         -IoRetryTimeout 5 -LinkDownTimeout 3000 -PortDownTimeout 5000
@@ -26,7 +26,7 @@ $scsiQueueSettings = Initialize-IntersightVnicScsiQueueSettings -Count 1 -RingSi
 
 $txQueueSettings = Initialize-IntersightVnicFcQueueSettings -RingSize 64
 
-$result = New-IntersightVnicFcAdapterPolicy -Name "fiber-channel-adapter-policy-1" -Organization $orgRef `
+$result = New-IntersightVnicFcAdapterPolicy -Name "fiber-channel-adapter-policy-1" -Organization $org `
             -ErrorDetectionTimeout 2000 -ErrorRecoverySettings $errorRecoverySetting -FlogiSettings $flogiSetting `
             -InterruptSettings $interruptSetting -IoThrottleCount 512 -LunCount 1024 -LunQueueDepth 20 `
             -PlogiSettings $plogiSettings -ResourceAllocationTimeout 10000 -RxQueueSettings $rxQueueSettings `

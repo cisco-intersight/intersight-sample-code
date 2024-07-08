@@ -8,13 +8,13 @@ $config = @{
 # Set intersight configuration    
 Set-IntersightConfiguration @config
 
-# get the Organization Ref.
-$orgRef = Get-IntersightOrganizationOrganization -Name default | Get-IntersightMoMoRef
+# get the Organization.
+$org = Get-IntersightOrganizationOrganization -Name default 
 
 # get the VnicEthIf ref object.
-$ethIfRef1 = Get-IntersightVnicEthIf -Name "eth0" | Get-IntersightMoMoRef
+$ethIfRef1 = Get-IntersightVnicEthIf -Name "eth0" 
 
-$ethIfRef2 = Get-IntersightVnicEthIf -Name "eth1" | Get-IntersightMoMoRef
+$ethIfRef2 = Get-IntersightVnicEthIf -Name "eth1" 
 
 $result = New-IntersightVnicLanConnectivityPolicy -Name "lan_connectivity_policy_1" -IqnAllocationType None -PlacementMode Custom -TargetPlatform Standalone `
-        -Organization $orgRef -AzureQosEnabled $false -EthIfs @($ethIfRef1,$ethIfRef2)
+        -Organization $org -AzureQosEnabled $false -EthIfs @($ethIfRef1,$ethIfRef2)

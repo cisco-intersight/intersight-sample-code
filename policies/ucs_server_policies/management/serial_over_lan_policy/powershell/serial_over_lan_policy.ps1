@@ -10,8 +10,7 @@ Set-IntersightConfiguration @config
 
 # get the existing default org. One can create new Organization using New-IntersightOrganizationOrganization cmdlets.
 $org = Get-IntersightOrganizationOrganization -Name default 
-$orgRef = $org | Get-IntersightMoMoRef
 
 # create a SOL policy.
 $solPolicy = New-IntersightSolPolicy -Name "sample_sol_policy" -BaudRate NUMBER_19200 -ComPort Com0 -Enabled $true `
-            -SshPort 2120 -Organization $orgRef
+            -SshPort 2120 -Organization $org

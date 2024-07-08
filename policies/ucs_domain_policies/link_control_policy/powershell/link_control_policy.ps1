@@ -8,11 +8,11 @@ $config = @{
 # set intersight configuration    
 Set-IntersightConfiguration @config
 
-# get the Organization Ref.
-$orgRef = Get-IntersightOrganizationOrganization -Name default | Get-IntersightMoMoRef
+# get the Organization.
+$org = Get-IntersightOrganizationOrganization -Name default 
 
 # Initialize the fabric udld setting
 $fabricUdldSetting = Initialize-IntersightFabricUdldSettings -AdminState Enabled -Mode Normal
 
 $result = New-IntersightFabricLinkControlPolicy -Name "fabric_link_policy" -Description "fabric link control" `
-          -UdldSettings $fabricUdldSetting -Organization $orgRef
+          -UdldSettings $fabricUdldSetting -Organization $org

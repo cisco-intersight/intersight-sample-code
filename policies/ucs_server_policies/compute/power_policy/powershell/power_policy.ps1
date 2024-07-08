@@ -11,10 +11,7 @@ Set-IntersightConfiguration @config
 # get the existing default org. One can create new Organization using New-IntersightOrganizationOrganization cmdlets.
 $org = Get-IntersightOrganizationOrganization -Name default 
 
-# get the organizationRef
-$orgRef = $org | Get-IntersightMoMoRef
-
 # create a power policy
 $result = New-IntersightPowerPolicy -Name "power_policy_1" -DynamicRebalancing Disabled -ExtendedPowerCapacity Enabled `
           -PowerPriority Low -PowerProfiling Enabled -PowerRestoreState AlwaysOff -PowerSaveMode Enabled `
-          -RedundancyMode Grid -Organization $orgRef
+          -RedundancyMode Grid -Organization $org

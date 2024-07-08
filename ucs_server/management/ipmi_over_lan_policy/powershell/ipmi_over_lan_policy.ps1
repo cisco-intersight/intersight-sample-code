@@ -9,10 +9,7 @@ $config = @{
 Set-IntersightConfiguration @config
 
 # get the existing default org. One can create new Organization using New-IntersightOrganizationOrganization cmdlets.
-$org = Get-IntersightOrganizationOrganization -Name default | Get-IntersightMoMoRef
-
-# get organizationRef
-$orgRef = $org | Get-IntersightMoMoRef
+$org = Get-IntersightOrganizationOrganization -Name default 
 
 # create a IPMI over LAN policy
-$result = New-IntersightIpmioverlanPolicy -Name "ipmi_over_lan_1" -Enabled $true -Privilege Admin -Organization $orgRef -EncryptionKey "FFFFAAAA99990006752896ABCDED"
+$result = New-IntersightIpmioverlanPolicy -Name "ipmi_over_lan_1" -Enabled $true -Privilege Admin -Organization $org -EncryptionKey "FFFFAAAA99990006752896ABCDED"

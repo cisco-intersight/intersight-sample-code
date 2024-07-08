@@ -9,10 +9,10 @@ $config = @{
 Set-IntersightConfiguration @config
 
 # ger organization MoRef
-$orgRef = Get-IntersightOrganizationOrganization -Name default | Get-IntersightMoMoRef
+$org = Get-IntersightOrganizationOrganization -Name default 
 
 #initialize MAC pool bock
 $macPoolBlock = Initialize-IntersightMacpoolBlock -From "00:25:B5:00:00:01" -Size 10
 
 #create MAC pool
-$result = New-IntersightMacpoolPool -Name "MAC_pool_1" -AssignmentOrder Sequential -MacBlocks $macPoolBlock -Organization $orgRef
+$result = New-IntersightMacpoolPool -Name "MAC_pool_1" -AssignmentOrder Sequential -MacBlocks $macPoolBlock -Organization $org

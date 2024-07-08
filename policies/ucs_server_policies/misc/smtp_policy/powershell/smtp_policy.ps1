@@ -8,9 +8,9 @@ $config = @{
 # Set intersight configuration    
 Set-IntersightConfiguration @config
 
-# get the Organization Ref.
-$orgRef = Get-IntersightOrganizationOrganization -Name default | Get-IntersightMoMoRef
+# get the Organization.
+$org = Get-IntersightOrganizationOrganization -Name default 
 
 # create a smtp policy
 $smtpPolicy = New-IntersightSmtpPolicy -Name "smtp_policy_1" -MinSeverity Critical -Enabled $true -SmtpPort 25 `
-             -SmtpServer "22.22.22.22" -SmtpRecipients @("xyz@test.com") -Organization $orgRef
+             -SmtpServer "22.22.22.22" -SmtpRecipients @("xyz@test.com") -Organization $org

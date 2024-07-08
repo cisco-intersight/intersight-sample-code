@@ -12,24 +12,18 @@ Set-IntersightConfiguration @config
 # get the existing default org. One can create new Organization using New-IntersightOrganizationOrganization cmdlets.
 $org = Get-IntersightOrganizationOrganization -Name default 
 
-# get organizationRef
-$orgRef = $org | Get-IntersightMoMoRef
-
 # create a user name guest.
-$user = New-IntersightIamEndPointUser -Name guest -Organization $orgRef
-$userRef = $user | Get-IntersightMoMoRef
+$user = New-IntersightIamEndPointUser -Name guest -Organization $org
 
 # initialize password properties to create policy and assign  the policy to User Policy
 $passwordProperty = Initialize-IntersightIamEndPointPasswordProperties -PasswordHistory 5 -EnforceStrongPassword $true -ForceSendPassword $true `
                     -GracePeriod 2 -NotificationPeriod 1
 # create a user policy
-$userPolicy = New-IntersightIamEndPointUserPolicy -Name "user_policy_1" -PasswordProperties $passwordProperty -Organization $orgRef 
-
-$userPolicyRef = $userPolicy| Get-IntersightMoMoRef
+$userPolicy = New-IntersightIamEndPointUserPolicy -Name "user_policy_1" -PasswordProperties $passwordProperty -Organization $org 
 
 # get admin role ref which will be assigned to above created user
-$adminRoleRef = Get-IntersightIamEndPointRole -Name "admin" | Get-IntersightMoMoRef
+$adminRole = Get-IntersightIamEndPointRole -Name "admin" 
 
-# create endpoint userRole and get the MoRef of it
-$endPointUserRoleRef = New-IntersightIamEndPointUserRole -Enabled $true -EndPointRole $adminRoleRef -Password "admin@1234" `
-                       -EndPointUser $userRef  -EndPointUserPolicy $userPolicyRef | Get-IntersightMoMoRef
+# create endpoint userRole
+$endPointUserRole = New-IntersightIamEndPointUserRole -Enabled $true -EndPointRole $adminRole -Password "admin@1234" `
+                       -EndPointUser $user  -EndPointUserPolicy $userPolicy 

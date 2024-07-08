@@ -8,8 +8,8 @@ $config = @{
 # Set intersight configuration    
 Set-IntersightConfiguration @config
 
-# get the Organization Ref.
-$orgRef = Get-IntersightOrganizationOrganization -Name default | Get-IntersightMoMoRef
+# get the Organization.
+$org = Get-IntersightOrganizationOrganization -Name default 
 
 #initialize ldap base properties
 $baseProperty = Initialize-IntersightIamLdapBaseProperties -Attribute "CiscoAvPair" -BaseDn "DC=new,DC=com" -BindMethod Anonymous `
@@ -21,13 +21,11 @@ $dnsParameter = Initialize-IntersightIamLdapDnsParameters -Source Extracted
 
 # create a ldap policy
 $ldapPolicy = New-IntersightIamLdapPolicy -Name "ldap_policy_1" -BaseProperties $baseProperty -DnsParameters $dnsParameter `
-          -Enabled $true -Organization $orgRef
-
-$ldapPolicyRef = $ldapPolicy | Get-IntersightMoMoRef
+          -Enabled $true -Organization $org
 
 # add provider to ldap policy
-$ldapProviderRef = New-IntersightIamLdapProvider -Port 389 -Server "ldap.xyz.com" -LdapPolicy $ldapPolicyRef  | Get-IntersightMoMoRef
+$ldapProvider = New-IntersightIamLdapProvider -Port 389 -Server "ldap.xyz.com" -LdapPolicy $ldapPolicy  
 
 # add policy to ldap group
-$endPointRoleRef = Get-IntersightIamEndPointRole -Name admin | Get-IntersightMoMoRef
-$ldapGroup = New-IntersightIamLdapGroup -Domain "xyz.com" -Name "ldap_group" -LdapPolicy $ldapPolicy -EndPointRole $endPointRoleRef
+$endPointRole = Get-IntersightIamEndPointRole -Name admin 
+$ldapGroup = New-IntersightIamLdapGroup -Domain "xyz.com" -Name "ldap_group" -LdapPolicy $ldapPolicy -EndPointRole $endPointRole

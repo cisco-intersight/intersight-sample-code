@@ -11,9 +11,6 @@ Set-IntersightConfiguration @config
 # get the existing default org. One can create new Organization using New-IntersightOrganizationOrganization cmdlets.
 $org = Get-IntersightOrganizationOrganization -Name default 
 
-# get the organizationRef
-$orgRef = $org | Get-IntersightMoMoRef
-
 # initialize vmedia boot device
 $vmediaBoot = Initialize-IntersightBootVirtualMedia -Enabled $true -Subtype CimcMappedHdd -Name "vMedia" -ClassId BootVirtualMedia -ObjectType BootVirtualMedia
 
@@ -33,4 +30,4 @@ $sanBoot = Initialize-IntersightBootSan -ClassId BootSan -ObjectType BootSan -En
            -Name "secondary" -Wwpn "50:06:01:62:3E:E0:58:36" -Bootloader $bootLoader
 
 # create a boot precision policy with above created boot devices
-$BootPrecisionPolicy = New-IntersightBootPrecisionPolicy -Name "BootPrecision_1" -BootDevices @($vmediaBoot, $usbBoot, $uefiBoot, $pxeBoot,$sanBoot) -Organization $orgRef 
+$BootPrecisionPolicy = New-IntersightBootPrecisionPolicy -Name "BootPrecision_1" -BootDevices @($vmediaBoot, $usbBoot, $uefiBoot, $pxeBoot,$sanBoot) -Organization $org 

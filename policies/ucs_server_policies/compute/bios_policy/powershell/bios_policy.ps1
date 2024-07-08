@@ -11,9 +11,6 @@ Set-IntersightConfiguration @config
 # get the existing default org. One can create new Organization using New-IntersightOrganizationOrganization cmdlets.
 $org = Get-IntersightOrganizationOrganization -Name default 
 
-# get oragnizationRef
-$orgRef = $org | Get-IntersightMoMoRef
-
 # create a bios policy
 $result = New-IntersightBiosPolicy -Name "bios_policy_1" -IntelHyperThreadingTech Enabled -IntelTurboBoostTech Enabled `
-         -EnhancedIntelSpeedStepTech Enabled -HardwarePrefetch Enabled -EnergyEfficientTurbo Disabled  -Organization $orgRef
+         -EnhancedIntelSpeedStepTech Enabled -HardwarePrefetch Enabled -EnergyEfficientTurbo Disabled  -Organization $org

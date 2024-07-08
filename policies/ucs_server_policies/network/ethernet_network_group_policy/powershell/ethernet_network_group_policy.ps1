@@ -8,11 +8,11 @@ $config = @{
 # Set intersight configuration    
 Set-IntersightConfiguration @config
 
-# get the Organization Ref.
-$orgRef = Get-IntersightOrganizationOrganization -Name default | Get-IntersightMoMoRef
+# get the Organization.
+$org = Get-IntersightOrganizationOrganization -Name default 
 
 # initialize vlan settings
 $valnSetting = Initialize-IntersightFabricVlanSettings -AllowedVlans "11,12,13" -NativeVlan 1
 
 # create a ethernet network group policy
-$result = New-IntersightFabricEthNetworkGroupPolicy -Name "fabricEthNetorkPolicy" -VlanSettings $valnSetting -Organization $orgRef
+$result = New-IntersightFabricEthNetworkGroupPolicy -Name "fabricEthNetorkPolicy" -VlanSettings $valnSetting -Organization $org

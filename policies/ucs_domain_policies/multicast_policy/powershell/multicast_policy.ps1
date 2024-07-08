@@ -8,8 +8,8 @@ $config = @{
 # set intersight configuration    
 Set-IntersightConfiguration @config
 
-# get the Organization Ref.
-$orgRef = Get-IntersightOrganizationOrganization -Name default | Get-IntersightMoMoRef
+# get the Organization.
+$org = Get-IntersightOrganizationOrganization -Name default 
 
 $result = New-IntersightFabricMulticastPolicy -Name "fabricMultiCastPolicy" -QuerierState Enabled `
-          -SnoopingState Enabled -QuerierIpAddress "11.11.11.11" -Organization $orgRef
+          -SnoopingState Enabled -QuerierIpAddress "11.11.11.11" -Organization $org

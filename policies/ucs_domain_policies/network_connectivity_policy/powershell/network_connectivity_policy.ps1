@@ -8,10 +8,10 @@ $config = @{
 # set intersight configuration    
 Set-IntersightConfiguration @config
 
-# get the Organization Ref.
-$orgRef = Get-IntersightOrganizationOrganization -Name default | Get-IntersightMoMoRef
+# get the Organization.
+$org = Get-IntersightOrganizationOrganization -Name default 
 
 $result = New-IntersightNetworkconfigPolicy -Name "netwrokConfigPolicy" -Description "test network config policy" `
           -EnableDynamicDns $true -DynamicDnsDomain "xyz.com" -EnableIpv6 $false `
           -AlternateIpv4dnsServer "22.22.22.22" -PreferredIpv4dnsServer "171.70.98.1" `
-          -Organization $orgRef 
+          -Organization $org 

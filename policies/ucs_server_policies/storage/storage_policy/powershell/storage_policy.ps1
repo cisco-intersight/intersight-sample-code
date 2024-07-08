@@ -8,8 +8,8 @@ $config = @{
 # Set intersight configuration    
 Set-IntersightConfiguration @config
 
-# get the Organization Ref.
-$orgRef = Get-IntersightOrganizationOrganization -Name default | Get-IntersightMoMoRef
+# get the Organization.
+$org = Get-IntersightOrganizationOrganization -Name default 
 
 $m2VirtualDrive = Initialize-IntersightStorageM2VirtualDriveConfig -Enable $true -ControllerSlot MSTORRAID1
 
@@ -17,5 +17,5 @@ $virtualDrivePolicy = Initialize-IntersightStorageVirtualDrivePolicy -DriveCache
 
 $raid0Drive = Initialize-IntersightStorageR0Drive -Enable $true -VirtualDrivePolicy $virtualDrivePolicy
 
-$result = New-IntersightStorageStoragePolicy -Name "storage_policy_1" -Organization $orgRef -DefaultDriveMode RAID0 `
+$result = New-IntersightStorageStoragePolicy -Name "storage_policy_1" -Organization $org -DefaultDriveMode RAID0 `
              -M2VirtualDrive $m2VirtualDrive -Raid0Drive $raid0Drive

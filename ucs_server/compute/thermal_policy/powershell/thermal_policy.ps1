@@ -9,7 +9,7 @@ $config = @{
 Set-IntersightConfiguration @config
 
 # get organization MoRef
-$orgRef = Get-IntersightOrganizationOrganization -Name default | Get-IntersightMoMoRef
+$org = Get-IntersightOrganizationOrganization -Name default 
 
 # create thermal policy
-$result = New-IntersightThermalPolicy -Name "thermal_policy_1" -FanControlMode Balanced -Organization $orgRef
+$result = New-IntersightThermalPolicy -Name "thermal_policy_1" -FanControlMode Balanced -Organization $org

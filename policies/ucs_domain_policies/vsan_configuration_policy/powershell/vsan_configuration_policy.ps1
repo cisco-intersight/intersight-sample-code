@@ -8,13 +8,11 @@ $config = @{
 # Set intersight configuration    
 Set-IntersightConfiguration @config
 
-# get the Organization Ref.
-$orgRef = Get-IntersightOrganizationOrganization -Name default | Get-IntersightMoMoRef
+# get the Organization.
+$org = Get-IntersightOrganizationOrganization -Name default
 
 # create a new network policy or get the existing one using Get-IntersightFabricFcNetworkPolicy
-$fcNetworkPolicy = New-IntersightFabricFcNetworkPolicy -Name "fc_network_policy_1" -EnableTrunking $false -Organization $orgRef
+$fcNetworkPolicy = New-IntersightFabricFcNetworkPolicy -Name "fc_network_policy_1" -EnableTrunking $false -Organization $org
 
-$fcNetworkPolicyRef = $fcNetworkPolicy | Get-IntersightMoMoRef
-
-$vsanPolicy = New-IntersightFabricVsan -Name "vsan_110" -DefaultZoning Disabled -VsanScope Uplink -FcoeVlan 1120 -VsanId 110 -FcNetworkPolicy $fcNetworkPolicyRef
+$vsanPolicy = New-IntersightFabricVsan -Name "vsan_110" -DefaultZoning Disabled -VsanScope Uplink -FcoeVlan 1120 -VsanId 110 -FcNetworkPolicy $fcNetworkPolicy
 

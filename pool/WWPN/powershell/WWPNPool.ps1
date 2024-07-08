@@ -9,11 +9,11 @@ $config = @{
 Set-IntersightConfiguration @config
 
 # get organization MoRef
-$orgRef = Get-IntersightOrganizationOrganization -Name default | Get-IntersightMoMoRef
+$org = Get-IntersightOrganizationOrganization -Name default 
 
 # initialize FC pool block
 $fcPoolBlocks = Initialize-IntersightFcpoolBlock -From "20:00:00:25:B5:00:10:00" -Size 100
 
 # create WWPN pool
 $result = New-IntersightFcpoolPool -Name "wwpn_pool_1" -PoolPurpose "WWPN" -IdBlocks @($fcPoolBlocks)`
-          -AssignmentOrder "Default" -Organization $orgRef
+          -AssignmentOrder "Default" -Organization $org

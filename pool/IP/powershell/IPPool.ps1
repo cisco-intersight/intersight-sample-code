@@ -9,7 +9,7 @@ $config = @{
 Set-IntersightConfiguration @config
 
 # get organization ref
-$orgRef = Get-IntersightOrganizationOrganization -Name default | Get-IntersightMoMoRef
+$org = Get-IntersightOrganizationOrganization -Name default 
 
 # initialize IPv4 config
 $ipv4Config = Initialize-IntersightIppoolIpV4Config -Gateway "10.108.190.1" -Netmask "255.255.255.0" -PrimaryDns "10.108.190.100"
@@ -18,4 +18,4 @@ $ipv4Config = Initialize-IntersightIppoolIpV4Config -Gateway "10.108.190.1" -Net
 $IPv4Block = Initialize-IntersightIppoolIpV4Block -From "10.108.190.11" -To "10.108.190.20"
 
 # create IPpool
-$result = New-IntersightIppoolPool -Name IpPool_1 -IpV4Blocks @($IPv4Block) -IpV4Config $ipv4Config -Organization $orgRef
+$result = New-IntersightIppoolPool -Name IpPool_1 -IpV4Blocks @($IPv4Block) -IpV4Config $ipv4Config -Organization $org

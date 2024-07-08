@@ -8,8 +8,8 @@ $config = @{
 # Set intersight configuration    
 Set-IntersightConfiguration @config
 
-# get the Organization Ref.
-$orgRef = Get-IntersightOrganizationOrganization -Name default | Get-IntersightMoMoRef
+# get the Organization.
+$org = Get-IntersightOrganizationOrganization -Name default 
 
 # initialize SNMP trap
 $snmpTrap = Initialize-IntersightSnmpTrap -Community "trapCommString" -Destination "11.11.11.11" -Enabled $true `
@@ -21,5 +21,5 @@ $snmpUser = Initialize-IntersightSnmpUser -AuthType MD5 -Name user1 -PrivacyPass
 
 # create a SNMP policy
 $result = New-IntersightSnmpPolicy -Name "snmp_policy_1" -AccessCommunityString accCommString -CommunityAccess Disabled `
-         -Enabled $true -EngineId "EngineID" -SnmpPort 161 -SysContact "xyz@test.com" -SysLocation "NYK" -Organization $orgRef `
+         -Enabled $true -EngineId "EngineID" -SnmpPort 161 -SysContact "xyz@test.com" -SysLocation "NYK" -Organization $org `
          -SnmpTraps @($snmpTrap) -SnmpUsers @($snmpUser)
