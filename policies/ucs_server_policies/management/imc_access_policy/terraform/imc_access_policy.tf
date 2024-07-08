@@ -6,7 +6,7 @@ provider "intersight" {
 
 resource "intersight_ippool_pool" "ipv4_pool" {
   name = "ipv4_ippool_1"
-  description = "IP pool with IPv4 block and config"
+  description = "ip pool with IPv4 block and config"
   assignment_order = "default"
 
   ip_v4_blocks {

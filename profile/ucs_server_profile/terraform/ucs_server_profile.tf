@@ -15,7 +15,6 @@ resource "intersight_ntp_policy" "ntp_policy" {
     moid        = var.organization
   }
 }
-
 # Create SMTP policy
 resource "intersight_smtp_policy" "smtp_policy" {
   name             = "smtp1"

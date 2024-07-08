@@ -27,5 +27,5 @@ variable "organization" {
 
 variable "profile" {
   type        = string
-  description = "Moid of the server profile"
+  description = "Moid of the server profile."
 }
