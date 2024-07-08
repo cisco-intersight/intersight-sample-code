@@ -8,12 +8,12 @@ $config = @{
     # Set intersight configuration    
 Set-IntersightConfiguration @config
 
-# get the Organization Ref.
-$orgRef = Get-IntersightOrganizationOrganization -Name default | Get-IntersightMoMoRef
+# get the Organization.
+$org = Get-IntersightOrganizationOrganization -Name default 
 
 $macAge = Initialize-IntersightFabricMacAgingSettings -MacAgingOption Default -MacAgingTime 14500
 
 $udldSetting = Initialize-IntersightFabricUdldGlobalSettings -MessageInterval 12 -RecoveryAction None
 
 $result = New-IntersightFabricSwitchControlPolicy -Name "switch_control_policy_1" -EthernetSwitchingMode Switch -FcSwitchingMode Switch `
-        -MacAgingSettings $macAge -UdldSettings $udldSetting -Organization $orgRef
+        -MacAgingSettings $macAge -UdldSettings $udldSetting -Organization $org

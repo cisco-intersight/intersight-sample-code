@@ -8,8 +8,8 @@ $config = @{
 # Set intersight configuration    
 Set-IntersightConfiguration @config
 
-# get the Organization Ref.
-$orgRef = Get-IntersightOrganizationOrganization -Name default | Get-IntersightMoMoRef
+# get the Organization.
+$org = Get-IntersightOrganizationOrganization -Name default 
 
 # initialize vlan settings
 $vlanSetting = Initialize-IntersightVnicVlanSettings -AllowedVlans "21-30" -DefaultVlan 21 -Mode ACCESS
@@ -19,4 +19,4 @@ $lldpSetting = Initialize-IntersightFabricLldpSettings -ReceiveEnabled $true -Tr
 # create a fabric.EthNetworkControlPolicy with above created network setting
 $Result = New-IntersightFabricEthNetworkControlPolicy -Name "eth_network_control_policy_1" -ForgeMac Allow `
          -MacRegistrationMode NativeVlanOnly -CdpEnabled $true -UplinkFailAction LinkDown `
-         -LldpSettings $lldpSetting -Organization $orgRef
+         -LldpSettings $lldpSetting -Organization $org

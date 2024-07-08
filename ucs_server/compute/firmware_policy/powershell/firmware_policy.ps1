@@ -8,11 +8,11 @@ $config = @{
 Set-IntersightConfiguration @config
 
 # get organization MoRef
-$orgRef = Get-IntersightOrganizationOrganization -Name default | Get-IntersightMoMoRef
+$org = Get-IntersightOrganizationOrganization -Name default 
 
 # initialize Model bundle version
 $modelBundleVersion = Initialize-IntersightFirmwareModelBundleVersion -ModelFamily UCSCC220M7 -BundleVersion "4.3(3.240043)"
 
 # create firmware policy
 $result = New-IntersightFirmwarePolicy -Name "firmware_policy_1" -TargetPlatform Standalone -ModelBundleCombo $modelBundleVersion `
-          -Organization $orgRef
+          -Organization $org

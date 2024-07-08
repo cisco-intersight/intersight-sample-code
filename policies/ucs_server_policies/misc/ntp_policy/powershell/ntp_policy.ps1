@@ -9,8 +9,8 @@ $config = @{
 Set-IntersightConfiguration @config
 
 #Get torganization ref if it is exist, or create a new organization using New-IntersightOrganizationOrganization
-$newOrgRef = Get-IntersightOrganizationOrganization -Name default | Get-IntersightMoMoRef
+$org = Get-IntersightOrganizationOrganization -Name default 
 
 $ntpPolicy = New-IntersightNtpPolicy -Name "PSNtp" -Description "ntp policy for PSOrg" `
                                      -NtpServers @("22.22.22.22","77.77.77.77") `
-                                     -Enabled $true -Timezone IndianMauritius -Organization $newOrgRef
+                                     -Enabled $true -Timezone IndianMauritius -Organization $org

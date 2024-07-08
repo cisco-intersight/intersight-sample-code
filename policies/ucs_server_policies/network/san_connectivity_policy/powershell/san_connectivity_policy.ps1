@@ -8,11 +8,11 @@ $config = @{
 # Set intersight configuration    
 Set-IntersightConfiguration @config
 
-# get the Organization Ref.
-$orgRef = Get-IntersightOrganizationOrganization -Name default | Get-IntersightMoMoRef
+# get the Organization.
+$org = Get-IntersightOrganizationOrganization -Name default 
 
 # get the VnicEthIf ref object if it exist otherwise create a new using New-IntersightVnicEthIf.
-$fcIfRef2 = Get-IntersightVnicFcIf -Name "fc1" | Get-IntersightMoMoRef
+$fcIfRef2 = Get-IntersightVnicFcIf -Name "fc1" 
 
 $result = New-IntersightVnicSanConnectivityPolicy -Name "san_connectivity_policy_1" -PlacementMode Custom -TargetPlatform Standalone `
-        -Organization $orgRef -WwnnAddressType POOL 
+        -Organization $org -WwnnAddressType POOL 

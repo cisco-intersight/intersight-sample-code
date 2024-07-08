@@ -8,8 +8,8 @@ $config = @{
 # Set intersight configuration    
 Set-IntersightConfiguration @config
 
-# get the Organization Ref.
-$orgRef = Get-IntersightOrganizationOrganization -Name default | Get-IntersightMoMoRef
+# get the Organization.
+$org = Get-IntersightOrganizationOrganization -Name default 
 
 $chap = Initialize-IntersightVnicIscsiAuthProfile -Password "test@11234567" -UserId test
 
@@ -19,15 +19,15 @@ $mutualChap = Initialize-IntersightVnicIscsiAuthProfile -Password "test@1234567"
 
 # create a vnic iscsi adapter policy
 $iscsiAdapterPolicyRef = New-IntersightVnicIscsiAdapterPolicy -Name "iscsi_adapter_policy_1" -DhcpTimeout 300 -LunBusyRetryCount 25 `
-                         -ConnectionTimeOut 150 -Organization $orgRef | Get-IntersightMoMoRef
+                         -ConnectionTimeOut 150 -Organization $org 
 
 #initialize vnic lun
 $lunSetting = Initialize-IntersightVnicLun -Bootable $true -LunId 0
 
 # create primary target policy and get the ref of it
-$primaryTargetPOlicyRef = New-IntersightVnicIscsiStaticTargetPolicy -Name "primary_target_1" -IpAddress "10.193.250.251" `
-                          -Port 3232 -TargetName "iqn.2020-12.com.abc:001"  -Organization $orgRef| Get-IntersightMoMoRef
+$primaryTargetPOlicy = New-IntersightVnicIscsiStaticTargetPolicy -Name "primary_target_1" -IpAddress "10.193.250.251" `
+                          -Port 3232 -TargetName "iqn.2020-12.com.abc:001"  -Organization $org
 
-$result =  New-IntersightVnicIscsiBootPolicy -Name "iscsi_boot_policy_1" -Organization $orgRef -InitiatorIpSource Static -TargetSourceType Static `
+$result =  New-IntersightVnicIscsiBootPolicy -Name "iscsi_boot_policy_1" -Organization $org -InitiatorIpSource Static -TargetSourceType Static `
             -Chap $chap -InitiatorStaticIpV4Address "172.16.2.19" -InitiatorStaticIpV4Config $initiatorStaticIpV4Config `
-            -IscsiAdapterPolicy $iscsiAdapterPolicyRef -PrimaryTargetPolicy $primaryTargetPolicyRef -MutualChap $mutualChap
+            -IscsiAdapterPolicy $iscsiAdapterPolicyRef -PrimaryTargetPolicy $primaryTargetPolicy -MutualChap $mutualChap

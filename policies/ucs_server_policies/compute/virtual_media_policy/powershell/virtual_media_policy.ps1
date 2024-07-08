@@ -11,11 +11,8 @@ Set-IntersightConfiguration @config
 # get the existing default org. One can create new Organization using New-IntersightOrganizationOrganization cmdlets.
 $org = Get-IntersightOrganizationOrganization -Name default 
 
-# get the organizationRef 
-$orgRef = $org | Get-IntersightMoMoRef
-
 # initialize vmedia mapping 
 $vmediaMapping = Initialize-IntersightVmediaMapping -AuthenticationProtocol None -DeviceType Cdd -FileLocation "nfs://10.193.167.6/exports/vms/ucs-c240m5-huu-3.1.3h.iso"`
                 -HostName "12.11.11.13" -MountProtocol Nfs  -VolumeName v0
 # create a new vmedia policy by passing the above created vmedia mapping
-$result = New-IntersightVmediaPolicy -Name "vmedia_policy_1" -Enabled $true -Encryption $true -Mappings @($vmediaMapping) -LowPowerUsb $true -Organization $orgRef
+$result = New-IntersightVmediaPolicy -Name "vmedia_policy_1" -Enabled $true -Encryption $true -Mappings @($vmediaMapping) -LowPowerUsb $true -Organization $org

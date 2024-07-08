@@ -8,7 +8,7 @@ $config = @{
 # Set intersight configuration    
 Set-IntersightConfiguration @config
 
-# get the Organization Ref.
-$orgRef = Get-IntersightOrganizationOrganization -Name default | Get-IntersightMoMoRef
+# get the Organization.
+$org = Get-IntersightOrganizationOrganization -Name default 
 
-$result = New-IntersightFabricPortPolicy -Name "port_policy_1" -DeviceModel UCSFI64108 -Organization $orgRef
+$result = New-IntersightFabricPortPolicy -Name "port_policy_1" -DeviceModel UCSFI64108 -Organization $org

@@ -8,7 +8,7 @@ $config = @{
 # Set intersight configuration    
 Set-IntersightConfiguration @config
 
-# get the Organization Ref.
-$orgRef = Get-IntersightOrganizationOrganization -Name default | Get-IntersightMoMoRef
+# get the Organization.
+$org = Get-IntersightOrganizationOrganization -Name default 
 
-$result = New-IntersightDeviceconnectorPolicy -Name "device_connector_policy_1" -LockoutEnabled $true -Organization $orgRef
+$result = New-IntersightDeviceconnectorPolicy -Name "device_connector_policy_1" -LockoutEnabled $true -Organization $org

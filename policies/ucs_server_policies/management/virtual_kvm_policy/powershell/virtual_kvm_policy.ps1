@@ -8,10 +8,10 @@ $config = @{
 # Set intersight configuration    
 Set-IntersightConfiguration @config
 
-# get the Organization Ref.
-$newOrg = Get-IntersightOrganizationOrganization -Name default
+# get the Organization.
+$org = Get-IntersightOrganizationOrganization -Name default
 
 # create a kvm policy
 $kvmPolicy = New-IntersightKvmPolicy -Name "kvm_policy_1" -Description "Kvm policy for sample" `
                                     -EnableVideoEncryption $true -EnableLocalServerVideo $true `
-                                    -Enabled $true -MaximumSessions 2 -Organization $newOrg
+                                    -Enabled $true -MaximumSessions 2 -Organization $org

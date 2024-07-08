@@ -8,19 +8,13 @@ $config = @{
 # Set intersight configuration    
 Set-IntersightConfiguration @config
 
-# get the Organization Ref.
-$orgRef = Get-IntersightOrganizationOrganization -Name default | Get-IntersightMoMoRef
+# get the Organization.
+$org = Get-IntersightOrganizationOrganization -Name default
 
 $multiCastPolicy = New-IntersightFabricMulticastPolicy -Name "fabricMultiCastPolicy" -QuerierState Enabled `
-                 -SnoopingState Enabled -QuerierIpAddress "11.11.11.11" -Organization $orgRef
+                 -SnoopingState Enabled -QuerierIpAddress "11.11.11.11" -Organization $org
 
-$multiCastRef = $multiCastPolicy | Get-IntersightMoMoRef
+$EthNetwrkPolicy = New-IntersightFabricEthNetworkPolicy -Name "netwrkPolicy" -Organization $org -Description "native network policy"
 
-$EthNetwrkPolicy = New-IntersightFabricEthNetworkPolicy -Name "netwrkPolicy" -Organization $orgRef -Description "native network policy"
-
-$ethNetworkPolicyRef = $EthNetwrkPolicy | Get-IntersightMoMoRef
-
-$result = New-IntersightFabricVlan -Name "valn_23" -AutoAllowOnUplinks $false -EthNetworkPolicy $ethNetworkPolicyRef `
-          -MulticastPolicy $multiCastRef -IsNative $false -VlanId 23
-
-
+$result = New-IntersightFabricVlan -Name "valn_23" -AutoAllowOnUplinks $false -EthNetworkPolicy $EthNetwrkPolicy `
+          -MulticastPolicy $multiCastPolicy -IsNative $false -VlanId 23

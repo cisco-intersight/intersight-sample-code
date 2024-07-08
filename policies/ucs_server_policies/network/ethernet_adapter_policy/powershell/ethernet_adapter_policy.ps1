@@ -8,8 +8,8 @@ $config = @{
 # Set intersight configuration    
 Set-IntersightConfiguration @config
 
-# get the Organization Ref.
-$orgRef = Get-IntersightOrganizationOrganization -Name default | Get-IntersightMoMoRef
+# get the Organization.
+$org = Get-IntersightOrganizationOrganization -Name default 
 
 $ArfSettings = Initialize-IntersightVnicArfsSettings -Enabled $true
 
@@ -38,4 +38,4 @@ $result = New-IntersightVnicEthAdapterPolicy -Name "vnic_eth_adp_policy_1" -Adva
             -CompletionQueueSettings $CompletionQueSetting -InterruptSettings $interruptSetting -NvgreSettings $NvgreSetting `
             -PtpSettings $ptpSetting -RoceSettings $roceSetting -RssHashSettings $rsshSettings -RssSettings $true `
             -RxQueueSettings $rxQueueSetting -TcpOffloadSettings $tcpOffloadSetting -TxQueueSettings $txQueueSetting `
-            -VxlanSettings $vxlanSetting -Organization $orgRef
+            -VxlanSettings $vxlanSetting -Organization $org

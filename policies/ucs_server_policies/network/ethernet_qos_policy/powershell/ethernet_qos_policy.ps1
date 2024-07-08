@@ -8,8 +8,8 @@ $config = @{
 # Set intersight configuration    
 Set-IntersightConfiguration @config
 
-# get the Organization Ref.
-$orgRef = Get-IntersightOrganizationOrganization -Name default | Get-IntersightMoMoRef
+# get the Organization.
+$org = Get-IntersightOrganizationOrganization -Name default 
 
 $result = New-IntersightVnicEthQosPolicy -Name "vnic_eth_qos_policy_1" -Priority BestEffort -Burst 1024 -Mtu 1500 `
-            -TrustHostCos $true -Organization $orgRef
+            -TrustHostCos $true -Organization $org

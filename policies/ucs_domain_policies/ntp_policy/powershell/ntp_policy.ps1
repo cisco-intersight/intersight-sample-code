@@ -8,7 +8,7 @@ $config = @{
 # Set intersight configuration    
 Set-IntersightConfiguration @config
 
-# Get the Organization Ref.
-$orgRef = Get-IntersightOrganizationOrganization -Name default | Get-IntersightMoMoRef
+# get the Organization.
+$org = Get-IntersightOrganizationOrganization -Name default 
 
-$result = New-IntersightNtpPolicy -Name "ntp_policy_1" -Enabled $true -NtpServers @("44.44.44.44") -Organization $orgRef
+$result = New-IntersightNtpPolicy -Name "ntp_policy_1" -Enabled $true -NtpServers @("44.44.44.44") -Organization $org

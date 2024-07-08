@@ -9,7 +9,7 @@ $config = @{
 Set-IntersightConfiguration @config
 
 # get organization ref
-$orgRef = Get-IntersightOrganizationOrganization -Name default | Get-IntersightMoMoRef
+$org = Get-IntersightOrganizationOrganization -Name default 
 
 # initialize resource pool parameter
 $ResourcePoolParameters1 = Initialize-IntersightResourcepoolServerPoolParameters -ManagementMode "IntersightStandalone"
@@ -18,4 +18,4 @@ $ResourcePoolParameters1 = Initialize-IntersightResourcepoolServerPoolParameters
 $resourceSelector = Initialize-IntersightResourceSelector -Selector "/api/v1/compute/RackUnits?`$filter=(Serial eq 'EMEDDEC6E0')"
 
  $result = New-IntersightResourcepoolPool -Name "Resource_pool_1" -AssignmentOrder Sequential -PoolType Static `
-           -Organization $orgRef  -Selectors $resourceSelector -ResourcePoolParameters $ResourcePoolParameters1
+           -Organization $org  -Selectors $resourceSelector -ResourcePoolParameters $ResourcePoolParameters1

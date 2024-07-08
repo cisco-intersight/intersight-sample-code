@@ -8,8 +8,8 @@ $config = @{
 # set intersight configuration    
 Set-IntersightConfiguration @config
 
-# get the Organization Ref.
-$orgRef = Get-IntersightOrganizationOrganization -Name default | Get-IntersightMoMoRef
+# get the Organization.
+$org = Get-IntersightOrganizationOrganization -Name default
 
 $result = New-IntersightFabricLinkAggregationPolicy -Name "LinkAgrregate" -Description "Link Aggregation policy" `
-          -LacpRate Fast -SuspendIndividual $true -Organization $orgRef
+          -LacpRate Fast -SuspendIndividual $true -Organization $org

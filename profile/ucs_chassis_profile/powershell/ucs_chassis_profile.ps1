@@ -9,14 +9,14 @@ $config = @{
 Set-IntersightConfiguration @config
 
 # get the Organization MoRef
-$orgRef = Get-IntersightOrganizationOrganization -Name "default" | Get-IntersightMoMoRef
+$org = Get-IntersightOrganizationOrganization -Name "default" 
 
-# get MoRef of chassis policies 
-$imcAccessRef = Get-IntersightAccessPolicy -Name "access_policy_1" | Get-IntersightMoMoRef
-$powerPolicyRef = Get-IntersightPowerPolicy -Name "power_policy_1" | Get-IntersightMoMoRef
-$snmpPolicyRef = Get-IntersightSnmpPolicy -Name "snmp_policy_1" | Get-IntersightMoMoRef
-$thermalPolicyRef = Get-IntersightThermalPolicy -Name "thermal_policy_1" | Get-IntersightMoMoRef
+# get chassis policies 
+$imcAccess = Get-IntersightAccessPolicy -Name "access_policy_1" 
+$powerPolicy = Get-IntersightPowerPolicy -Name "power_policy_1" 
+$snmpPolicy = Get-IntersightSnmpPolicy -Name "snmp_policy_1" 
+$thermalPolicy = Get-IntersightThermalPolicy -Name "thermal_policy_1" 
 
 # create a chassis profile
-$chassisProfile = New-IntersightChassisProfile -Name "sample_chassis_profile_1" -Organization $orgRef `
-                  -PolicyBucket @($imcAccessRef,$powerPolicyRef,$snmpPolicyRef,$thermalPolicyRef)
+$chassisProfile = New-IntersightChassisProfile -Name "sample_chassis_profile_1" -Organization $org `
+                  -PolicyBucket @($imcAccess,$powerPolicy,$snmpPolicy,$thermalPolicy)

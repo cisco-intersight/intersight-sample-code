@@ -8,8 +8,8 @@ $config = @{
 # Set intersight configuration    
 Set-IntersightConfiguration @config
 
-# get the Organization Ref.
-$orgRef = Get-IntersightOrganizationOrganization -Name default | Get-IntersightMoMoRef
+# get the Organization.
+$org = Get-IntersightOrganizationOrganization -Name default 
 
 $ethSetting = Initialize-IntersightAdapterEthSettings -LldpEnabled $true
 
@@ -23,4 +23,4 @@ $adapterConfig = Initialize-IntersightAdapterAdapterConfig -DceInterfaceSettings
                     -FcSettings $fcsetting -PortChannelSettings $portChannelSetting -SlotId MLOM
 
 # create a adapter config policy
-$result = New-IntersightAdapterConfigPolicy -Name "adapter_config_policy" -Settings @($adapterConfig) -Organization $orgRef
+$result = New-IntersightAdapterConfigPolicy -Name "adapter_config_policy" -Settings @($adapterConfig) -Organization $org

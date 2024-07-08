@@ -8,10 +8,10 @@ $config = @{
 # Set intersight configuration    
 Set-IntersightConfiguration @config
 
-# get the Organization Ref.
-$orgRef = Get-IntersightOrganizationOrganization -Name default | Get-IntersightMoMoRef
+# get the Organization.
+$org = Get-IntersightOrganizationOrganization -Name default 
 
 $vlanSetting = Initialize-IntersightVnicVlanSettings -DefaultVlan 1 -AllowedVlans "11,12,13" -Mode TRUNK
 
 $result = New-IntersightVnicEthNetworkPolicy -Name "network_poicy_1" -VlanSettings $vlanSetting -TargetPlatform Standalone `
-            -Organization $orgRef
+            -Organization $org

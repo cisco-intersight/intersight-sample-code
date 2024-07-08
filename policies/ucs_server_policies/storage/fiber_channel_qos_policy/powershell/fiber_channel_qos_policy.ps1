@@ -8,7 +8,7 @@ $config = @{
 # Set intersight configuration    
 Set-IntersightConfiguration @config
 
-# get the Organization Ref.
-$orgRef = Get-IntersightOrganizationOrganization -Name default | Get-IntersightMoMoRef
+# get the Organization.
+$org = Get-IntersightOrganizationOrganization -Name default 
 
-$Result = New-IntersightVnicFcQosPolicy -Name "fc_qos_policy_1" -Organization $orgRef -Burst 1024 -Cos 3 -MaxDataFieldSize 2112 -RateLimit 2048
+$Result = New-IntersightVnicFcQosPolicy -Name "fc_qos_policy_1" -Organization $org -Burst 1024 -Cos 3 -MaxDataFieldSize 2112 -RateLimit 2048

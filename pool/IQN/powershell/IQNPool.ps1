@@ -9,10 +9,10 @@ $config = @{
 Set-IntersightConfiguration @config
 
 # get organization MoRef
-$orgRef = Get-IntersightOrganizationOrganization -Name default | Get-IntersightMoMoRef
+$org = Get-IntersightOrganizationOrganization -Name default 
 
 $iqnSuffixBlock = Initialize-IntersightIqnpoolIqnSuffixBlock -Suffix "iscsi01" -From 0 -To 9
 
 # create IqnPool
 $result = New-IntersightIqnpoolPool -Name IQNPool_1 -Prefix "iqn.2023-06.abc.com" -IqnSuffixBlocks $iqnSuffixBlock `
-          -Organization $orgRef
+          -Organization $org

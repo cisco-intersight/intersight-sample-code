@@ -9,11 +9,11 @@ $config = @{
 Set-IntersightConfiguration @config
 
 # get organization MoRef
-$orgRef = Get-IntersightOrganizationOrganization -Name default | Get-IntersightMoMoRef
+$org = Get-IntersightOrganizationOrganization -Name default 
 
 # initialize UUID block 
 $UuidSuffixBlocks11 = Initialize-IntersightUuidpoolUuidBlock -From "0000-001234500A00" -Size 100
 
 # create UUID pool
 $result = New-IntersightUuidpoolPool -Name "uuuid_pool_1" -Prefix "00000000-0000-00A0"  -UuidSuffixBlocks @($UuidSuffixBlocks11) `
-       -AssignmentOrder "Default" -Organization $orgRef
+       -AssignmentOrder "Default" -Organization $org
