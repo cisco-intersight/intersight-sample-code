@@ -837,6 +837,117 @@
 					]
 				}
 			]
+		},
+		{
+			"name":"pool",
+			"displayName":"Pool",
+			"subDirectories":[
+				{
+					"name":"IP",
+					"displayName":"IP Pool",
+					"codesample":{
+						"ansible":"",
+						"powershell":"IPPool.ps1",
+						"python":"IPPool.py",
+						"terraform":"IPPool.tf",
+						"openapi":""
+
+					},
+					"files":[
+						"readme.md"
+					]
+				},
+				{
+					"name":"IQN",
+					"displayName":"IQN Pool",
+					"codesample":{
+						"ansible":"",
+						"powershell":"IQNPool.ps1",
+						"python":"IQNPool.py",
+						"terraform":"IQNPool.tf",
+						"openapi":""
+
+					},
+					"files":[
+						"readme.md"
+					]
+				},
+				{
+					"name":"MAC",
+					"displayName":"MAC Pool",
+					"codesample":{
+						"ansible":"",
+						"powershell":"MACPool.ps1",
+						"python":"MACPool.py",
+						"terraform":"MACPool.tf",
+						"openapi":""
+
+					},
+					"files":[
+						"readme.md"
+					]
+				},
+				{
+					"name":"Resource",
+					"displayName":"Resource Pool",
+					"codesample":{
+						"ansible":"",
+						"powershell":"ResourcePool.ps1",
+						"python":"ResourcePool.py",
+						"terraform":"ResourcePool.tf",
+						"openapi":""
+
+					},
+					"files":[
+						"readme.md"
+					]
+				},
+				{
+					"name":"UUID",
+					"displayName":"UUID Pool",
+					"codesample":{
+						"ansible":"",
+						"powershell":"UUIDPool.ps1",
+						"python":"UUIDPool.py",
+						"terraform":"UUIDPool.tf",
+						"openapi":""
+
+					},
+					"files":[
+						"readme.md"
+					]
+				},
+				{
+					"name":"WWNN",
+					"displayName":"WWNN Pool",
+					"codesample":{
+						"ansible":"",
+						"powershell":"WWNNPool.ps1",
+						"python":"WWNNPool.py",
+						"terraform":"WWNNPool.tf",
+						"openapi":""
+
+					},
+					"files":[
+						"readme.md"
+					]
+				},
+				{
+					"name":"WWPN",
+					"displayName":"WWPN Pool",
+					"codesample":{
+						"ansible":"",
+						"powershell":"WWPNPool.ps1",
+						"python":"WWPNPool.py",
+						"terraform":"WWPNPool.tf",
+						"openapi":""
+
+					},
+					"files":[
+						"readme.md"
+					]
+				}
+			]
 		}
 	]
 }
