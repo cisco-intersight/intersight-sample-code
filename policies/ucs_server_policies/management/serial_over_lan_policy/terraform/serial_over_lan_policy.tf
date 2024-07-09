@@ -4,6 +4,10 @@ provider "intersight" {
   secretkey       = "C:\\secretKey.txt"
 }
 
+data "intersight_organization_organization" "organization" {
+  name = "default"
+}
+
 resource "intersight_sol_policy" "sol1" {
   name        = "sample_sol_policy"
   description = "demo serial over lan policy"
@@ -13,11 +17,6 @@ resource "intersight_sol_policy" "sol1" {
   ssh_port    = 2120
   organization {
     object_type = "organization.Organization"
-    moid        = var.organization
+    moid = data.intersight_organization_organization.organization.id
   }
 }
-
-variable "organization" {
-   type = string
-   description = "<value for organization>"
- }

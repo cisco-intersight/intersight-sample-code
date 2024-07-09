@@ -4,13 +4,17 @@ provider "intersight" {
   secretkey       = "C:\\secretKey.txt"
 }
 
+data "intersight_organization_organization" "organization" {
+  name = "default"
+}
+
 resource "intersight_syslog_policy" "syslog_policy1" {
   name        = "sys_log_policy1"
   description = "Syslog policy for sample"
   
   organization {
     object_type = "organization.Organization"
-    moid        = var.organization
+    moid = data.intersight_organization_organization.organization.id
   }
 
   local_clients {
@@ -35,19 +39,4 @@ resource "intersight_syslog_policy" "syslog_policy1" {
     min_severity = "emergency"
     object_type  = "syslog.RemoteLoggingClient"
   }
-  
-  profiles {
-    moid        = var.profile
-    object_type = "server.Profile"
-  }
-}
-
-variable "organization" {
-  type        = string
-  description = "Moid of the organization"
-}
-
-variable "profile" {
-  type        = string
-  description = "Moid of server.Profile"
 }

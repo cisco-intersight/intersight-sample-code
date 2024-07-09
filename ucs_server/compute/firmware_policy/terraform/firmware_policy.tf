@@ -4,6 +4,10 @@ provider "intersight" {
   secretkey       = "C:\\secretKey.txt"
 }
 
+data "intersight_organization_organization" "organization" {
+  name = "default"
+}
+
 resource "intersight_firmware_policy" "firmware_policy" {
   name             = "firmware_policy_1"
   target_platform  = "Standalone"
@@ -12,15 +16,8 @@ resource "intersight_firmware_policy" "firmware_policy" {
     bundle_version = "4.3(3.240043)"
   }
   organization {
-        object_type = "organization.Organization"
-        moid = var.organization
-    }
+    object_type = "organization.Organization"
+    moid = data.intersight_organization_organization.organization.id
+  }
 }
-
-variable "organization" {
-    type = string
-    description = "<organization moid>"
-  
-}
-
 

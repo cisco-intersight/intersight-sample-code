@@ -4,6 +4,10 @@ provider "intersight" {
   secretkey       = "C:\\secretKey.txt"
 }
 
+data "intersight_organization_organization" "organization" {
+  name = "default"
+}
+
 resource "intersight_vnic_iscsi_boot_policy" "vnic_iscsi_boot_policy" {
   name                           = "vnic_iscsi_boot_policy1"
   description                    = "vnic iscsi boot policy"
@@ -25,7 +29,7 @@ resource "intersight_vnic_iscsi_boot_policy" "vnic_iscsi_boot_policy" {
 
   organization {
     object_type = "organization.Organization"
-    moid        = var.organization
+    moid = data.intersight_organization_organization.organization.id
   }
 
   initiator_static_ip_v4_config {
@@ -39,13 +43,7 @@ resource "intersight_vnic_iscsi_boot_policy" "vnic_iscsi_boot_policy" {
   }
 }
 
-
 variable "primary_target_policy_moid" {
   type        = string
   description = "<Moid of the primary target policy>"
 }
-
-variable "organization" {
-   type = string
-   description = "<value for organization>"
- }

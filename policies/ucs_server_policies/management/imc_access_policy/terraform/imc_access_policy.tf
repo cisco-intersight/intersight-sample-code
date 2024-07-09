@@ -4,6 +4,10 @@ provider "intersight" {
   secretkey       = "C:\\secretKey.txt"
 }
 
+data "intersight_organization_organization" "organization" {
+  name = "default"
+}
+
 resource "intersight_ippool_pool" "ipv4_pool" {
   name = "ipv4_ippool_1"
   description = "ip pool with IPv4 block and config"
@@ -22,7 +26,7 @@ resource "intersight_ippool_pool" "ipv4_pool" {
 
   organization {
     object_type = "organization.Organization"
-    moid = var.organization
+    moid = data.intersight_organization_organization.organization.id
   }
 }
 
@@ -39,7 +43,7 @@ resource "intersight_access_policy" "access_policy" {
 
   organization {
     object_type = "organization.Organization"
-    moid = var.organization
+    moid = data.intersight_organization_organization.organization.id
   }
 
   configuration_type {
@@ -53,9 +57,4 @@ resource "intersight_access_policy" "access_policy" {
     enable_ip_v4 = true
     enable_ip_v6 = false
   }
-}
-
-variable "organization" {
- type = string
-  description = "Moid of organization"
 }

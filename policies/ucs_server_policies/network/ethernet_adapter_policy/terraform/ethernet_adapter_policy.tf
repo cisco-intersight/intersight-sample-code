@@ -4,13 +4,17 @@ provider "intersight" {
   secretkey       = "C:\\secretKey.txt"
 }
 
+data "intersight_organization_organization" "organization" {
+  name = "default"
+}
+
 resource "intersight_vnic_eth_adapter_policy" "v_eth_adapter1" {
   name                    = "v_eth_adapter1"
   rss_settings            = true
   uplink_failback_timeout = 5
   organization {
     object_type = "organization.Organization"
-    moid        = var.organization
+    moid = data.intersight_organization_organization.organization.id
   }
   vxlan_settings {
     enabled     = false
@@ -55,9 +59,4 @@ resource "intersight_vnic_eth_adapter_policy" "v_eth_adapter1" {
     tx_checksum   = true
     object_type   = "vnic.TcpOffloadSettings"
   }
-}
-
-variable "organization" {
-  type        = string
-  description = "<value for organization>"
 }

@@ -4,6 +4,10 @@
     secretkey       = "C:\\secretKey.txt"
   }
 
+  data "intersight_organization_organization" "organization" {
+  name = "default"
+}
+
   resource "intersight_vnic_eth_network_policy" "network_policy_1" {
     name            = "network_policy_1"
     target_platform = "Standalone"
@@ -14,13 +18,8 @@
       mode          = "TRUNK"
     }
 
-    organization {
-      object_type = "organization.Organization"
-      moid        = var.organization
-    }
+  organization {
+    object_type = "organization.Organization"
+    moid = data.intersight_organization_organization.organization.id
   }
-
-  variable "organization" {
-    type = string
-    description = "<value for organization>"
   }

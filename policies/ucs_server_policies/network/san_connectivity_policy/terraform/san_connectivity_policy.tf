@@ -4,26 +4,16 @@ provider "intersight" {
   secretkey       = "C:\\secretKey.txt"
 }
 
+data "intersight_organization_organization" "organization" {
+  name = "default"
+}
+
 resource "intersight_vnic_san_connectivity_policy" "vnic_san1" {
   name = "san_connectivity_policy_1"
   placement_mode  = "custom"
   target_platform = "Standalone"
   organization {
     object_type = "organization.Organization"
-    moid        = var.organization
+    moid = data.intersight_organization_organization.organization.id
   }
-  profiles {
-    moid = var.profile
-    object_type = "server.Profile"
-  }
-}
-
-variable "organization" {
-   type = string
-   description = "<value for organization>"
- }
-
- variable "profile" {
-  type = string
-  description = "Moid of the server profile."
 }

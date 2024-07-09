@@ -4,6 +4,10 @@ provider "intersight" {
   secretkey       = "C:\\secretKey.txt"
 }
 
+data "intersight_organization_organization" "organization" {
+  name = "default"
+}
+
 resource "intersight_fabric_eth_network_group_policy" "fabric_eth_network_group_policy1" {
   name        = "fabric_eth_network_group_policy1"
   description = "demo eth network group policy"
@@ -14,11 +18,6 @@ resource "intersight_fabric_eth_network_group_policy" "fabric_eth_network_group_
   }
   organization {
     object_type = "organization.Organization"
-    moid        = var.organization
+    moid = data.intersight_organization_organization.organization.id
   }
-}
-
-variable "organization" {
-    type = string
-    description = "<organization moid>"
 }

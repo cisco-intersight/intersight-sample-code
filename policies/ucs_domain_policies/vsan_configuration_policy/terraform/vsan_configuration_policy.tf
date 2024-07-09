@@ -4,13 +4,17 @@ provider "intersight" {
   secretkey       = "C:\\secretKey.txt"
 }
 
+data "intersight_organization_organization" "organization" {
+  name = "default"
+}
+
 resource "intersight_fabric_fc_network_policy" "fabric_fc_network_policy1" {
   name            = "fabric_fc_network_policy1"
   description     = "fabric ethernet network policy"
   enable_trunking = true
   organization {
     object_type = "organization.Organization"
-    moid        = var.organization
+    moid = data.intersight_organization_organization.organization.id
   }
 }
 
@@ -24,9 +28,4 @@ resource "intersight_fabric_vsan" "vsan_110" {
     object_type = "fabric.FcNetworkPolicy"
     moid        = intersight_fabric_fc_network_policy.fabric_fc_network_policy1.moid
   }
-}
-
-variable "organization" {
-  type = string
-  description = "<organization moid>"
 }

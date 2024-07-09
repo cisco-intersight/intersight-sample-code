@@ -4,12 +4,16 @@ provider "intersight" {
   secretkey       = "C:\\secretKey.txt"
 }
 
+data "intersight_organization_organization" "organization" {
+  name = "default"
+}
+
 resource "intersight_fabric_eth_network_policy" "fabric_eth_network_policy1" {
   name        = "fabric_eth_network_policy1"
   description = "fabric ethernet network policy"
   organization {
     object_type = "organization.Organization"
-    moid = var.organization
+    moid = data.intersight_organization_organization.organization.id
   }
 }
 
@@ -20,7 +24,7 @@ resource "intersight_fabric_multicast_policy" "fabric_multicast_policy1" {
   querier_ip_address = "11.11.11.11"
   organization {
     object_type = "organization.Organization"
-    moid = var.organization
+    moid = data.intersight_organization_organization.organization.id
   }
 }
 
@@ -40,9 +44,4 @@ resource "intersight_fabric_vlan" "fabric_vlan1" {
     object_type = "fabric.MulticastPolicy"
     moid        = intersight_fabric_multicast_policy.fabric_multicast_policy1.moid
   } 
-}
-
-variable "organization" {
-  type = string
-  description = "<organization moid>"
 }

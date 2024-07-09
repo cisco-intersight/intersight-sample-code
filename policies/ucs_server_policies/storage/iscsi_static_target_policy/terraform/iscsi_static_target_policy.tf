@@ -5,6 +5,10 @@ provider "intersight" {
   secretkey       = "C:\\secretKey.txt"
 }
 
+data "intersight_organization_organization" "organization" {
+  name = "default"
+}
+
 resource "intersight_vnic_iscsi_static_target_policy" "vnic_iscsi_static_target_policy" {
   name        = "vnic_iscsi_static_target_policy2"
   description = "vnic iscsi static target policy"
@@ -17,13 +21,8 @@ resource "intersight_vnic_iscsi_static_target_policy" "vnic_iscsi_static_target_
     bootable    = true
     lun_id      = 4
   }
-    organization {
+  organization {
     object_type = "organization.Organization"
-    moid        = var.organization
+    moid = data.intersight_organization_organization.organization.id
   }
 }
-
- variable "organization" {
-   type = string
-   description = "<value for organization>"
- }

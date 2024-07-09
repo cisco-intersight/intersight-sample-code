@@ -4,6 +4,10 @@ provider "intersight" {
   secretkey       = "C:\\secretKey.txt"
 }
 
+data "intersight_organization_organization" "organization" {
+  name = "default"
+}
+
 resource "intersight_vnic_fc_qos_policy" "v_fc_qos1" {
   name                = "v_fc_qos1"
   rate_limit          = 10000
@@ -11,11 +15,6 @@ resource "intersight_vnic_fc_qos_policy" "v_fc_qos1" {
   max_data_field_size = 2112
   organization {
     object_type = "organization.Organization"
-    moid        = var.organization
+    moid = data.intersight_organization_organization.organization.id
   }
 }
-
-variable "organization" {
-   type = string
-   description = "<value for organization>"
- }

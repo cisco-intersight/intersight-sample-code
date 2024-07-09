@@ -5,13 +5,17 @@ provider "intersight" {
   secretkey       = "C:\\secretKey.txt"
 }
 
+data "intersight_organization_organization" "organization" {
+  name = "default"
+}
+
 resource "intersight_vnic_fc_adapter_policy" "v_fc_adapter1" {
   name                    = "v_fc_adapter1"
   error_detection_timeout = 2000
   
   organization {
     object_type = "organization.Organization"
-    moid        = var.organization
+    moid = data.intersight_organization_organization.organization.id
   }
   error_recovery_settings {
     enabled           = true
@@ -59,8 +63,3 @@ resource "intersight_vnic_fc_adapter_policy" "v_fc_adapter1" {
     object_type = "vnic.ScsiQueueSettings"
   }
 }
-
-variable "organization" {
-   type = string
-   description = "<value for organization>"
- }

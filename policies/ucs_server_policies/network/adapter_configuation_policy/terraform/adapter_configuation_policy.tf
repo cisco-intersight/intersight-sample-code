@@ -4,12 +4,16 @@ provider "intersight" {
   secretkey       = "C:\\secretKey.txt"
 }
 
+data "intersight_organization_organization" "organization" {
+  name = "default"
+}
+
 resource "intersight_adapter_config_policy" "adapter_config1" {
   name        = "adapter_config1"
   description = "test policy"
   organization {
     object_type = "organization.Organization"
-    moid        = var.organization
+    moid = data.intersight_organization_organization.organization.id
   }
   settings {
     object_type = "adapter.AdapterConfig"
@@ -35,18 +39,4 @@ resource "intersight_adapter_config_policy" "adapter_config1" {
       fip_enabled = true
     }
   }
-  profiles {
-    moid        = server.moid
-    object_type = "server.Profile"
-  }
 }
-
-variable "server" {
-  type = string
-  description = "Moid of server.Profile"
-}
-
-variable "organization" {
-   type = string
-   description = "<value for organization>"
- }

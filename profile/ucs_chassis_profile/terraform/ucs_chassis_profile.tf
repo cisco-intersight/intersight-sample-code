@@ -4,7 +4,10 @@ provider "intersight" {
   secretkey       = "C:\\secretKey.txt"
 }
 
-# Define Policies
+data "intersight_organization_organization" "organization" {
+  name = "default"
+}
+
 resource "intersight_ippool_pool" "ippool_pool1" {
   name             = "ippool_pool1"
   description      = "ippool pool"
@@ -25,7 +28,7 @@ resource "intersight_ippool_pool" "ippool_pool1" {
 
   organization {
     object_type = "organization.Organization"
-    moid        = var.organization
+    moid = data.intersight_organization_organization.organization.id
   }
 }
 
@@ -40,7 +43,7 @@ resource "intersight_access_policy" "access1" {
 
   organization {
     object_type = "organization.Organization"
-    moid        = var.organization
+    moid = data.intersight_organization_organization.organization.id
   }
 }
 
@@ -73,13 +76,9 @@ resource "intersight_snmp_policy" "snmp1" {
     nr_version  = "V3"
     object_type = "snmp.Trap"
   }
-  profiles {
-    moid        = var.profile
-    object_type = "server.Profile"
-  }
   organization {
     object_type = "organization.Organization"
-    moid        = var.organization
+    moid = data.intersight_organization_organization.organization.id
   }
 }
 
@@ -88,7 +87,7 @@ resource "intersight_thermal_policy" "sample_thermal_policy" {
   description  = "Sample thermal policy"
   organization {
     object_type = "organization.Organization"
-    moid        = var.organization
+    moid = data.intersight_organization_organization.organization.id
   }
 }
 
@@ -97,7 +96,7 @@ resource "intersight_power_policy" "sample_power_policy" {
   description  = "Sample power policy"
   organization {
     object_type = "organization.Organization"
-    moid        = var.organization
+    moid = data.intersight_organization_organization.organization.id
   }
 }
 
@@ -109,44 +108,32 @@ resource "intersight_chassis_profile" "sample_chassis_profile" {
   action          = "Validate"
   organization {
     object_type = "organization.Organization"
-    moid        = var.organization
+    moid = data.intersight_organization_organization.organization.id
   }
 
-  policy_bucket = [
-    {
-      object_type = "access.Policy"
-      moid        = intersight_access_policy.access1.moid
-      class_id    = "policy.AbstractPolicy"
-      additional_properties = ""
-      selector = ""
-    },
-    {
-      object_type = "snmp.Policy"
-      moid        = intersight_snmp_policy.snmp1.moid
-      class_id    = "policy.AbstractPolicy"
-      additional_properties = ""
-      selector = ""
-    },
-    {
-      object_type = "thermal.Policy"
-      moid        = intersight_thermal_policy.sample_thermal_policy.moid
-      class_id    = "policy.AbstractPolicy"
-      additional_properties = ""
-      selector = ""
-    },
-    {
-      object_type = "power.Policy"
-      moid        = intersight_power_policy.sample_power_policy.moid
-      class_id    = "policy.AbstractPolicy"
-      additional_properties = ""
-      selector = ""
-    },
-  ]
-}
+  policy_bucket {
+    object_type = "access.Policy"
+    moid        = intersight_access_policy.access1.moid
+    class_id    = "policy.AbstractPolicy"
+  }
 
-variable "organization" {
-  type        = string
-  description = "Moid of the organization"
+  policy_bucket {
+    object_type = "snmp.Policy"
+    moid        = intersight_snmp_policy.snmp1.moid
+    class_id    = "policy.AbstractPolicy"
+  }
+
+  policy_bucket {
+    object_type = "thermal.Policy"
+    moid        = intersight_thermal_policy.sample_thermal_policy.moid
+    class_id    = "policy.AbstractPolicy"
+  }
+
+  policy_bucket {
+    object_type = "power.Policy"
+    moid        = intersight_power_policy.sample_power_policy.moid
+    class_id    = "policy.AbstractPolicy"
+  }
 }
 
 variable "auth_password" {
@@ -157,9 +144,4 @@ variable "auth_password" {
 variable "privacy_password" {
   type        = string
   description = "value for privacy password"
-}
-
-variable "profile" {
-  type        = string
-  description = "Moid of server.Profile"
 }

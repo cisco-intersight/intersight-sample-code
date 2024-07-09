@@ -4,6 +4,10 @@ provider "intersight" {
   secretkey       = "C:\\secretKey.txt"
 }
 
+data "intersight_organization_organization" "organization" {
+  name = "default"
+}
+
 resource "intersight_fabric_switch_control_policy" "fabric_switch_control_policy1" {
   name        = "fabric_switch_control_policy1"
   description = "fabric switch control policy"
@@ -16,16 +20,10 @@ resource "intersight_fabric_switch_control_policy" "fabric_switch_control_policy
     message_interval = 12
     recovery_action  = "none"
   }
-  
-  
+
   vlan_port_optimization_enabled = true
   organization {
     object_type = "organization.Organization"
-    moid        = var.organization
+    moid = data.intersight_organization_organization.organization.id
   }
-}
-
-variable "organization" {
-  type = string
-  description = "<organization moid>"
 }

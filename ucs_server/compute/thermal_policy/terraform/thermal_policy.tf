@@ -4,17 +4,15 @@ provider "intersight" {
   secretkey       = "C:\\secretKey.txt"
 }
 
+data "intersight_organization_organization" "organization" {
+  name = "default"
+}
+
 resource "intersight_thermal_policy" "thermal_policy_1" {
   name              = "thermal_policy_1"
   fan_control_mode  = "Balanced"
   organization {
-        object_type = "organization.Organization"
-        moid = var.organization
-    }
-}
-
-variable "organization" {
-    type = string
-    description = "<organization moid>"
-  
+    object_type = "organization.Organization"
+    moid = data.intersight_organization_organization.organization.id
+  }
 }

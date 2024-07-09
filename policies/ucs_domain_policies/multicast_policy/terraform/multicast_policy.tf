@@ -4,6 +4,10 @@ provider "intersight" {
   secretkey       = "C:\\secretKey.txt"
 }
 
+data "intersight_organization_organization" "organization" {
+  name = "default"
+}
+
 resource "intersight_fabric_multicast_policy" "fabric_multicast_policy1" {
   name = "fabric_multicast_policy1"
   description = "demo fabric multicast policy"
@@ -12,11 +16,6 @@ resource "intersight_fabric_multicast_policy" "fabric_multicast_policy1" {
   snooping_state = "Enabled"
   organization {
     object_type = "organization.Organization"
-    moid = var.organization
+    moid = data.intersight_organization_organization.organization.id
   }
-}
-
-variable "organization"{
-    type = string
-    description = "<value for organization>"
 }

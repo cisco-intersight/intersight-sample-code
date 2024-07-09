@@ -4,6 +4,10 @@ provider "intersight" {
   secretkey       = "C:\\secretKey.txt"
 }
 
+data "intersight_organization_organization" "organization" {
+  name = "default"
+}
+
 resource "intersight_snmp_policy" "snmp1" {
   name                    = "snmp1"
   description             = "testing smtp policy"
@@ -33,13 +37,10 @@ resource "intersight_snmp_policy" "snmp1" {
     nr_version  = "V3"
     object_type = "snmp.Trap"
   }
-  profiles {
-    moid        = var.profile
-    object_type = "server.Profile"
-  }
+
   organization {
     object_type = "organization.Organization"
-    moid        = var.Organization
+    moid = data.intersight_organization_organization.organization.id
   }
 }
 
@@ -51,14 +52,4 @@ variable "auth_password" {
 variable "privacy_password" {
   type        = string
   description = "value for privacy password"
-}
-
-variable "organization" {
-  type        = string
-  description = "Moid of the organization"
-}
-
-variable "profile" {
-  type        = string
-  description = "Moid of server.Profile"
 }

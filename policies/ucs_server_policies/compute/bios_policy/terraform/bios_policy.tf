@@ -4,6 +4,10 @@ provider "intersight" {
   secretkey       = "C:\\secretKey.txt"
 }
 
+data "intersight_organization_organization" "organization" {
+  name = "default"
+}
+
 resource "intersight_bios_policy" "bios_policy1" {
   name                                  = "TEST_BIOS_POLICY"
   description                           = "Bios policy"
@@ -260,12 +264,6 @@ resource "intersight_bios_policy" "bios_policy1" {
   txt_support                           = "disabled"
   organization {
     object_type = "organization.Organization"
-    moid = var.organization
+    moid = data.intersight_organization_organization.organization.id
   }
-}
-
-variable "organization" {
-    type = string
-    description = "<organization moid>"
-  
 }

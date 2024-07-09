@@ -4,6 +4,9 @@ provider "intersight" {
   secretkey       = "C:\\secretKey.txt"
 }
 
+data "intersight_organization_organization" "organization" {
+  name = "default"
+}
 
 resource "intersight_resourcepool_pool" "resource_pool" {
   name             = "Resource_pool_1"
@@ -12,7 +15,7 @@ resource "intersight_resourcepool_pool" "resource_pool" {
   
   organization {
     object_type = "organization.Organization"
-    moid        = var.organization
+    moid = data.intersight_organization_organization.organization.id
   }
   
   resource_pool_parameters {
@@ -24,9 +27,4 @@ resource "intersight_resourcepool_pool" "resource_pool" {
       }
     })
   }
-}
-
-variable "organization" {
-  type        = string
-  description = "Moid of the organization"
 }

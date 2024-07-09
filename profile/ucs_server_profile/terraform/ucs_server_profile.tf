@@ -4,6 +4,10 @@ provider "intersight" {
   secretkey       = "C:\\secretKey.txt"
 }
 
+data "intersight_organization_organization" "organization" {
+  name = "default"
+}
+
 resource "intersight_ntp_policy" "ntp_policy" {
   name        = "ntp1"
   description = "test policy"
@@ -12,7 +16,7 @@ resource "intersight_ntp_policy" "ntp_policy" {
 
   organization {
     object_type = "organization.Organization"
-    moid        = var.organization
+    moid = data.intersight_organization_organization.organization.id
   }
 }
 # Create SMTP policy
@@ -28,7 +32,7 @@ resource "intersight_smtp_policy" "smtp_policy" {
 
   organization {
     object_type = "organization.Organization"
-    moid        = var.organization
+    moid = data.intersight_organization_organization.organization.id
   }
 }
 
@@ -65,7 +69,7 @@ resource "intersight_snmp_policy" "snmp_policy" {
 
   organization {
     object_type = "organization.Organization"
-    moid        = var.organization
+    moid = data.intersight_organization_organization.organization.id
   }
 }
 
@@ -77,7 +81,7 @@ resource "intersight_server_profile" "server_profile" {
   
   organization {
     object_type = "organization.Organization"
-    moid        = var.organization
+    moid = data.intersight_organization_organization.organization.id
   }
 
   tags {
@@ -102,9 +106,4 @@ resource "intersight_server_profile" "server_profile" {
     object_type = intersight_snmp_policy.snmp_policy.object_type
     class_id    = "policy.AbstractPolicy"
   }
-}
-
-variable "organization" {
-  type        = string
-  description = "Moid of the organization"
 }

@@ -4,18 +4,16 @@ provider "intersight" {
   secretkey       = "C:\\secretKey.txt"
 }
 
+data "intersight_organization_organization" "organization" {
+  name = "default"
+}
+
 resource "intersight_fabric_port_policy" "fabric_port_policy1" {
   name = "fabric_port_policy1"
   description  = "demo fabric port policy"
   device_model = "UCS-FI-6454"
   organization {
     object_type = "organization.Organization"
-    moid = var.organization
+    moid = data.intersight_organization_organization.organization.id
   }
-}
-
-variable "organization" {
-    type = string
-    description = "organization moid"
-  
 }

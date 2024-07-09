@@ -5,6 +5,10 @@ provider "intersight" {
   secretkey       = "C:\\secretKey.txt"
 }
 
+data "intersight_organization_organization" "organization" {
+  name = "default"
+}
+
 resource "intersight_networkconfig_policy" "network_config1" {
   name                     = "network_config1"
   description              = "demo network configuration policy"
@@ -19,11 +23,6 @@ resource "intersight_networkconfig_policy" "network_config1" {
   enable_ipv4dns_from_dhcp = false
   organization {
     object_type = "organization.Organization"
-    moid        = var.organization
+    moid = data.intersight_organization_organization.organization.id
   }
-}
-
-variable "organization" {
-  type        = string
-  description = "<oragnnization moid>"
 }

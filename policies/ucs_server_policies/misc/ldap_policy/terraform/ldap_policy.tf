@@ -4,6 +4,10 @@ provider "intersight" {
   secretkey       = "C:\\secretKey.txt"
 }
 
+data "intersight_organization_organization" "organization" {
+  name = "default"
+}
+
 resource "intersight_iam_ldap_policy" "ldap1" {
   name                   = "ldap1"
   description            = "test policy"
@@ -33,7 +37,7 @@ resource "intersight_iam_ldap_policy" "ldap1" {
   
   organization {
     object_type = "organization.Organization"
-    moid        = var.organization
+    moid = data.intersight_organization_organization.organization.id
   }
 }
 
@@ -61,9 +65,4 @@ resource "intersight_iam_ldap_group" "iam_ldap_group1" {
     moid        = intersight_iam_ldap_policy.ldap1.moid
     object_type = "iam.LdapPolicy"
   }
-}
-
-variable "organization_name" {
-  type        = string
-  description = "<Value of organization>"
 }

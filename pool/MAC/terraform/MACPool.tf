@@ -4,6 +4,10 @@ provider "intersight" {
   secretkey       = "C:\\secretKey.txt"
 }
 
+data "intersight_organization_organization" "organization" {
+  name = "default"
+}
+
 resource "intersight_macpool_pool" "mac_pool" {
   name             = "MAC_pool_1"
   assignment_order = "sequential"
@@ -15,11 +19,6 @@ resource "intersight_macpool_pool" "mac_pool" {
   
   organization {
     object_type = "organization.Organization"
-    moid        = var.organization
+    moid = data.intersight_organization_organization.organization.id
   }
-}
-
-variable "organization" {
-  type        = string
-  description = "Moid of the organization"
 }

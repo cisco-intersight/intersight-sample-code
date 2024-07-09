@@ -4,12 +4,16 @@ provider "intersight" {
   secretkey       = "C:\\secretKey.txt"
 }
 
+data "intersight_organization_organization" "organization" {
+  name = "default"
+}
+
 resource "intersight_power_policy" "power_policy_1" {
     name = "power_policy_1"
     description = "sample power policy"
     organization {
-        object_type = "organization.Organization"
-        moid = var.organization
+      object_type = "organization.Organization"
+      moid = data.intersight_organization_organization.organization.id
     }
     dynamic_rebalancing = "Disabled"
     extended_power_capacity = "Enabled"
@@ -17,11 +21,5 @@ resource "intersight_power_policy" "power_policy_1" {
     power_profiling = "Enabled"
     power_restore_state = "AlwaysOff"
     power_save_mode = "Enabled"
-    redundancy_mode = "Grid"
-  
-}
-
-variable "organization" {
-  type  = string
-  description = "<organization moid>"
+    redundancy_mode = "Grid" 
 }

@@ -4,15 +4,19 @@ provider "intersight" {
   secretkey       = "C:\\secretKey.txt"
 }
 
+data "intersight_organization_organization" "organization" {
+  name = "default"
+}
+
 resource "intersight_boot_precision_policy" "boot_precision1" {
   name                     = "boot_precision1"
   description              = "test policy"
   configured_boot_mode     = "Uefi"  
   enforce_uefi_secure_boot = false
 
-   organization {
+  organization {
     object_type = "organization.Organization"
-    moid        = var.organization
+    moid = data.intersight_organization_organization.organization.id
   }
 
   boot_devices {
@@ -62,9 +66,4 @@ resource "intersight_boot_precision_policy" "boot_precision1" {
       }
     })
   }
-}
-
-variable "organization" {
-  type = string
-  description = "<organization moid>"
 }

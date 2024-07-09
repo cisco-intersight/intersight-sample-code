@@ -4,6 +4,10 @@ provider "intersight" {
   secretkey       = "C:\\secretKey.txt"
 }
 
+data "intersight_organization_organization" "organization" {
+  name = "default"
+}
+
 resource "intersight_vnic_iscsi_adapter_policy" "vnic_iscsi_adapter_policy" {
   name                 = "vnic_iscsi_adapter_policy1"
   description          = "vnic iscsi adapter policy"
@@ -12,11 +16,6 @@ resource "intersight_vnic_iscsi_adapter_policy" "vnic_iscsi_adapter_policy" {
   connection_time_out  = 15
   organization {
     object_type = "organization.Organization"
-    moid        = var.organization
+    moid = data.intersight_organization_organization.organization.id
   }
 }
-
-variable "organization" {
-   type = string
-   description = "<value for organization>"
- }

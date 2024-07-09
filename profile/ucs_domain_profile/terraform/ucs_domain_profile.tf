@@ -4,13 +4,16 @@ provider "intersight" {
   secretkey       = "C:\\secretKey.txt"
 }
 
-# Define policies
+data "intersight_organization_organization" "organization" {
+  name = "default"
+}
+
 resource "intersight_fabric_eth_network_policy" "fabric_eth_network_policy1" {
   name        = "fabric_eth_network_policy1"
   description = "fabric ethernet network policy"
   organization {
     object_type = "organization.Organization"
-    moid        = var.organization
+    moid = data.intersight_organization_organization.organization.id
   }
 }
 
@@ -20,7 +23,7 @@ resource "intersight_fabric_fc_network_policy" "fabric_fc_network_policy1" {
   enable_trunking = true
   organization {
     object_type = "organization.Organization"
-    moid        = var.organization
+    moid = data.intersight_organization_organization.organization.id
   }
 }
 
@@ -30,7 +33,7 @@ resource "intersight_fabric_port_policy" "fabric_port_policy1" {
   device_model = "UCS-FI-6454"
   organization {
     object_type = "organization.Organization"
-    moid        = var.organization
+    moid = data.intersight_organization_organization.organization.id
   }
 }
 
@@ -51,7 +54,7 @@ resource "intersight_fabric_system_qos_policy" "fabric_system_qos_policy1" {
   }
   organization {
     object_type = "organization.Organization"
-    moid        = var.organization
+    moid = data.intersight_organization_organization.organization.id
   }
 }
 
@@ -66,7 +69,7 @@ resource "intersight_fabric_switch_control_policy" "fabric_switch_control_policy
   vlan_port_optimization_enabled = true
   organization {
     object_type = "organization.Organization"
-    moid        = var.organization
+    moid = data.intersight_organization_organization.organization.id
   }
 }
 
@@ -81,7 +84,7 @@ resource "intersight_ntp_policy" "ntp1" {
   ]
   organization {
     object_type = "organization.Organization"
-    moid        = var.organization
+    moid = data.intersight_organization_organization.organization.id
   }
 }
 
@@ -99,7 +102,7 @@ resource "intersight_networkconfig_policy" "network_config1" {
   enable_ipv4dns_from_dhcp = false
   organization {
     object_type = "organization.Organization"
-    moid        = var.organization
+    moid = data.intersight_organization_organization.organization.id
   }
 }
 
@@ -108,7 +111,7 @@ resource "intersight_fabric_switch_cluster_profile" "cluster_switch_profile_1" {
   name = "cluster_switch_profile_1"
   organization {
     object_type = "organization.Organization"
-    moid        = var.organization
+    moid = data.intersight_organization_organization.organization.id
   }
 }
 
@@ -119,57 +122,48 @@ resource "intersight_fabric_switch_profile" "fabric_A_profile" {
     object_type = "fabric.SwitchClusterProfile"
     moid        = intersight_fabric_switch_cluster_profile.cluster_switch_profile_1.moid
   }
-  policy_bucket = [
-    {
-      additional_properties = ""
-      class_id              = "fabric.EthNetworkPolicy"
-      object_type           = "fabric.EthNetworkPolicy"
-      moid                  = intersight_fabric_eth_network_policy.fabric_eth_network_policy1.moid
-      selector              = ""
-    },
-    {
-      additional_properties = ""
-      class_id              = "fabric.FcNetworkPolicy"
-      object_type           = "fabric.FcNetworkPolicy"
-      moid                  = intersight_fabric_fc_network_policy.fabric_fc_network_policy1.moid
-      selector              = ""
-    },
-    {
-      additional_properties = ""
-      class_id              = "fabric.PortPolicy"
-      object_type           = "fabric.PortPolicy"
-      moid                  = intersight_fabric_port_policy.fabric_port_policy1.moid
-      selector              = ""
-    },
-    {
-      additional_properties = ""
-      class_id              = "fabric.SystemQosPolicy"
-      object_type           = "fabric.SystemQosPolicy"
-      moid                  = intersight_fabric_system_qos_policy.fabric_system_qos_policy1.moid
-      selector              = ""
-    },
-    {
-      additional_properties = ""
-      class_id              = "fabric.SwitchControlPolicy"
-      object_type           = "fabric.SwitchControlPolicy"
-      moid                  = intersight_fabric_switch_control_policy.fabric_switch_control_policy1.moid
-      selector              = ""
-    },
-    {
-      additional_properties = ""
-      class_id              = "ntp.Policy"
-      object_type           = "ntp.Policy"
-      moid                  = intersight_ntp_policy.ntp1.moid
-      selector              = ""
-    },
-    {
-      additional_properties = ""
-      class_id              = "networkconfig.Policy"
-      object_type           = "networkconfig.Policy"
-      moid                  = intersight_networkconfig_policy.network_config1.moid
-      selector              = ""
-    },
-  ]
+
+  policy_bucket {
+    class_id    = "fabric.EthNetworkPolicy"
+    object_type = "fabric.EthNetworkPolicy"
+    moid        = intersight_fabric_eth_network_policy.fabric_eth_network_policy1.moid
+  }
+
+  policy_bucket {
+    class_id    = "fabric.FcNetworkPolicy"
+    object_type = "fabric.FcNetworkPolicy"
+    moid        = intersight_fabric_fc_network_policy.fabric_fc_network_policy1.moid
+  }
+
+  policy_bucket {
+    class_id    = "fabric.PortPolicy"
+    object_type = "fabric.PortPolicy"
+    moid        = intersight_fabric_port_policy.fabric_port_policy1.moid
+  }
+
+  policy_bucket {
+    class_id    = "fabric.SystemQosPolicy"
+    object_type = "fabric.SystemQosPolicy"
+    moid        = intersight_fabric_system_qos_policy.fabric_system_qos_policy1.moid
+  }
+
+  policy_bucket {
+    class_id    = "fabric.SwitchControlPolicy"
+    object_type = "fabric.SwitchControlPolicy"
+    moid        = intersight_fabric_switch_control_policy.fabric_switch_control_policy1.moid
+  }
+
+  policy_bucket {
+    class_id    = "ntp.Policy"
+    object_type = "ntp.Policy"
+    moid        = intersight_ntp_policy.ntp1.moid
+  }
+
+  policy_bucket {
+    class_id    = "networkconfig.Policy"
+    object_type = "networkconfig.Policy"
+    moid        = intersight_networkconfig_policy.network_config1.moid
+  }
 }
 
 # Create a domain profile for Fabric switch B
@@ -179,60 +173,46 @@ resource "intersight_fabric_switch_profile" "fabric_B_profile" {
     object_type = "fabric.SwitchClusterProfile"
     moid        = intersight_fabric_switch_cluster_profile.cluster_switch_profile_1.moid
   }
-  policy_bucket = [
-    {
-      additional_properties = ""
-      class_id              = "fabric.EthNetworkPolicy"
-      object_type           = "fabric.EthNetworkPolicy"
-      moid                  = intersight_fabric_eth_network_policy.fabric_eth_network_policy1.moid
-      selector              = ""
-    },
-    {
-      additional_properties = ""
-      class_id              = "fabric.FcNetworkPolicy"
-      object_type           = "fabric.FcNetworkPolicy"
-      moid                  = intersight_fabric_fc_network_policy.fabric_fc_network_policy1.moid
-      selector              = ""
-    },
-    {
-      additional_properties = ""
-      class_id              = "fabric.PortPolicy"
-      object_type           = "fabric.PortPolicy"
-      moid                  = intersight_fabric_port_policy.fabric_port_policy1.moid
-      selector              = ""
-    },
-    {
-      additional_properties = ""
-      class_id              = "fabric.SystemQosPolicy"
-      object_type           = "fabric.SystemQosPolicy"
-      moid                  = intersight_fabric_system_qos_policy.fabric_system_qos_policy1.moid
-      selector              = ""
-    },
-    {
-      additional_properties = ""
-      class_id              = "fabric.SwitchControlPolicy"
-      object_type           = "fabric.SwitchControlPolicy"
-      moid                  = intersight_fabric_switch_control_policy.fabric_switch_control_policy1.moid
-      selector              = ""
-    },
-    {
-      additional_properties = ""
-      class_id              = "ntp.Policy"
-      object_type           = "ntp.Policy"
-      moid                  = intersight_ntp_policy.ntp1.moid
-      selector              = ""
-    },
-    {
-      additional_properties = ""
-      class_id              = "networkconfig.Policy"
-      object_type           = "networkconfig.Policy"
-      moid                  = intersight_networkconfig_policy.network_config1.moid
-      selector              = ""
-    },
-  ]
-}
 
-variable "organization" {
-  type        = string
-  description = "Moid of the organization"
+  policy_bucket {
+    class_id    = "fabric.EthNetworkPolicy"
+    object_type = "fabric.EthNetworkPolicy"
+    moid        = intersight_fabric_eth_network_policy.fabric_eth_network_policy1.moid
+  }
+
+  policy_bucket {
+    class_id    = "fabric.FcNetworkPolicy"
+    object_type = "fabric.FcNetworkPolicy"
+    moid        = intersight_fabric_fc_network_policy.fabric_fc_network_policy1.moid
+  }
+
+  policy_bucket {
+    class_id    = "fabric.PortPolicy"
+    object_type = "fabric.PortPolicy"
+    moid        = intersight_fabric_port_policy.fabric_port_policy1.moid
+  }
+
+  policy_bucket {
+    class_id    = "fabric.SystemQosPolicy"
+    object_type = "fabric.SystemQosPolicy"
+    moid        = intersight_fabric_system_qos_policy.fabric_system_qos_policy1.moid
+  }
+
+  policy_bucket {
+    class_id    = "fabric.SwitchControlPolicy"
+    object_type = "fabric.SwitchControlPolicy"
+    moid        = intersight_fabric_switch_control_policy.fabric_switch_control_policy1.moid
+  }
+
+  policy_bucket {
+    class_id    = "ntp.Policy"
+    object_type = "ntp.Policy"
+    moid        = intersight_ntp_policy.ntp1.moid
+  }
+
+  policy_bucket {
+    class_id    = "networkconfig.Policy"
+    object_type = "networkconfig.Policy"
+    moid        = intersight_networkconfig_policy.network_config1.moid
+  }
 }
