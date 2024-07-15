@@ -8,10 +8,9 @@ data "intersight_organization_organization" "organization" {
   name = "default"
 }
 
-resource "intersight_fabric_port_policy" "fabric_port_policy1" {
-  name = "fabric_port_policy1"
-  description  = "demo fabric port policy"
-  device_model = "UCS-FI-6454"
+resource "intersight_thermal_policy" "thermal_policy_1" {
+  name              = "thermal_policy_1"
+  fan_control_mode  = "Balanced"
   organization {
     object_type = "organization.Organization"
     moid = data.intersight_organization_organization.organization.id

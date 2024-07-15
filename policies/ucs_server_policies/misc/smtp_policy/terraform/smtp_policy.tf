@@ -1,3 +1,13 @@
+provider "intersight" {
+  endpoint        = "https://intersight.com"
+  apikey          = "xxxxx27564612d30dxxxxx/5f21c9d97564612d30dd575a/5f9a8b877564612xxxxxxxx"
+  secretkey       = "C:\\secretKey.txt"
+}
+
+data "intersight_organization_organization" "organization" {
+  name = "default"
+}
+
 resource "intersight_smtp_policy" "smtp1" {
   enabled      = false
   name         = "smtp1"
@@ -12,20 +22,6 @@ resource "intersight_smtp_policy" "smtp1" {
   "dz@cisco.com"]
   organization {
     object_type = "organization.Organization"
-    moid        = var.organization
+    moid = data.intersight_organization_organization.organization.id
   }
-  profiles {
-    moid        = var.profile
-    object_type = "server.Profile"
-  }
-}
-
-variable "organization" {
-   type = string
-   description = "<value for organization>"
- }
-
-variable "profile"{
-  type = string
-  description = "Moid of server.Profile"
 }
