@@ -113,6 +113,21 @@
 									]
 								},
 								{
+									"name": "firmware_policy",
+									"displayName": "Firmware Policy",
+									"descriptions": "This policy allows you to see the firmware present in your systems, as against the firmware baseline",
+									"codesample": {
+										"ansible": "firmware_policy.yaml",
+										"python": "firmware_policy.py",
+										"powershell": "firmware_policy.ps1",
+										"terraform": "firmware_policy.tf",
+										"openapi": "firmware_policy.json"
+									},
+									"files": [
+										"readme.md"
+									]
+								},
+								{
 									"name": "power_policy",
 									"displayName": "Power Policy",
 									"descriptions": "Enables the management of power for FI-attached servers and chassis. This policy allows you to set the power profiling the power priority of the server, and the power restore state of the system",
@@ -122,6 +137,21 @@
 										"powershell": "power_policy.ps1",
 										"terraform": "power_policy.tf",
 										"openapi": "power_policy.json"
+									},
+									"files": [
+										"readme.md"
+									]
+								},
+								{
+									"name": "thermal_policy",
+									"displayName": "Thermal Policy",
+									"descriptions": "This policy enables controlling the speed of the chassis fan.",
+									"codesample": {
+										"ansible": "thermal_policy.yaml",
+										"python": "thermal_policy.py",
+										"powershell": "thermal_policy.ps1",
+										"terraform": "thermal_policy.tf",
+										"openapi": "thermal_policy.json"
 									},
 									"files": [
 										"readme.md"
@@ -845,6 +875,7 @@
 				{
 					"name":"IP",
 					"displayName":"IP Pool",
+					"descriptions":"An IP Pool can contain one or more blocks of IPs that will get consumed in sequential order, beginning with the lowest block. IP pools support both IPv4 and IPv6 addresses.",
 					"codesample":{
 						"ansible":"",
 						"powershell":"IPPool.ps1",
@@ -860,6 +891,7 @@
 				{
 					"name":"IQN",
 					"displayName":"IQN Pool",
+					"descriptions":"An IQN pool is a collection of iSCSI Qualified Names (IQNs) for use as initiator identifiers by iSCSI vNICs. IQN pool members are of the form prefix: suffix: number, where you can specify the prefix, suffix, and a block (range) of numbers.",
 					"codesample":{
 						"ansible":"",
 						"powershell":"IQNPool.ps1",
@@ -875,6 +907,7 @@
 				{
 					"name":"MAC",
 					"displayName":"MAC Pool",
+					"descriptions":"MAC Pools represent a collection of MAC addresses that can be allocated to vNICs of a server profile.",
 					"codesample":{
 						"ansible":"",
 						"powershell":"MACPool.ps1",
@@ -890,6 +923,7 @@
 				{
 					"name":"Resource",
 					"displayName":"Resource Pool",
+					"descriptions":"A resource pool is an aggregation of homogeneous resources that are managed in Intersight. A resource pool enables you to manage the utilization of resources for certain Intersight features like Server Profile. Currently, Intersight supports only server type as a resource for the resource pool.",
 					"codesample":{
 						"ansible":"",
 						"powershell":"ResourcePool.ps1",
@@ -905,6 +939,7 @@
 				{
 					"name":"UUID",
 					"displayName":"UUID Pool",
+					"descriptions":"UUID Pools represent a collection of UUID items that can be allocated to server profiles.",
 					"codesample":{
 						"ansible":"",
 						"powershell":"UUIDPool.ps1",
@@ -920,6 +955,7 @@
 				{
 					"name":"WWNN",
 					"displayName":"WWNN Pool",
+					"descriptions":"A WWNN pool is a WWN pool that contains only WW node names. If you include a pool of WWNNs in a server profile, the associated server is assigned a WWNN from that pool.",
 					"codesample":{
 						"ansible":"",
 						"powershell":"WWNNPool.ps1",
@@ -935,6 +971,7 @@
 				{
 					"name":"WWPN",
 					"displayName":"WWPN Pool",
+					"descriptions":"A WWPN pool is a WWN pool that contains only WW port names. If you include a pool of WWPNs in a server profile, the port on each vHBA of the associated server is assigned a WWPN from that pool.",
 					"codesample":{
 						"ansible":"",
 						"powershell":"WWPNPool.ps1",
