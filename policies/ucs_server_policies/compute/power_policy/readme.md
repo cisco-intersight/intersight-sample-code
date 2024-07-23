@@ -1,0 +1,2 @@
+## Power Policy
+Enables the management of power for FI-attached servers and chassis. This policy allows you to set the power profiling, power priority of the server, and the power restore state of the system.

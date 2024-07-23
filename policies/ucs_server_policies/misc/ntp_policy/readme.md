@@ -1,0 +1,2 @@
+## NTP Policy
+Allows you to enable the NTP service on an Intersight Managed Cisco IMC (Standalone) server. The NTP service synchronizes the time with an NTP server. You must enable and configure the NTP service by specifying the IP address or DNS of a minimum of one to a maximum of four NTP servers. 

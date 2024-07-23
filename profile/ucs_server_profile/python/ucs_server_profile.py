@@ -15,6 +15,7 @@ from intersight.model.compute_physical_relationship import ComputePhysicalRelati
 from intersight.api import compute_api
 from intersight.exceptions import NotFoundException
 from pprint import pprint
+from intersight.api import organization_api
 import intersight
 import sys
 
@@ -24,10 +25,19 @@ api_key_file = "~/api_key_file_path"
 api_client = client.get_api_client(api_key, api_key_file)
 
 
-def create_organization():
-    # Creating and returning an instance of organization
+def get_organization(organization_name = 'default'):
+    # Get the organization and return OrganizationRelationship
+    api_instance = organization_api.OrganizationApi(api_client)
+    odata = {"filter":f"Name eq {organization_name}"}
+    organizations = api_instance.get_organization_organization_list(**odata)
+    if organizations.results and len(organizations.results) > 0:
+        moid = organizations.results[0].moid
+    else:
+        print("No organization was found with given name")
+        sys.exit(1)
     return OrganizationOrganizationRelationship(class_id="mo.MoRef",
-                                                object_type="organization.Organization")
+                                                object_type="organization.Organization",
+                                                moid=moid)
 
 
 def create_policy_reference(policy_moid, obj_type):
@@ -40,7 +50,7 @@ def create_server_profile():
     api_instance = server_api.ServerApi(api_client)
 
     # Create an instance of organization.
-    organization = create_organization()
+    organization = get_organization()
 
     # ServerProfile | The 'server.Profile' resource to create.
     server_profile = ServerProfile()
@@ -49,6 +59,7 @@ def create_server_profile():
     server_profile.name = "sample_server_profile1"
     server_profile.description = "sample server profile."
     server_profile.organization = organization
+    server_profile.target_platform = "Standalone"
 
     # example passing only required values which don't have defaults set
     try:
@@ -65,7 +76,7 @@ def create_ntp_policy():
     api_instance = ntp_api.NtpApi(api_client)
 
     # Create an instance of organization.
-    organization = create_organization()
+    organization = get_organization()
 
     # NtpPolicy | The 'ntp.Policy' resource to create.
     ntp_policy = NtpPolicy()
@@ -95,7 +106,7 @@ def create_smtp_policy():
     api_instance = smtp_api.SmtpApi(api_client)
 
     # Create an instance of organization.
-    organization = create_organization()
+    organization = get_organization()
 
     # SmtpPolicy | The 'smtp.Policy' resource to create.
     smtp_policy = SmtpPolicy()
@@ -125,7 +136,7 @@ def create_snmp_policy():
     api_instance = snmp_api.SnmpApi(api_client)
 
     # Create an instance of organization.
-    organization = create_organization()
+    organization = get_organization()
 
     # SmtpPolicy | The 'smtp.Policy' resource to create.
     snmp_policy = SnmpPolicy()

@@ -9,20 +9,20 @@ $config = @{
 Set-IntersightConfiguration @config
 
 # Get a organization ref. 
-$orgRef = Get-IntersightOrganizationOrganization -Name "default" | Get-IntersightMoMoRef
+$org = Get-IntersightOrganizationOrganization -Name "default" 
 
 # create ntp policy and get MoRef
-$ntpPolicyRef = New-IntersightNtpPolicy -Name "ntp_policy_11" -NtpServers @("22.22.22.33","44.44.44.44") -Enabled $true `
-                -Organization $orgRef | Get-IntersightMoMoRef
+$ntpPolicy = New-IntersightNtpPolicy -Name "ntp_policy_11" -NtpServers @("22.22.22.33","44.44.44.44") -Enabled $true `
+                -Organization $org 
 
 # create bios policy and get MoRef
-$biosPolicyRef = New-IntersightBiosPolicy -Name "bios_policy_11" -BootOptionRetry Enabled -IntelTurboBoostTech Enabled `
-                -Organization $orgRef | Get-IntersightMoMoRef
+$biosPolicy = New-IntersightBiosPolicy -Name "bios_policy_11" -BootOptionRetry Enabled -IntelTurboBoostTech Enabled `
+                -Organization $org 
 
 # create kvm policy and get kvm policy
-$kvmPolicyRef = New-IntersightKvmPolicy -Name "kvm_policy_11" -EnableLocalServerVideo $true -EnableVideoEncryption $true `
-                -Enabled $true -Organization $orgRef | Get-IntersightMoMoRef
+$kvmPolicy = New-IntersightKvmPolicy -Name "kvm_policy_11" -EnableLocalServerVideo $true -EnableVideoEncryption $true `
+                -Enabled $true -Organization $org 
 
 # create a ServerProfile template.
 $result = New-IntersightServerProfileTemplate -Name "Server_Profile_template_1" `
-          -PolicyBucket @($ntpPolicyRef,$biosPolicyRef,$kvmPolicyRef) -Organization $orgRef
+          -PolicyBucket @($ntpPolicy,$biosPolicy,$kvmPolicy) -Organization $org

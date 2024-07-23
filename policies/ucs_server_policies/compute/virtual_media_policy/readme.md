@@ -1,0 +1,2 @@
+## Virtual Media Policy
+Enables you to install an operating system on the server using the KVM console and virtual media, mount files to the host from a remote file share, and enable virtual media encryption. You can create one or more Virtual Media policies which contain virtual media mappings for different OS images, and configure up to two virtual media mappings, one for ISO files (through CDD), and the other for IMG files (through HDD).
