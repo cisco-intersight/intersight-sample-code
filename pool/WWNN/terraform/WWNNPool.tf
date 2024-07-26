@@ -10,7 +10,7 @@ data "intersight_organization_organization" "organization" {
 
 resource "intersight_fcpool_pool" "fcpool_pool1" {
   name             = "wwnn_pool_1"
-  description      = "wwnn pool_1"
+  description      = "wwnn pool"
   assignment_order = "default"
   id_blocks {
     object_type = "fcpool.Block"

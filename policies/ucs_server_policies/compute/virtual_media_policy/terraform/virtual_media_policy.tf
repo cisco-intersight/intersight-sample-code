@@ -9,7 +9,7 @@ data "intersight_organization_organization" "organization" {
 }
 
 resource "intersight_vmedia_policy" "vmedia1" {
-  name          = "vmedia1"
+  name          = "vmedia_policy_1"
   description   = "demo vmedia policy"
   enabled       = true
   encryption    = true

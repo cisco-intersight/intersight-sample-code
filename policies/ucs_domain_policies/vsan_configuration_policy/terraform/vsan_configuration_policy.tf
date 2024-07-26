@@ -9,7 +9,7 @@ data "intersight_organization_organization" "organization" {
 }
 
 resource "intersight_fabric_fc_network_policy" "fabric_fc_network_policy1" {
-  name            = "fabric_fc_network_policy1"
+  name            = "fc_network_policy_1"
   description     = "fabric ethernet network policy"
   enable_trunking = true
   organization {

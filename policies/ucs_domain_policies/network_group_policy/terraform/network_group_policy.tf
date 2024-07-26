@@ -9,7 +9,7 @@ data "intersight_organization_organization" "organization" {
 }
 
 resource "intersight_fabric_eth_network_group_policy" "eth_network_group_policy"{
-    name = "fabric_ethNetork_group_policy_1"
+    name = "fabricEthNetorkGroupPolicy"
     description = "sample fabric eth network group policy"
     organization {
       object_type = "organization.Organization"

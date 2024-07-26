@@ -9,8 +9,8 @@ data "intersight_organization_organization" "organization" {
 }
 
 resource "intersight_fabric_eth_network_control_policy" "fabric_eth_network_control_policy1" {
-  name        = "fabric_eth_network_control_policy1"
-  description = "demo eth network control policy"
+  name        = "eth_network_control_policy_1"
+  description = "eth network control policy"
   cdp_enabled = false
   forge_mac   = "allow"
   lldp_settings {

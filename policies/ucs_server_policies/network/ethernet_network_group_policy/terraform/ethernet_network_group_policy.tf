@@ -9,8 +9,8 @@ data "intersight_organization_organization" "organization" {
 }
 
 resource "intersight_fabric_eth_network_group_policy" "fabric_eth_network_group_policy1" {
-  name        = "fabric_eth_network_group_policy1"
-  description = "demo eth network group policy"
+  name        = "fabricEthNetorkPolicy"
+  description = "eth network group policy"
   vlan_settings {
     native_vlan   = 1
     allowed_vlans = "11,12,13"

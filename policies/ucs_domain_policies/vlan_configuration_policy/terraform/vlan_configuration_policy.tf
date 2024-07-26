@@ -28,7 +28,6 @@ resource "intersight_fabric_multicast_policy" "fabric_multicast_policy1" {
   }
 }
 
-
 resource "intersight_fabric_vlan" "fabric_vlan1" {
   auto_allow_on_uplinks = true
   is_native             = false

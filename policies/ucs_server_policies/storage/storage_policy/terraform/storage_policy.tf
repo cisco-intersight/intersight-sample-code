@@ -9,7 +9,7 @@ data "intersight_organization_organization" "organization" {
 }
 
 resource "intersight_storage_storage_policy" "tf_storage_policy" {
-  name                     = "tf_storage_policy"
+  name                     = "storage_policy_1"
   use_jbod_for_vd_creation = true
   description              = "storage policy test"
   unused_disks_state       = "UnconfiguredGood"

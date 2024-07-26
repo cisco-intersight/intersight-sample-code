@@ -9,16 +9,16 @@ data "intersight_organization_organization" "organization" {
 }
 
 resource "intersight_snmp_policy" "snmp1" {
-  name                    = "snmp1"
-  description             = "testing smtp policy"
+  name                    = "snmpPolicy"
+  description             = "snmp policy"
   enabled                 = true
   snmp_port               = 1983
   access_community_string = "dummy123"
   community_access        = "Disabled"
   trap_community          = "TrapCommunity"
-  sys_contact             = "aanimish"
-  sys_location            = "Karnataka"
-  engine_id               = "vvb"
+  sys_contact             = "Contact"
+  sys_location            = "Location"
+  engine_id               = "EngineId"
   snmp_users {
     name         = "demouser"
     privacy_type = "AES"

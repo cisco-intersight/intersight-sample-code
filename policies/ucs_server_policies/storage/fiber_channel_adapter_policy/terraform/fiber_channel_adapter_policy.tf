@@ -10,7 +10,7 @@ data "intersight_organization_organization" "organization" {
 }
 
 resource "intersight_vnic_fc_adapter_policy" "v_fc_adapter1" {
-  name                    = "v_fc_adapter1"
+  name = "fiber-channel-adapter-policy-1"
   error_detection_timeout = 2000
   
   organization {

@@ -9,8 +9,8 @@ data "intersight_organization_organization" "organization" {
 }
 
 resource "intersight_sdcard_policy" "sdcard1" {
-  name        = "sdcard1"
-  description = "demo sd card policy"
+  name        = "sd-card-policy-1"
+  description = "sd card policy"
   organization {
     object_type = "organization.Organization"
     moid = data.intersight_organization_organization.organization.id

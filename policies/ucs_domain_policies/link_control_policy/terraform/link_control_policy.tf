@@ -10,7 +10,7 @@ data "intersight_organization_organization" "organization" {
 
 resource "intersight_fabric_link_control_policy" "link_control_policy"{
     name = "fabric_link_policy"
-    description = "sample fabric link control"
+    description = "fabric link control"
     organization {
       object_type = "organization.Organization"
       moid = data.intersight_organization_organization.organization.id

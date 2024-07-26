@@ -9,8 +9,8 @@ data "intersight_organization_organization" "organization" {
 }
 
 resource "intersight_adapter_config_policy" "adapter_config1" {
-  name        = "adapter_config1"
-  description = "test policy"
+  name        = "adapter_config_policy"
+  description = "adapter config policy"
   organization {
     object_type = "organization.Organization"
     moid = data.intersight_organization_organization.organization.id

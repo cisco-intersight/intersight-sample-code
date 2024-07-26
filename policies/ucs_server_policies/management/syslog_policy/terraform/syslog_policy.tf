@@ -10,7 +10,7 @@ data "intersight_organization_organization" "organization" {
 
 resource "intersight_syslog_policy" "syslog_policy1" {
   name        = "sys_log_policy1"
-  description = "Syslog policy for sample"
+  description = "Syslog policy"
   
   organization {
     object_type = "organization.Organization"

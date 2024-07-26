@@ -9,8 +9,8 @@ data "intersight_organization_organization" "organization" {
 }
 
 resource "intersight_fabric_link_aggregation_policy" "fabric_link_aggregation_policy"{
-    name = "link_aggregate_policy_1"
-    description = "sample link aggregate policy"
+    name = "LinkAgrregate"
+    description = "Link Aggregation policy"
     organization {
       object_type = "organization.Organization"
       moid = data.intersight_organization_organization.organization.id

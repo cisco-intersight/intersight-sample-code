@@ -10,8 +10,8 @@ data "intersight_organization_organization" "organization" {
 }
 
 resource "intersight_networkconfig_policy" "network_config1" {
-  name                     = "network_config1"
-  description              = "demo network configuration policy"
+  name                     = "netwrokConfigPolicy"
+  description              = "network configuration policy"
   enable_dynamic_dns       = false
   preferred_ipv6dns_server = "::"
   enable_ipv6              = true

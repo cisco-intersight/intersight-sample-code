@@ -10,9 +10,9 @@ data "intersight_organization_organization" "organization" {
 
 resource "intersight_smtp_policy" "smtp1" {
   enabled      = false
-  name         = "smtp1"
-  description  = "testing smtp policy"
-  smtp_port    = 32
+  name         = "smtp_policy_1"
+  description  = "smtp policy"
+  smtp_port    = 25
   min_severity = "critical"
   smtp_server  = "10.10.10.1"
   sender_email = "IMCSQAAutomation@cisco.com"

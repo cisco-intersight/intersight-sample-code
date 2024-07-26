@@ -8,6 +8,10 @@ data "intersight_organization_organization" "organization" {
   name = "default"
 }
 
+data "intersight_vnic_iscsi_static_target_policy" "primary_target_1"{
+  name = "primary_target_1"
+}
+
 resource "intersight_vnic_iscsi_boot_policy" "vnic_iscsi_boot_policy" {
   name                           = "vnic_iscsi_boot_policy1"
   description                    = "vnic iscsi boot policy"
@@ -39,11 +43,6 @@ resource "intersight_vnic_iscsi_boot_policy" "vnic_iscsi_boot_policy" {
 
   primary_target_policy {
     object_type = "vnic.IscsiStaticTargetPolicy"
-    moid        = var.primary_target_policy_moid
+    moid        = data.intersight_vnic_iscsi_static_target_policy.primary_target_1.id
   }
-}
-
-variable "primary_target_policy_moid" {
-  type        = string
-  description = "<Moid of the primary target policy>"
 }

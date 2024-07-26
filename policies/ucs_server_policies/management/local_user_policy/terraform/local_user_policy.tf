@@ -8,6 +8,10 @@ data "intersight_organization_organization" "organization" {
   name = "default"
 }
 
+data "intersight_iam_end_point_role" "admin"{
+  name = "admin"
+}
+
 resource "intersight_iam_end_point_user" "guest_user" {
   name = "guest"
   organization {
@@ -37,9 +41,9 @@ resource "intersight_iam_end_point_user_role" "user_role" {
   enabled           = true
   end_point_role {
     object_type = "iam.EndPointRole"
-    moid        = var.admin_role_moid
+    moid        = data.intersight_iam_end_point_role.admin.id
   }
-  password          = "admin@1234"
+  password = "admin@1234"
   end_point_user {
     object_type = "iam.EndPointUser"
     moid        = intersight_iam_end_point_user.guest_user.moid
@@ -48,9 +52,4 @@ resource "intersight_iam_end_point_user_role" "user_role" {
     object_type = "iam.EndPointUserPolicy"
     moid        = intersight_iam_end_point_user_policy.user_policy.moid
   }
-}
-
-variable "admin_role_moid" {
-  type        = string
-  description = "MOID of the admin role"
 }
