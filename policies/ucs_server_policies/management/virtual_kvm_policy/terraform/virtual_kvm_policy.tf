@@ -9,7 +9,7 @@ data "intersight_organization_organization" "organization" {
 }
 
 resource "intersight_kvm_policy" "kvm1" {
-  name                      = "kvm1"
+  name                      = "kvm_policy_1"
   description               = "demo kvm policy"
   enabled                   = true
   maximum_sessions          = 3

@@ -9,10 +9,10 @@ data "intersight_organization_organization" "organization" {
 }
 
 resource "intersight_ssh_policy" "ssh_policy1" {
-  name        = "ssh_policy1"
+  name        = "ssh_policy_1"
   description = "ssh policy"
   enabled     = true
-  port        = 22
+  port        = 12000
   timeout     = 1800
   organization {
     object_type = "organization.Organization"

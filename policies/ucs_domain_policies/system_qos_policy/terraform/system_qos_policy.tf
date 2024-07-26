@@ -10,7 +10,7 @@ data "intersight_organization_organization" "organization" {
 
 resource "intersight_fabric_system_qos_policy" "qos_policy" {
   name         = "qos_policy_1"
-  description  = "Demo fabric system QoS policy"
+  description  = "Fabric system QoS policy"
   
   organization {
       object_type = "organization.Organization"

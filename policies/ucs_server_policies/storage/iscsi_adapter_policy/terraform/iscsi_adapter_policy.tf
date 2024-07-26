@@ -9,7 +9,7 @@ data "intersight_organization_organization" "organization" {
 }
 
 resource "intersight_vnic_iscsi_adapter_policy" "vnic_iscsi_adapter_policy" {
-  name                 = "vnic_iscsi_adapter_policy1"
+  name                 = "iscsi_adapter_policy_1"
   description          = "vnic iscsi adapter policy"
   dhcp_timeout         = 60
   lun_busy_retry_count = 15

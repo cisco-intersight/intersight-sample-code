@@ -9,7 +9,7 @@ data "intersight_organization_organization" "organization" {
 }
 
 resource "intersight_iam_ldap_policy" "ldap1" {
-  name                   = "ldap1"
+  name                   = "ldap_policy_1"
   description            = "test policy"
   enabled                = true
   enable_dns             = true
@@ -24,7 +24,7 @@ resource "intersight_iam_ldap_policy" "ldap1" {
     enable_group_authorization = true
     filter                     = "sAMAccountName"
     group_attribute            = "memberOf"
-    nested_group_search_depth  = 128
+    nested_group_search_depth  = 120
     timeout                    = 180
     object_type                = "iam.LdapBaseProperties"
   }
@@ -46,8 +46,8 @@ data "intersight_iam_end_point_role" "imc_admin" {
 }
 
 resource "intersight_iam_ldap_provider" "iam_ldap_provider1" {
-  port   = 636
-  server = "10.1.1.1"
+  port   = 389
+  server = "ldap.xyz.com"
   ldap_policy {
     moid        = intersight_iam_ldap_policy.ldap1.moid
     object_type = "iam.LdapPolicy"
@@ -55,8 +55,8 @@ resource "intersight_iam_ldap_provider" "iam_ldap_provider1" {
 }
 
 resource "intersight_iam_ldap_group" "iam_ldap_group1" {
-  domain = "example.com"
-  name   = "ldap_group1"
+  domain = "xyz.com"
+  name   = "ldap_group"
   end_point_role {
     moid        = data.intersight_iam_end_point_role.imc_admin.results[0].moid
     object_type = "iam.EndPointRole"

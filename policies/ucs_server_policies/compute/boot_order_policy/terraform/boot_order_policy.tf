@@ -9,7 +9,7 @@ data "intersight_organization_organization" "organization" {
 }
 
 resource "intersight_boot_precision_policy" "boot_precision1" {
-  name                     = "boot_precision1"
+  name                     = "BootPrecision_1"
   description              = "test policy"
   configured_boot_mode     = "Uefi"  
   enforce_uefi_secure_boot = false

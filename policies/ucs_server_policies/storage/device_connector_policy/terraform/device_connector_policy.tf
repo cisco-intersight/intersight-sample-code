@@ -10,8 +10,8 @@ data "intersight_organization_organization" "organization" {
 }
 
 resource "intersight_deviceconnector_policy" "dcp1" {
-  name            = "device_con1"
-  description     = "demo device connector policy"
+  name            = "device_connector_policy_1"
+  description     = "device connector policy"
   lockout_enabled = true
   organization {
     object_type = "organization.Organization"

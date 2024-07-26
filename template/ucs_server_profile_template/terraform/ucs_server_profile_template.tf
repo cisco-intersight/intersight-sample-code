@@ -9,7 +9,7 @@ data "intersight_organization_organization" "organization" {
 }
 
 resource "intersight_ntp_policy" "ntp_policy" {
-  name        = "ntp_policy_11"
+  name        = "ntp_policy_1"
   enabled     = true
   ntp_servers = ["22.22.22.33", "44.44.44.44"]
   organization {
@@ -19,7 +19,7 @@ resource "intersight_ntp_policy" "ntp_policy" {
 }
 
 resource "intersight_kvm_policy" "kvm_policy" {
-  name                     = "kvm_policy_11"
+  name                     = "kvm_policy_1"
   enable_local_server_video = true
   enable_video_encryption   = true
   enabled                  = true
@@ -30,7 +30,7 @@ resource "intersight_kvm_policy" "kvm_policy" {
 }
 
 resource "intersight_bios_policy" "bios_policy" {
-  name                    = "bios_policy_11"
+  name                    = "bios_policy_1"
   boot_option_retry       = "enabled"
   intel_turbo_boost_tech  = "enabled"
   organization {

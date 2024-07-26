@@ -9,7 +9,7 @@
 }
 
   resource "intersight_vnic_eth_network_policy" "network_policy_1" {
-    name            = "network_policy_1"
+    name            = "network_poicy_1"
     target_platform = "Standalone"
     
     vlan_settings {

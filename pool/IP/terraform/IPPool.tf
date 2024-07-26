@@ -9,7 +9,7 @@ data "intersight_organization_organization" "organization" {
 }
 
 resource "intersight_ippool_pool" "ippool_pool1" {
-  name             = "ippool_pool1"
+  name             = "IpPool_1"
   description      = "ippool pool"
   assignment_order = "sequential"
   

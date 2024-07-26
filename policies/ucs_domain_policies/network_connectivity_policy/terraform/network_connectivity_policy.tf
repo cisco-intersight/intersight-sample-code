@@ -9,8 +9,8 @@ data "intersight_organization_organization" "organization" {
 }
 
 resource "intersight_networkconfig_policy" "networkconfig_policy"{
-    name = "netwrok_config_policy_1"
-    description = "demo network config policy"
+    name = "netwrokConfigPolicy"
+    description = "network config policy"
     organization {
       object_type = "organization.Organization"
       moid = data.intersight_organization_organization.organization.id

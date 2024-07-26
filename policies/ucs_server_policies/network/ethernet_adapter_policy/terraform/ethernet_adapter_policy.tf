@@ -9,7 +9,7 @@ data "intersight_organization_organization" "organization" {
 }
 
 resource "intersight_vnic_eth_adapter_policy" "v_eth_adapter1" {
-  name                    = "v_eth_adapter1"
+  name                    = "vnic_eth_adp_policy_1"
   rss_settings            = true
   uplink_failback_timeout = 5
   organization {

@@ -10,7 +10,7 @@ data "intersight_organization_organization" "organization" {
 
 resource "intersight_sol_policy" "sol1" {
   name        = "sample_sol_policy"
-  description = "demo serial over lan policy"
+  description = "serial over lan policy"
   enabled     = false
   baud_rate   = 9600
   com_port    = "com1"

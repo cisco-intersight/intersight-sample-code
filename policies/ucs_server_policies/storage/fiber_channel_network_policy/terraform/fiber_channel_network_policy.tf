@@ -9,7 +9,7 @@ data "intersight_organization_organization" "organization" {
 }
 
 resource "intersight_vnic_fc_network_policy" "v_fc_network1" {
-  name = "v_fc_network1"
+  name = "fc_network_policy_1"
   vsan_settings {
     id          = 22
     object_type = "vnic.VsanSettings"

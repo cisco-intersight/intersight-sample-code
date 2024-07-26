@@ -10,7 +10,7 @@ data "intersight_organization_organization" "organization" {
 
  resource "intersight_ntp_policy" "ntp1" {
   name        = "ntp1"
-  description = "test policy"
+  description = "ntp policy"
   enabled     = true
   ntp_servers = ["22.22.22.22", "77.77.77.77"]
   timezone = "Indian/Mauritius"

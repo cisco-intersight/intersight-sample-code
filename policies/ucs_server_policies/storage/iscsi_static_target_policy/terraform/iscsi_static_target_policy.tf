@@ -10,7 +10,7 @@ data "intersight_organization_organization" "organization" {
 }
 
 resource "intersight_vnic_iscsi_static_target_policy" "vnic_iscsi_static_target_policy" {
-  name        = "vnic_iscsi_static_target_policy2"
+  name        = "iscsi_target_policy_1"
   description = "vnic iscsi static target policy"
   target_name = "iqn.2024-05.com"
   ip_address  = "10.1.1.1"

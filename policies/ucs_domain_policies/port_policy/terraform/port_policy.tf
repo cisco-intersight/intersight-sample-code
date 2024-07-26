@@ -9,7 +9,7 @@ data "intersight_organization_organization" "organization" {
 }
 
 resource "intersight_fabric_port_policy" "fabric_port_policy1" {
-  name = "fabric_port_policy1"
+  name = "portPolicy"
   description  = "demo fabric port policy"
   device_model = "UCS-FI-6454"
   organization {

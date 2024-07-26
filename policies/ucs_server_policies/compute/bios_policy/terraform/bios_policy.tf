@@ -9,7 +9,7 @@ data "intersight_organization_organization" "organization" {
 }
 
 resource "intersight_bios_policy" "bios_policy1" {
-  name                                  = "TEST_BIOS_POLICY"
+  name                                  = "bios_policy_1"
   description                           = "Bios policy"
   acs_control_gpu1state                 = "disabled"
   acs_control_gpu2state                 = "disabled"
