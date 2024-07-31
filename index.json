@@ -1,9 +1,13 @@
 {
-	"tabs":["powershell","python","terraform"],
+	"tabs": [
+		"powershell",
+		"python",
+		"terraform"
+	],
 	"directories": [
 		{
-			"name": "profile",
-			"displayName": "Profile",
+			"name": "profiles",
+			"displayName": "Profiles",
 			"subDirectories": [
 				{
 					"name": "ucs_chassis_profile",
@@ -50,8 +54,8 @@
 			]
 		},
 		{
-			"name": "template",
-			"displayName": "Template",
+			"name": "templates",
+			"displayName": "Templates",
 			"subDirectories": [
 				{
 					"name": "ucs_server_profile_template",
@@ -209,6 +213,21 @@
 									]
 								},
 								{
+									"name": "ldap_policy",
+									"displayName": "LDAP Policy",
+									"descriptions": "Specifies the LDAP configuration settings and preferences for an endpoint. The endpoints support LDAP to store and maintain directory information in a network. The LDAP policy determines configuration settings for LDAP Servers, DNS parameters including options to obtain a domain name used for the DNS SRV request, Binding methods, Search parameters, and Group Authorization preferences. Through an LDAP policy, you can also create multiple LDAP groups and add them to the LDAP server database.",
+									"codesample": {
+										"ansible": "ldap_policy.yaml",
+										"python": "ldap_policy.py",
+										"powershell": "ldap_policy.ps1",
+										"terraform": "ldap_policy.tf",
+										"openapi": "ldap_policy.json"
+									},
+									"files": [
+										"readme.md"
+									]
+								},
+								{
 									"name": "local_user_policy",
 									"displayName": "Local User Policy",
 									"descriptions": "Automates the configuration of local user preferences. You can create one or more Local User policies which contain a list of local users that need to be configured.",
@@ -226,7 +245,7 @@
 								{
 									"name": "serial_over_lan_policy",
 									"displayName": "Serial Over LAN Policy",
-									"descriptions": "Policy description",
+									"descriptions": "Enables the input and output of the serial port of a managed system to be redirected over IP. You can create one or more Serial over LAN policies which contain a specific grouping of Serial over LAN attributes that match the needs of a server or a set of servers.",
 									"codesample": {
 										"ansible": "serial_over_lan_policy.yaml",
 										"python": "serial_over_lan_policy.py",
@@ -241,13 +260,28 @@
 								{
 									"name": "snmp_policy",
 									"displayName": "SNMP Policy",
-									"descriptions": "Policy description",
+									"descriptions": "Configures the SNMP settings for sending fault and alert information by SNMP traps from the managed devices.",
 									"codesample": {
 										"ansible": "snmp_policy.yaml",
 										"python": "snmp_policy.py",
 										"powershell": "snmp_policy.ps1",
 										"terraform": "snmp_policy.tf",
 										"openapi": "snmp_policy.json"
+									},
+									"files": [
+										"readme.md"
+									]
+								},
+								{
+									"name": "ssh_policy",
+									"displayName": "SSH Policy",
+									"descriptions": "Enables an SSH client to make a secure, encrypted connection. You can create one or more SSH policies that contain a specific grouping of SSH properties for a server or a set of servers.",
+									"codesample": {
+										"ansible": "ssh_policy.yaml",
+										"python": "ssh_policy.py",
+										"powershell": "ssh_policy.ps1",
+										"terraform": "ssh_policy.tf",
+										"openapi": "ssh_policy.json"
 									},
 									"files": [
 										"readme.md"
@@ -278,72 +312,6 @@
 										"powershell": "virtual_kvm_policy.ps1",
 										"terraform": "virtual_kvm_policy.tf",
 										"openapi": "virtual_kvm_policy.json"
-									},
-									"files": [
-										"readme.md"
-									]
-								}
-							]
-						},
-						{
-							"name": "misc",
-							"displayName": "misc",
-							"subDirectories": [
-								{
-									"name": "ldap_policy",
-									"displayName": "LDAP Policy",
-									"descriptions": "Specifies the LDAP configuration settings and preferences for an endpoint. The endpoints support LDAP to store and maintain directory information in a network. The LDAP policy determines configuration settings for LDAP Servers, DNS parameters including options to obtain a domain name used for the DNS SRV request, Binding methods, Search parameters, and Group Authorization preferences. Through an LDAP policy, you can also create multiple LDAP groups and add them to the LDAP server database.",
-									"codesample": {
-										"ansible": "ldap_policy.yaml",
-										"python": "ldap_policy.py",
-										"powershell": "ldap_policy.ps1",
-										"terraform": "ldap_policy.tf",
-										"openapi": "ldap_policy.json"
-									},
-									"files": [
-										"readme.md"
-									]
-								},
-								{
-									"name": "ntp_policy",
-									"displayName": "Ntp Policy",
-									"descriptions": "Allows you to enable the NTP service on an Intersight Managed Cisco IMC (Standalone) server. The NTP service synchronizes the time with an NTP server. You must enable and configure the NTP service by specifying the IP address or DNS of a minimum of one to a maximum of four NTP servers.",
-									"codesample": {
-										"ansible": "ntp_policy.yaml",
-										"python": "ntp_policy.py",
-										"powershell": "ntp_policy.ps1",
-										"terraform": "ntp_policy.tf",
-										"openapi": "ntp_policy.json"
-									},
-									"files": [
-										"readme.md"
-									]
-								},
-								{
-									"name": "smtp_policy",
-									"displayName": "SMTP Policy",
-									"descriptions": "Sets the state of the SMTP client in the managed device. You can specify the preferred settings for outgoing communication and select the fault severity level to report and the mail recipients.",
-									"codesample": {
-										"ansible": "smtp_policy.yaml",
-										"python": "smtp_policy.py",
-										"powershell": "smtp_policy.ps1",
-										"terraform": "smtp_policy.tf",
-										"openapi": "smtp_policy.json"
-									},
-									"files": [
-										"readme.md"
-									]
-								},
-								{
-									"name": "ssh_policy",
-									"displayName": "SSH Policy",
-									"descriptions": "Enables an SSH client to make a secure, encrypted connection. You can create one or more SSH policies that contain a specific grouping of SSH properties for a server or a set of servers.",
-									"codesample": {
-										"ansible": "ssh_policy.yaml",
-										"python": "ssh_policy.py",
-										"powershell": "ssh_policy.ps1",
-										"terraform": "ssh_policy.tf",
-										"openapi": "ssh_policy.json"
 									},
 									"files": [
 										"readme.md"
@@ -476,6 +444,21 @@
 									]
 								},
 								{
+									"name": "ntp_policy",
+									"displayName": "Ntp Policy",
+									"descriptions": "Allows you to enable the NTP service on an Intersight Managed Cisco IMC (Standalone) server. The NTP service synchronizes the time with an NTP server. You must enable and configure the NTP service by specifying the IP address or DNS of a minimum of one to a maximum of four NTP servers.",
+									"codesample": {
+										"ansible": "ntp_policy.yaml",
+										"python": "ntp_policy.py",
+										"powershell": "ntp_policy.ps1",
+										"terraform": "ntp_policy.tf",
+										"openapi": "ntp_policy.json"
+									},
+									"files": [
+										"readme.md"
+									]
+								},
+								{
 									"name": "san_connectivity_policy",
 									"displayName": "SAN Connectivity Policy",
 									"descriptions": "Determines the network storage resources and the connections between the server and the SAN on the network.",
@@ -485,6 +468,21 @@
 										"powershell": "san_connectivity_policy.ps1",
 										"terraform": "san_connectivity_policy.tf",
 										"openapi": "san_connectivity_policy.json"
+									},
+									"files": [
+										"readme.md"
+									]
+								},
+								{
+									"name": "smtp_policy",
+									"displayName": "SMTP Policy",
+									"descriptions": "Sets the state of the SMTP client in the managed device. You can specify the preferred settings for outgoing communication and select the fault severity level to report and the mail recipients.",
+									"codesample": {
+										"ansible": "smtp_policy.yaml",
+										"python": "smtp_policy.py",
+										"powershell": "smtp_policy.ps1",
+										"terraform": "smtp_policy.tf",
+										"openapi": "smtp_policy.json"
 									},
 									"files": [
 										"readme.md"
@@ -514,7 +512,7 @@
 								{
 									"name": "fiber_channel_adapter_policy",
 									"displayName": "Fiber Channel Adapter Policy",
-									"descriptions": "Policy description",
+									"descriptions": "Governs the host-side behavior of the adapter, including how the adapter handles traffic.",
 									"codesample": {
 										"ansible": "fiber_channel_adapter_policy.yaml",
 										"python": "fiber_channel_adapter_policy.py",
@@ -529,7 +527,7 @@
 								{
 									"name": "fiber_channel_network_policy",
 									"displayName": "Fiber Channel Network Policy",
-									"descriptions": "Policy description",
+									"descriptions": "Governs the VSAN configuration for the virtual interfaces.",
 									"codesample": {
 										"ansible": "fiber_channel_network_policy.yaml",
 										"python": "fiber_channel_network_policy.py",
@@ -544,7 +542,7 @@
 								{
 									"name": "fiber_channel_qos_policy",
 									"displayName": "Fiber Channel Qos Policy",
-									"descriptions": "Policy description",
+									"descriptions": "Assigns a system class to the outgoing traffic for a vHBA. This system class determines the quality of service for the outgoing traffic. For certain adapters, you can also specify additional controls like burst and rate on the outgoing traffic.",
 									"codesample": {
 										"ansible": "fiber_channel_qos_policy.yaml",
 										"python": "fiber_channel_qos_policy.py",
@@ -559,7 +557,7 @@
 								{
 									"name": "iscsi_adapter_policy",
 									"displayName": "ISCSI Adapter Policy",
-									"descriptions": "Policy description",
+									"descriptions": "The iSCSI Adapter policy allows you to configure values for TCP Connection Timeout, DHCP Timeout, and the Retry Count if the specified LUN ID is busy.",
 									"codesample": {
 										"ansible": "iscsi_adapter_policy.yaml",
 										"python": "iscsi_adapter_policy.py",
@@ -574,7 +572,7 @@
 								{
 									"name": "iscsi_boot_policy",
 									"displayName": "ISCSI Boot Policy",
-									"descriptions": "Policy description",
+									"descriptions": "iSCSI boot support allows you to initialize the Operating System on FI-attached blade and rack servers from a remote disk across a Storage Area Network.",
 									"codesample": {
 										"ansible": "iscsi_boot_policy.yaml",
 										"python": "iscsi_boot_policy.py",
@@ -589,7 +587,7 @@
 								{
 									"name": "iscsi_static_target_policy",
 									"displayName": "ISCSI Static Target Policy",
-									"descriptions": "Policy description",
+									"descriptions": " iSCSI Static Target policy allows you to specify the name, IP address, port, and logical unit number of the primary target for iSCSI boot. You can optionally specify these details for a secondary target as well.",
 									"codesample": {
 										"ansible": "iscsi_static_target_policy.yaml",
 										"python": "iscsi_static_target_policy.py",
@@ -777,7 +775,7 @@
 						{
 							"name": "snmp_policy",
 							"displayName": "SNMP Policy",
-							"descriptions": "Policy description",
+							"descriptions": "Configures the SNMP settings for sending fault and alert information by SNMP traps from the managed devices.",
 							"codesample": {
 								"ansible": "snmp_policy.yaml",
 								"python": "snmp_policy.py",
@@ -869,118 +867,111 @@
 			]
 		},
 		{
-			"name":"pool",
-			"displayName":"Pool",
-			"subDirectories":[
+			"name": "pools",
+			"displayName": "Pools",
+			"subDirectories": [
 				{
-					"name":"IP",
-					"displayName":"IP Pool",
-					"descriptions":"An IP Pool can contain one or more blocks of IPs that will get consumed in sequential order, beginning with the lowest block. IP pools support both IPv4 and IPv6 addresses.",
-					"codesample":{
-						"ansible":"",
-						"powershell":"IPPool.ps1",
-						"python":"IPPool.py",
-						"terraform":"IPPool.tf",
-						"openapi":""
-
+					"name": "IP",
+					"displayName": "IP Pool",
+					"descriptions": "An IP Pool can contain one or more blocks of IPs that will get consumed in sequential order, beginning with the lowest block. IP pools support both IPv4 and IPv6 addresses.",
+					"codesample": {
+						"ansible": "",
+						"powershell": "IPPool.ps1",
+						"python": "IPPool.py",
+						"terraform": "IPPool.tf",
+						"openapi": ""
 					},
-					"files":[
+					"files": [
 						"readme.md"
 					]
 				},
 				{
-					"name":"IQN",
-					"displayName":"IQN Pool",
-					"descriptions":"An IQN pool is a collection of iSCSI Qualified Names (IQNs) for use as initiator identifiers by iSCSI vNICs. IQN pool members are of the form prefix: suffix: number, where you can specify the prefix, suffix, and a block (range) of numbers.",
-					"codesample":{
-						"ansible":"",
-						"powershell":"IQNPool.ps1",
-						"python":"IQNPool.py",
-						"terraform":"IQNPool.tf",
-						"openapi":""
-
+					"name": "IQN",
+					"displayName": "IQN Pool",
+					"descriptions": "An IQN pool is a collection of iSCSI Qualified Names (IQNs) for use as initiator identifiers by iSCSI vNICs. IQN pool members are of the form prefix: suffix: number, where you can specify the prefix, suffix, and a block (range) of numbers.",
+					"codesample": {
+						"ansible": "",
+						"powershell": "IQNPool.ps1",
+						"python": "IQNPool.py",
+						"terraform": "IQNPool.tf",
+						"openapi": ""
 					},
-					"files":[
+					"files": [
 						"readme.md"
 					]
 				},
 				{
-					"name":"MAC",
-					"displayName":"MAC Pool",
-					"descriptions":"MAC Pools represent a collection of MAC addresses that can be allocated to vNICs of a server profile.",
-					"codesample":{
-						"ansible":"",
-						"powershell":"MACPool.ps1",
-						"python":"MACPool.py",
-						"terraform":"MACPool.tf",
-						"openapi":""
-
+					"name": "MAC",
+					"displayName": "MAC Pool",
+					"descriptions": "MAC Pools represent a collection of MAC addresses that can be allocated to vNICs of a server profile.",
+					"codesample": {
+						"ansible": "",
+						"powershell": "MACPool.ps1",
+						"python": "MACPool.py",
+						"terraform": "MACPool.tf",
+						"openapi": ""
 					},
-					"files":[
+					"files": [
 						"readme.md"
 					]
 				},
 				{
-					"name":"Resource",
-					"displayName":"Resource Pool",
-					"descriptions":"A resource pool is an aggregation of homogeneous resources that are managed in Intersight. A resource pool enables you to manage the utilization of resources for certain Intersight features like Server Profile. Currently, Intersight supports only server type as a resource for the resource pool.",
-					"codesample":{
-						"ansible":"",
-						"powershell":"ResourcePool.ps1",
-						"python":"ResourcePool.py",
-						"terraform":"ResourcePool.tf",
-						"openapi":""
-
+					"name": "Resource",
+					"displayName": "Resource Pool",
+					"descriptions": "A resource pool is an aggregation of homogeneous resources that are managed in Intersight. A resource pool enables you to manage the utilization of resources for certain Intersight features like Server Profile. Currently, Intersight supports only server type as a resource for the resource pool.",
+					"codesample": {
+						"ansible": "",
+						"powershell": "ResourcePool.ps1",
+						"python": "ResourcePool.py",
+						"terraform": "ResourcePool.tf",
+						"openapi": ""
 					},
-					"files":[
+					"files": [
 						"readme.md"
 					]
 				},
 				{
-					"name":"UUID",
-					"displayName":"UUID Pool",
-					"descriptions":"UUID Pools represent a collection of UUID items that can be allocated to server profiles.",
-					"codesample":{
-						"ansible":"",
-						"powershell":"UUIDPool.ps1",
-						"python":"UUIDPool.py",
-						"terraform":"UUIDPool.tf",
-						"openapi":""
-
+					"name": "UUID",
+					"displayName": "UUID Pool",
+					"descriptions": "UUID Pools represent a collection of UUID items that can be allocated to server profiles.",
+					"codesample": {
+						"ansible": "",
+						"powershell": "UUIDPool.ps1",
+						"python": "UUIDPool.py",
+						"terraform": "UUIDPool.tf",
+						"openapi": ""
 					},
-					"files":[
+					"files": [
 						"readme.md"
 					]
 				},
 				{
-					"name":"WWNN",
-					"displayName":"WWNN Pool",
-					"descriptions":"A WWNN pool is a WWN pool that contains only WW node names. If you include a pool of WWNNs in a server profile, the associated server is assigned a WWNN from that pool.",
-					"codesample":{
-						"ansible":"",
-						"powershell":"WWNNPool.ps1",
-						"python":"WWNNPool.py",
-						"terraform":"WWNNPool.tf",
-						"openapi":""
-
+					"name": "WWNN",
+					"displayName": "WWNN Pool",
+					"descriptions": "A WWNN pool is a WWN pool that contains only WW node names. If you include a pool of WWNNs in a server profile, the associated server is assigned a WWNN from that pool.",
+					"codesample": {
+						"ansible": "",
+						"powershell": "WWNNPool.ps1",
+						"python": "WWNNPool.py",
+						"terraform": "WWNNPool.tf",
+						"openapi": ""
 					},
-					"files":[
+					"files": [
 						"readme.md"
 					]
 				},
 				{
-					"name":"WWPN",
-					"displayName":"WWPN Pool",
-					"descriptions":"A WWPN pool is a WWN pool that contains only WW port names. If you include a pool of WWPNs in a server profile, the port on each vHBA of the associated server is assigned a WWPN from that pool.",
-					"codesample":{
-						"ansible":"",
-						"powershell":"WWPNPool.ps1",
-						"python":"WWPNPool.py",
-						"terraform":"WWPNPool.tf",
-						"openapi":""
-
+					"name": "WWPN",
+					"displayName": "WWPN Pool",
+					"descriptions": "A WWPN pool is a WWN pool that contains only WW port names. If you include a pool of WWPNs in a server profile, the port on each vHBA of the associated server is assigned a WWPN from that pool.",
+					"codesample": {
+						"ansible": "",
+						"powershell": "WWPNPool.ps1",
+						"python": "WWPNPool.py",
+						"terraform": "WWPNPool.tf",
+						"openapi": ""
 					},
-					"files":[
+					"files": [
 						"readme.md"
 					]
 				}
