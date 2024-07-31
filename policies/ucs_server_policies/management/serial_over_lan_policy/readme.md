@@ -1,2 +1,2 @@
-## SOL Policy
+## Serial Over LAN Policy
 Enables the input and output of the serial port of a managed system to be redirected over IP. You can create one or more Serial over LAN policies which contain a specific grouping of Serial over LAN attributes that match the needs of a server or a set of servers.

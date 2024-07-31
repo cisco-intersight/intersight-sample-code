@@ -4,10 +4,10 @@ $config = @{
     ApiKeyFilePath = "C:\\secretKey.txt"
     HttpSigningHeader =  @("(request-target)", "Host", "Date", "Digest")
 }
-# set intersight configuration    
+# set intersight configuration, this action needs to be performed once per PowerShell session
 Set-IntersightConfiguration @config
 
-# get organization MoRef
+# Get an organization
 $org = Get-IntersightOrganizationOrganization -Name default 
 
 # initialize Model bundle version
