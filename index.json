@@ -275,7 +275,7 @@
 								{
 									"name": "ssh_policy",
 									"displayName": "SSH Policy",
-									"descriptions": "Enables an SSH client to make a secure, encrypted connection. You can create one or more SSH policies that contain a specific grouping of SSH properties for a server or a set of servers.",
+									"descriptions": "Enables a SSH client to make a secure, encrypted connection. You can create one or more SSH policies that contain a specific grouping of SSH properties for a server or a set of servers.",
 									"codesample": {
 										"ansible": "ssh_policy.yaml",
 										"python": "ssh_policy.py",
