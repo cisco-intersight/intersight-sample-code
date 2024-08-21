@@ -1,0 +1,2 @@
+## IPMI over LAN Policy
+Defines the protocols for interfacing with a service processor that is embedded in a server platform. The IPMI enables an operating system to obtain information about the system health and control system hardware and directs the BMC to perform appropriate actions to address a problem. You can create an IPMI Over LAN policy to manage the IPMI messages through Cisco Intersight. You can assign these user roles to an IPMI user per session
