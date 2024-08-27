@@ -2,7 +2,8 @@
 	"tabs": [
 		"powershell",
 		"python",
-		"terraform"
+		"terraform",
+		"ansible"
 	],
 	"directories": [
 		{
