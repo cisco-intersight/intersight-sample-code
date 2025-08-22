@@ -1,0 +1,48 @@
+---
+- name: Create Intersight VLAN Policy
+  hosts: localhost
+  gather_facts: no
+  vars:
+    api_private_key: "/root/secretKey.txt"
+    api_key_id: "xxxxx27564612d30dxxxxx/5f21c9d97564612d30dd575a/5f9a8b877564612xxxxxxxx"
+    organization: "default"
+
+  tasks:
+    - name: Create Multicast policy
+      cisco.intersight.intersight_multicast_policy:
+        api_private_key: "{{ api_private_key }}"
+        api_key_id: "{{ api_key_id }}"
+        organization: "{{ organization }}"
+        name: "multicast_policy_for_vlan_policy"
+        description: "Test multicast policy description"
+      register: multicast_policy_res
+  
+    - name: Create VLAN policy
+      cisco.intersight.intersight_vlan_policy:
+        api_private_key: "{{ api_private_key }}"
+        api_key_id: "{{ api_key_id }}"
+        organization: "{{ organization }}"
+        name: "test_vlan_policy_with_vlans"
+        description: "Policy with standard VLANs"
+        vlans:
+          - prefix: "prod"
+            vlan_id: 100
+            auto_allow_on_uplinks: true
+            enable_sharing: false
+            multicast_policy_name: "multicast_policy_for_vlan_policy"
+            is_native: false
+            state: present
+          - prefix: "dev"
+            vlan_id: 200
+            auto_allow_on_uplinks: false
+            enable_sharing: false
+            multicast_policy_name: "multicast_policy_for_vlan_policy"
+            is_native: false
+            state: present
+          - prefix: "mgmt"
+            vlan_id: 300
+            auto_allow_on_uplinks: true
+            enable_sharing: false
+            multicast_policy_name: "multicast_policy_for_vlan_policy"
+            is_native: true
+      register: vlan_policy

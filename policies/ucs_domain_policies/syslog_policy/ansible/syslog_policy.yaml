@@ -1,0 +1,31 @@
+---
+- name: Create Intersight Syslog Policy
+  hosts: localhost
+  gather_facts: no
+  vars:
+    api_private_key: "/root/secretKey.txt"
+    api_key_id: "xxxxx27564612d30dxxxxx/5f21c9d97564612d30dd575a/5f9a8b877564612xxxxxxxx"
+    organization: "default"
+
+  tasks:
+    - name: Create Syslog policy
+      cisco.intersight.intersight_syslog_policy:
+        api_private_key: "{{ api_private_key }}"
+        api_key_id: "{{ api_key_id }}"
+        organization: "{{ organization }}"
+        name: "test_syslog_policy"
+        description: "Test Syslog policy created with Ansible"
+        local_logging_minimum_severity: "emergency"
+        first_remote_logging_enabled: true
+        first_remote_logging_hostname: "11.11.11.11"
+        first_remote_logging_port: 514
+        first_remote_logging_protocol: "udp"
+        first_remote_logging_minimum_severity: "warning"
+        second_remote_logging_enabled: true
+        second_remote_logging_hostname: "2001:0db8:0a0b:12f0:0000:0000:0000:0004"
+        second_remote_logging_port: 64000
+        second_remote_logging_protocol: "udp"
+        second_remote_logging_minimum_severity: "emergency"
+        tags:
+          - Key: "Site"
+            Value: "RCDN"

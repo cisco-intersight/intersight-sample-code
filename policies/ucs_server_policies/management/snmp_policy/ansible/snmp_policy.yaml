@@ -1,0 +1,41 @@
+---
+- name: Create Intersight SNMP Policy
+  hosts: localhost
+  gather_facts: no
+  vars:
+    api_private_key: "/root/secretKey.txt"
+    api_key_id: "xxxxx27564612d30dxxxxx/5f21c9d97564612d30dd575a/5f9a8b877564612xxxxxxxx"
+    organization: "default"
+
+  tasks:
+    - name: Create Snmp policy
+      cisco.intersight.intersight_snmp_policy:
+        api_private_key: "{{ api_private_key }}"
+        api_key_id: "{{ api_key_id }}"
+        organization: "{{ organization }}"
+        name: "test_snmp_policy"
+        description: "Test Snmp policy created with Ansible"
+        enabled: true
+        snmp_port: 1983
+        access_community_string: "dummy123"
+        community_access: "Disabled"
+        trap_community: "TrapCommunity"
+        sys_contact: "abcc"
+        sys_location: "Karnataka"
+        engine_input_id: "engine-id-123"
+        v3_enabled: true
+        snmp_users:
+          - name: "demouser"
+            auth_password: "authpass123"
+            privacy_password: "privpass123"
+            security_level: "AuthPriv"
+        snmp_traps:
+          - destination: "10.10.10.1"
+            enabled: false
+            port: 660
+            type: "Trap"
+            user: "demouser"
+            version: "V3"
+        tags:
+          - Key: "Site"
+            Value: "RCDN"

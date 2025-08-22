@@ -1,5 +1,5 @@
 ---
-- name: Create Intersight Power Policy
+- name: Create Intersight UUID Pool
   hosts: localhost
   gather_facts: no
   vars:
@@ -8,16 +8,14 @@
     organization: "default"
 
   tasks:
-    - name: Create Multicast policy
-      cisco.intersight.intersight_multicast_policy:
+    - name: Create thermal policy
+      cisco.intersight.intersight_thermal_policy:
         api_private_key: "{{ api_private_key }}"
         api_key_id: "{{ api_key_id }}"
         organization: "{{ organization }}"
-        name: "test_multicast_policy"
-        description: "Test Multicast policy created with Ansible"
-        querier_ip_address: "192.168.0.1"
-        querier_state: "Enabled"
-        snooping_state: "Enabled"
+        name: "test_thermal_policy"
+        description: "Test Thermal policy created with Ansible"
+        fan_control_mode: "Balanced"
         tags:
           - Key: "Site"
             Value: "RCDN"

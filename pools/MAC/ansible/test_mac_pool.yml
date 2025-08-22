@@ -1,0 +1,30 @@
+---
+- name: Create Intersight MAC Pool
+  hosts: localhost
+  gather_facts: no
+  vars:
+    api_private_key: "/root/secretKey.txt"
+    api_key_id: "xxxxx27564612d30dxxxxx/5f21c9d97564612d30dd575a/5f9a8b877564612xxxxxxxx"
+    organization: "default"
+
+  tasks:
+    - name: Create MAC Pool
+      cisco.intersight.intersight_mac_pool:
+        api_private_key: "{{ api_private_key }}"
+        api_key_id: "{{ api_key_id }}"
+        organization: "{{ organization }}"
+        name: "test_mac_pool"
+        description: "Test MAC Pool created with Ansible"
+        state: present
+        validate_certs: true
+        mac_blocks:
+          - address_from: "00:25:B5:00:00:00"
+            size: 20
+        tags:
+          - Key: "Environment"
+            Value: "Testing"
+      register: result
+
+    - name: Display result
+      debug:
+        var: result

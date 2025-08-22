@@ -1,0 +1,31 @@
+---
+- name: Create Intersight UUID Pool
+  hosts: localhost
+  gather_facts: no
+  vars:
+    api_private_key: "/root/secretKey.txt"
+    api_key_id: "xxxxx27564612d30dxxxxx/5f21c9d97564612d30dd575a/5f9a8b877564612xxxxxxxx"
+    organization: "default"
+
+  tasks:
+    - name: Create UUID pool
+      cisco.intersight.intersight_uuid_pool:
+        api_private_key: "{{ api_private_key }}"
+        api_key_id: "{{ api_key_id }}"
+        organization: "{{ organization }}"
+        name: "test_uuid_pool"
+        description: "Test UUID Pool created with Ansible"
+        prefix: "550E8400-E29B-41D4"
+        uuid_suffix_blocks:
+          - from: "A716-446655440000"
+            size: 100
+          - from: "A716-446655441000"
+            size: 200
+        tags:
+          - Key: "Site"
+            Value: "RCDN"
+      register: creation_res
+
+    - name: Display result
+      debug:
+        var: creation_res
