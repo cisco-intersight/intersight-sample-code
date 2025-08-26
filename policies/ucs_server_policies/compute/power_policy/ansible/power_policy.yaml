@@ -1,0 +1,28 @@
+---
+- name: Create Intersight Power Policy
+  hosts: localhost
+  gather_facts: no
+  vars:
+    api_private_key: "/root/secretKey.txt"
+    api_key_id: "xxxxx27564612d30dxxxxx/5f21c9d97564612d30dd575a/5f9a8b877564612xxxxxxxx"
+    organization: "default"
+
+  tasks:
+    - name: Create Power policy
+      cisco.intersight.intersight_power_policy:
+        api_private_key: "{{ api_private_key }}"
+        api_key_id: "{{ api_key_id }}"
+        organization: "{{ organization }}"
+        name: "test_power_policy"
+        description: "Test Power policy created with Ansible"
+        dynamic_power_rebalancing: "Disabled"
+        extended_power_capacity: "Enabled"
+        power_priority: "Low"
+        power_profiling: "Enabled"
+        power_restore: "AlwaysOff"
+        power_save_mode: "Enabled"
+        power_redundancy: "Grid"
+        target_platform: "all"
+        tags:
+          - Key: "Site"
+            Value: "RCDN"
