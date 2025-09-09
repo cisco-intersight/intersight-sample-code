@@ -1,0 +1,31 @@
+---
+- name: Create Intersight Iqn Pool
+  hosts: localhost
+  gather_facts: no
+  vars:
+    api_private_key: "C:\\secretKey.txt"
+    api_key_id: "xxxxx27564612d30dxxxxx/5f21c9d97564612d30dd575a/5f9a8b877564612xxxxxxxx"
+    organization: "default"
+
+  tasks:
+    - name: Create iqn pool
+      cisco.intersight.intersight_iqn_pool:
+        api_private_key: "{{ api_private_key }}"
+        api_key_id: "{{ api_key_id }}"
+        organization: "{{ organization }}"
+        name: test_iqn_pool
+        description: "Test iqn pool description"
+        tags:
+          - Key: "Site"
+            Value: "Test"
+          - Key: "Site2"
+            Value: "Test3"
+        prefix: "iqn.2025-08.com.cisco"
+        iqn_suffix_blocks:
+          - suffix: "iqn"
+            iqn_from: 1
+            size: 20
+          - suffix: "iscsi"
+            iqn_from: 51
+            size: 40
+      register: creation_res
