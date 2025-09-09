@@ -1,0 +1,27 @@
+---
+- name: Create Intersight Ethernet Network Control Policy
+  hosts: localhost
+  gather_facts: no
+  vars:
+    api_private_key: "C:\\secretKey.txt"
+    api_key_id: "xxxxx27564612d30dxxxxx/5f21c9d97564612d30dd575a/5f9a8b877564612xxxxxxxx"
+    organization: "default"
+
+  tasks:
+    - name: Create ethernet network control policy
+      cisco.intersight.intersight_ethernet_network_control_policy:
+        api_private_key: "{{ api_private_key }}"
+        api_key_id: "{{ api_key_id }}"
+        organization: "{{ organization }}"
+        name: test_ethernet_network_control_policy
+        description: "Test ethernet network control policy description"
+        tags:
+          - Key: Site
+            Value: Test
+        cdp_enabled: false
+        mac_registration_mode: "nativeVlanOnly"
+        uplink_fail_action: "linkDown"
+        forge_mac: "allow"
+        lldp_transmit_enabled: false
+        lldp_receive_enabled: false
+      register: creation_res_idem

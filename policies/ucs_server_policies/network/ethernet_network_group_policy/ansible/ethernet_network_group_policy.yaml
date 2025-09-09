@@ -1,0 +1,25 @@
+---
+- name: Create Intersight Ethernet Network Control Group Policy
+  hosts: localhost
+  gather_facts: no
+  vars:
+    api_private_key: "C:\\secretKey.txt"
+    api_key_id: "xxxxx27564612d30dxxxxx/5f21c9d97564612d30dd575a/5f9a8b877564612xxxxxxxx"
+    organization: "default"
+
+  tasks:
+    - name: Create ethernet network group policy
+      cisco.intersight.intersight_ethernet_network_group_policy:
+        api_private_key: "{{ api_private_key }}"
+        api_key_id: "{{ api_key_id }}"
+        organization: "{{ organization }}"
+        name: test_ethernet_network_group_policy_regular
+        description: "Test ethernet network group policy"
+        tags:
+          - Key: Site
+            Value: Test
+          - Key: Environment
+            Value: Test
+        qinq_enabled: false
+        allowed_vlans: "1-8,12,16"
+      register: creation_res_regular

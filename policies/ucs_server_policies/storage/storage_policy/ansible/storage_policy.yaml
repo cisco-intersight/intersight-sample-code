@@ -1,0 +1,27 @@
+---
+- name: Create Intersight Storage Policy
+  hosts: localhost
+  gather_facts: no
+  vars:
+    api_private_key: "C:\\secretKey.txt"
+    api_key_id: "xxxxx27564612d30dxxxxx/5f21c9d97564612d30dd575a/5f9a8b877564612xxxxxxxx"
+    organization: "default"
+
+  tasks:
+    - name: Create storage policy
+      cisco.intersight.intersight_storage_policy:
+        api_private_key: "{{ api_private_key }}"
+        api_key_id: "{{ api_key_id }}"
+        organization: "{{ organization }}"
+        name: "test_storage_policy"
+        description: "Test storage policy with M.2 virtual drive"
+        m2_virtual_drive_config:
+          enable: true
+          controller_slot: "MSTOR-RAID-1"
+          name: "TestM2VD"
+        raid0_drive_config:
+          enable: false
+        tags:
+          - Key: "Feature"
+            Value: "M2"
+      register: creation_res_m2

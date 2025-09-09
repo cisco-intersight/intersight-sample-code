@@ -1,0 +1,23 @@
+---
+- name: Create Intersight Ipmi Policy
+  hosts: localhost
+  gather_facts: no
+  vars:
+    api_private_key: "/root/jingiris/pass/legacy_jingiris-SecretKey.txt"
+    api_key_id: "60599c447564612d33d47a77/66c91a027564613201ec96c8/68a6eb97756461320191425d"
+    organization: "default"
+
+  tasks:
+    - name: Create IPMI over LAN policy
+      cisco.intersight.intersight_ipmi_over_lan_policy:
+        api_private_key: "{{ api_private_key }}"
+        api_key_id: "{{ api_key_id }}"
+        organization: "{{ organization }}"
+        name: test_ipmi_policy
+        description: "Test basic IPMI over LAN policy"
+        enabled: true
+        privilege: "admin"
+        tags:
+          - Key: Site
+            Value: Test
+      register: basic_creation

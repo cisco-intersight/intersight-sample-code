@@ -1,0 +1,27 @@
+---
+- name: Create Intersight Kvm Policy
+  hosts: localhost
+  gather_facts: no
+  vars:
+    api_private_key: "C:\\secretKey.txt"
+    api_key_id: "xxxxx27564612d30dxxxxx/5f21c9d97564612d30dd575a/5f9a8b877564612xxxxxxxx"
+    organization: "default"
+
+  tasks:
+    - name: Create KVM policy
+      cisco.intersight.intersight_kvm_policy:
+        api_private_key: "{{ api_private_key }}"
+        api_key_id: "{{ api_key_id }}"
+        organization: "{{ organization }}"
+        name: test_kvm_policy
+        description: "Test KVM policy"
+        enabled: true
+        maximum_sessions: 2
+        remote_port: 3000
+        enable_video_encryption: true
+        enable_local_server_video: false
+        tunneled_kvm_enabled: true
+        tags:
+          - Key: Environment
+            Value: Custom
+      register: custom_creation
