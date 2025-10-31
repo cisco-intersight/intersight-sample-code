@@ -1,0 +1,40 @@
+---
+# Example Playbook: cisco.intersight.intersight_san_connectivity_policy
+# Author: Jindat Baradia (@jingiris)
+---
+- name: Create Intersight SAN Policy
+  hosts: localhost
+  gather_facts: no
+  vars:
+    api_private_key: "C:\\secretKey.txt"
+    api_key_id: "xxxxx27564612d30dxxxxx/5f21c9d97564612d30dd575a/5f9a8b877564612xxxxxxxx"
+    organization: "default"
+
+  tasks:
+    - name: Create a SAN Connectivity Policy
+      cisco.intersight.intersight_vsan_policy:
+        api_private_key: "{{ api_private_key }}"
+        api_key_id: "{{ api_key_id }}"
+        organization: "{{ organization }}"
+        name: "datacenter-vsan-policy"
+        description: "VSAN policy for datacenter SAN infrastructure"
+        enable_trunking: false
+        tags:
+          - Key: "Environment"
+            Value: "Production"
+          - Key: "Site"
+            Value: "DataCenter-A"
+        vsans:
+          - name: "vsan_uplink_100"
+            vsan_id: 100
+            fcoe_vlan_id: 100
+            vsan_scope: "uplink"
+          - name: "vsan_storage_200"
+            vsan_id: 200
+            fcoe_vlan_id: 200
+            vsan_scope: "storage"
+          - name: "vsan_common_300"
+            vsan_id: 300
+            fcoe_vlan_id: 300
+            vsan_scope: "common"
+        state: present

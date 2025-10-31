@@ -1,0 +1,25 @@
+---
+# Example Playbook: cisco.intersight.intersight_fibre_channel_qos_policy
+# Author: Jindat Baradia (@jingiris)
+---
+- name: Create Intersight Fibre Channel QoS Policy
+  hosts: localhost
+  gather_facts: no
+  vars:
+    api_private_key: "C:\\secretKey.txt"
+    api_key_id: "xxxxx27564612d30dxxxxx/5f21c9d97564612d30dd575a/5f9a8b877564612xxxxxxxx"
+    organization: "default"
+
+  tasks:
+    - name: Create Fibre Channel QoS Policy
+      cisco.intersight.intersight_fibre_channel_qos_policy:
+        api_private_key: "{{ api_private_key }}"
+        api_key_id: "{{ api_key_id }}"
+        organization: "{{ organization }}"
+        name: "fc-qos"
+        description: "Fibre Channel QoS policy with maximum bandwidth"
+        rate_limit: 100000
+        max_data_field_size: 2112
+        cos: 6
+        burst: 1000000
+        state: present

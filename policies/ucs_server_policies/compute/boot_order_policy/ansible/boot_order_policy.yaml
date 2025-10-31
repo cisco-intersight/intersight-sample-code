@@ -1,41 +1,43 @@
 ---
 # Example Playbook: cisco.intersight.intersight_boot_order_policy
-# Runs on localhost since policies are only configured once
-# Author: Tse Kai "Kevin" Chan (@BrightScale)
-- name: Configure Boot Order Policy
+# Author: Jindat Baradia (@jingiris)
+---
+- name: Create Intersight Boot Order Policy
   hosts: localhost
-  connection: local
-  gather_facts: false
+  gather_facts: no
   vars:
-    # Create an anchor for api_info that can be used throughout the file
-    api_info: &api_info
-      # if api_key vars are omitted, INTERSIGHT_API_KEY_ID, INTERSIGHT_API_PRIVATE_KEY,
-      # and INTERSIGHT_API_URI environment variables used for API key data
-      api_private_key: "{{ api_private_key | default(omit) }}"
-      api_key_id: "{{ api_key_id | default(omit) }}"
-      api_uri: "{{ api_uri | default(omit) }}"
-      validate_certs: "{{ validate_certs | default(omit) }}"
-      state: "{{ state | default('present') }}"
-    # Organization name
-    org_name: dsoper-DevNet
+    api_private_key: "C:\\secretKey.txt"
+    api_key_id: "xxxxx27564612d30dxxxxx/5f21c9d97564612d30dd575a/5f9a8b877564612xxxxxxxx"
+    organization: "default"
+
   tasks:
-    - name: Configure Boot Order Policy
+    - name: Configure Boot Order Policy with multiple boot devices
       cisco.intersight.intersight_boot_order_policy:
-        <<: *api_info
-        organization: "{{ org_name }}"
-        name: COS-Boot
-        description: Boot Order policy for lab use
-        tags:
-          - Key: Site
-            Value: RCDN
+        api_private_key: "{{ api_private_key }}"
+        api_key_id: "{{ api_key_id }}"
+        organization: "{{ organization }}"
+        name: boot_precision1
+        description: "test policy"
         configured_boot_mode: Uefi
         boot_devices:
-          - device_type: Local Disk
-            device_name: Boot-Lun
-            controller_slot: MRAID
-          - device_type: NVMe
-            device_name: NVMe
-          - device_type: Virtual Media
-            device_name: vmedia
-          - device_type: Local CDD
-            device_name: LocalCdd
+          - enabled: true
+            device_name: vMedia
+            device_type: "Virtual Media"
+            virtual_media_subtype: "cimc-mapped-dvd"
+          - enabled: true
+            device_name: usb
+            device_type: "USB"
+            usb_subtype: "usb-fdd"
+          - enabled: true
+            device_name: uefi
+            device_type: "UEFI Shell"
+          - enabled: true
+            device_name: primary_1
+            device_type: "PXE"
+            interface_name: "eth0"
+            ip_type: "IPv4"
+          - enabled: true
+            device_name: secondary
+            device_type: "SAN"
+            interface_name: "fc0"
+            wwpn: "50:06:01:62:3E:E0:58:36"

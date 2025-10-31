@@ -1,0 +1,29 @@
+---
+# Example Playbook: cisco.intersight.intersight_fibre_channel_adapter_policy
+# Author: Jindat Baradia (@jingiris)
+---
+- name: Create Intersight Fibre Channel Adapter Policy
+  hosts: localhost
+  gather_facts: no
+  vars:
+    api_private_key: "C:\\secretKey.txt"
+    api_key_id: "xxxxx27564612d30dxxxxx/5f21c9d97564612d30dd575a/5f9a8b877564612xxxxxxxx"
+    organization: "default"
+
+  tasks:
+    - name: Create Fibre Channel Adapter Policy
+      cisco.intersight.intersight_fibre_channel_adapter_policy:
+        api_private_key: "{{ api_private_key }}"
+        api_key_id: "{{ api_key_id }}"
+        organization: "{{ organization }}"
+        name: "fc-adapter-error-recovery"
+        description: "FC Adapter policy with error recovery enabled"
+        error_recovery_enabled: true
+        port_down_timeout: 5000
+        io_retry_timeout: 8
+        link_down_timeout: 20000
+        port_down_io_retry_count: 10
+        tags:
+          - Key: Environment
+            Value: Production
+        state: present

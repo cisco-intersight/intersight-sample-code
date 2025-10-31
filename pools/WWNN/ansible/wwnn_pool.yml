@@ -1,0 +1,31 @@
+---
+# Example Playbook: cisco.intersight.intersight_wwnn_pool
+# Author: Jindat Baradia (@jingiris)
+---
+- name: Create Intersight WWNN pool
+  hosts: localhost
+  gather_facts: no
+  vars:
+    api_private_key: "C:\\secretKey.txt"
+    api_key_id: "xxxxx27564612d30dxxxxx/5f21c9d97564612d30dd575a/5f9a8b877564612xxxxxxxx"
+    organization: "default"
+
+  tasks:
+    - name: Create WWNN pool
+      cisco.intersight.intersight_wwn_pool:
+        api_private_key: "{{ api_private_key }}"
+        api_key_id: "{{ api_key_id }}"
+        organization: "{{ organization }}"
+        name: wwn_pool_1
+        description: "Test WWNN pool description"
+        tags:
+          - "Key": "Site"
+            "Value": "tag1"
+        pool_purpose: "WWNN"
+        id_blocks:
+          - "wwn_from": "20:00:00:25:B5:00:00:00"
+            "size": 100
+          - "wwn_from": "20:00:00:25:B5:FF:00:00"
+            "size": 100
+
+

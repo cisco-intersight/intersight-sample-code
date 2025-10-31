@@ -1,0 +1,29 @@
+---
+# Example Playbook: cisco.intersight.intersight_wwpn_pool
+# Author: Jindat Baradia (@jingiris)
+---
+- name: Create Intersight WWPN pool
+  hosts: localhost
+  gather_facts: no
+  vars:
+    api_private_key: "C:\\secretKey.txt"
+    api_key_id: "xxxxx27564612d30dxxxxx/5f21c9d97564612d30dd575a/5f9a8b877564612xxxxxxxx"
+    organization: "default"
+
+  tasks:
+    - name: Create WWPN pool
+      cisco.intersight.intersight_wwn_pool:
+        api_private_key: "{{ api_private_key }}"
+        api_key_id: "{{ api_key_id }}"
+        organization: "{{ organization }}"
+        name: wwn_pool_2
+        description: "Test WWPN pool description"
+        tags:
+          - "Key": "Site"
+            "Value": "tag2"
+        pool_purpose: "WWPN"
+        id_blocks:
+          - "wwn_from": "20:00:00:25:B5:00:FF:00"
+            "size": 200
+          - "wwn_from": "20:00:00:25:B5:FF:FF:00"
+            "size": 200
