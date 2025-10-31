@@ -1,0 +1,31 @@
+---
+# Example Playbook: cisco.intersight.intersight_iscsi_static_target_policy
+# Author: Jindat Baradia (@jingiris)
+---
+- name: Create Intersight iSCSI Static Target Policy
+  hosts: localhost
+  gather_facts: no
+  vars:
+    api_private_key: "C:\\secretKey.txt"
+    api_key_id: "xxxxx27564612d30dxxxxx/5f21c9d97564612d30dd575a/5f9a8b877564612xxxxxxxx"
+    organization: "default"
+
+  tasks:
+    - name: Create an iSCSI Static Target Policy
+      cisco.intersight.intersight_iscsi_static_target_policy:
+        api_private_key: "{{ api_private_key }}"
+        api_key_id: "{{ api_key_id }}"
+        organization: "{{ organization }}"
+        name: "iscsi-static-target-policy-01"
+        description: "iSCSI static target policy for production servers"
+        target_name: "iqn.1991-05.com.microsoft:winclient1"
+        port: 3260
+        lun_id: 0
+        ip_protocol: "IPv4"
+        ipv4_address: "192.168.10.100"
+        tags:
+          - Key: "Environment"
+            Value: "Production"
+          - Key: "Owner"
+            Value: "Storage-Team"
+        state: present
